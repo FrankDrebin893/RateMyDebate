@@ -10,6 +10,7 @@ namespace RateMyDebate.Controllers
     {
         public ActionResult Index()
         {
+            //YO
             return View();
         }
 
