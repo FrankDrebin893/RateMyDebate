@@ -1,17 +1,25 @@
 ﻿body {
     padding: 0px;
+    height: 100%;
+    margin: 0px;
+}
+
+html, body {
+    height: 100%;
 }
 
 .mainDiv {
-    width: 75%;
-    text-align: center;
+    height: 100%;
+    width: 60%;
     border-left-style: solid;
     border-right-style: solid;
     border-color: black;
-    height: 100%;
+    mso-border-shadow: yes;
     margin: 0 auto;
 }
 
 .bannerDiv {
-    width: 100%
+    width: 100%;
+    border-bottom-style: solid;
+
 }
