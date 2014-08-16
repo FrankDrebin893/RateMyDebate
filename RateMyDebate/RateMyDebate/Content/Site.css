@@ -84,3 +84,10 @@ input[type="checkbox"].input-validation-error {
 }.Test:active {
 	position:relative;
 	top:1px;
+}
+
+.centered{
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
+}
