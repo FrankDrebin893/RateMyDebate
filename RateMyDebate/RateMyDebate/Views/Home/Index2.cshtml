@@ -3,9 +3,30 @@
     ViewBag.Title = "Index2";
 }
 
-<h2>Index2</h2>
 
-<div>
-    <button class="Test" value="Test2"></button>
-    <a href="#" class="Test">Test</a>
-</div>
+
+
+<body align="center">
+
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+    </ul>
+
+    <br />
+
+    <div>
+       <input value="User Name"/>
+       <input value="Password" />   
+    </div>
+    <div>
+        <button type="button" style="margin-right:2px">Create</button>
+        <button type="button" style="margin-right:2px">Log In</button>
+    </div> 
+    <div>
+        <a href="#" class="Test">Test</a>
+    </div>
+</body>
