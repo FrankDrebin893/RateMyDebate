@@ -31,5 +31,10 @@ namespace RateMyDebate.Controllers
         {
             return View();
         }
+
+        public ActionResult RasmusIndex()
+        {
+            return View();
+        }
     }
 }

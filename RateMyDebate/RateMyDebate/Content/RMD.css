@@ -1,0 +1,17 @@
+﻿body {
+    padding: 0px;
+}
+
+.mainDiv {
+    width: 75%;
+    text-align: center;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-color: black;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.bannerDiv {
+    width: 100%
+}
