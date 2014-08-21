@@ -100,7 +100,7 @@ html, body {
 }
 
 .mainDiv {
-    height: 100%;
+    min-height: 100%;
     position: relative;
     width: 50%;
     border-left-style: solid;
