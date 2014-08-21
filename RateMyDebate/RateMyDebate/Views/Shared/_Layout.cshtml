@@ -9,14 +9,30 @@
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body bgcolor="2F2E36">
+<body>
     <div class="mainDiv">
         <div class="bannerDiv">
+            <table>
+                <tr>
+                    <td>
+                        <img src="~/imgs/logo.png" />
+                    </td>
+                    <td>
+                        <div class="divabsolute">
+                            <input value="User Name" /> <br />
+                            <input value="Password" style="margin-top:5px" /><br />
 
-            <img src="~/imgs/logo.png" />
-
-            
+                            <button type="button" style="margin-top:5px; margin-left:0px">Log In</button>
+                            <button type="button" style="margin-top: 5px; margin-right:37px">Create</button> <br />
+                            @Html.ActionLink("Forgot Password?", "Index", "Home")
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
+
+
+
         <div>
 
             @RenderBody()

@@ -92,3 +92,9 @@ input[type="checkbox"].input-validation-error {
     text-align: left;
     width: 800px;
 }
+
+.divabsolute{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
