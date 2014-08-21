@@ -3842,7 +3842,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #428bca;
+  background-color: #eeeeee;
   border-color: #428bca;
 }
 
@@ -3858,7 +3858,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #428bca;
+  border-bottom: 1px solid #dddddd;
 }
 
 .nav-tabs > li {
@@ -3874,7 +3874,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .nav-tabs > li > a:hover {
-  border-color: #dddddd #dddddd #dddddd;
+  border-color: #eeeeee #eeeeee #dddddd;
 }
 
 .nav-tabs > li.active > a,
@@ -5444,7 +5444,7 @@ a.list-group-item:focus {
 
 .panel-default > .panel-heading {
   color: #333333;
-  background-color: #dddddd;
+  background-color: #f5f5f5;
   border-color: #dddddd;
 }
 

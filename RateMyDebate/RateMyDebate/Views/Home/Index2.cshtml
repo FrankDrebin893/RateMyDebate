@@ -6,28 +6,38 @@
 
 
 
-<body>
-    <div align="center">
+<body align="center">
 
-    <ul class="nav nav-tabs nav-justified" role="tabpanel">
-        <li>@Html.ActionLink("Profile", "Index", "Home")</li>
-        <li>@Html.ActionLink("Categories", "Index", "Home")</li>
-        <li>@Html.ActionLink("Statistics", "Index", "Home")</li>
-        <li>@Html.ActionLink("Rules/FAQ", "Index", "Home")</li>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
     </ul>
 
     <br />
 
-  
+    <div>
+        <input value="User Name" />
+    </div>
+    <div>
+        <input value="Password" style="margin-top:5px" />
+    </div>
+
+    <div>
+        <button type="button" style="margin-top:5px; margin-left:0px">Create</button>
+        <button type="button" style="margin-top: 5px; margin-right:37px">Log In</button>
+
+    </div>
     <br />
     <div class="panel panel-default" style="margin-left:50px; margin-right:50px">
         <div class="panel-heading">
             <h3 class="panel-title">TEST</h3>
         </div>
         <div class="panel-body">
-            Here goes the content! <br /><br /><br /><br /><br />
+            Here goes the content!
         </div>
 
-    </div>
     </div>
 </body>
