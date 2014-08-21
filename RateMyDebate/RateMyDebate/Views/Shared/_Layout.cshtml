@@ -1,28 +1,40 @@
-﻿<!DOCTYPE html>
+﻿@using System.Web.UI.WebControls
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/RMD.css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body bgcolor="2F2E36">
+<body>
     <div class="mainDiv">
         <div class="bannerDiv">
 
             <img src="~/imgs/logo.png" />
+            <img src="~/imgs/logotitle.png" />
+            <div class="loginDiv">
+                <form>
+                    Username: <input type="text" name="username" /><br/>
+                    Password:&nbsp; <input type="text" name="password" />
+                    <br /><input class="loginButton" type="submit" value="Login!" />
+                    <div class="loginText"><a>Register</a> | <a>Forgot password?</a></div>
+                </form>
 
+                @* @Html.Partial("_LoginPartial"); *@
+            </div>
             
         </div>
-        <div>
+        <div style="background: white ; padding-top: 40px; padding-bottom: 40px; margin: 0">
 
             @RenderBody()
-        </div>
-        <div class="bottomDiv">
-            This is a footer for small details
+
+            <div class="bottomDiv">
+                This is a footer for small details
+            </div>
         </div>
     </div>
     @Scripts.Render("~/bundles/jquery")

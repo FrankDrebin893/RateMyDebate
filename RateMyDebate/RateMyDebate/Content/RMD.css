@@ -1,17 +1,108 @@
 ﻿body {
-    padding: 0px;
+    padding: 5px;
     height: 100%;
     margin: 0px;
+    
+    background: rgba(222, 223, 255, 0.50);
 }
 
 html, body {
     height: 100%;
 }
 
+.loginDiv {
+    right: 2%;
+    top: 2%;
+    position: absolute;
+}
+
+.loginButton {
+  border: 1px dotted #999;
+  border-radius: 0;
+}
+
+.loginText {
+    position: absolute;
+    right: 5%;
+    top: 100%;
+}
+
+#frontDiv {
+    font-family: Geneva, Tahoma, Verdana, sans-serif;
+    text-shadow: 2px 1px 1px rgba(109, 116, 243, 0.75);
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, .20);
+    margin: 0 auto;
+    font-size: 40px;
+    text-align: center;
+    background: linear-gradient(0deg, rgb(253, 252, 255) 60%, rgb(255, 255, 255) 90%);
+    background: white;
+}
+
+#subFrontDiv {
+    font-family: Geneva, Tahoma, Verdana, sans-serif;
+    text-shadow: 2px 1px 1px rgba(109, 116, 243, 0.75);
+    border-radius: 5px;
+    border: 2px solid rgba(0, 0, 0, .20);
+    font-size: 25px;
+    text-align: center;
+    background: linear-gradient(0deg, rgb(253, 252, 255) 60%, rgb(255, 255, 255) 90%);
+    width: 240px;
+}
+
+#subFrontDescription {
+    width: 200px;
+    border-top: solid 1px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 18px;
+    text-shadow: none;
+    font-family: sans-serif;
+    background: rgba(222, 223, 255, 0.30);
+    margin-bottom: 10px;
+}
+
+.subDivTable {
+    width: 500px;
+    margin: 0 auto;
+}
+
+#rightSideDiv {
+    float: right;
+    padding-top: 20px;
+}
+
+#leftSideDiv {
+    float: left;
+    padding-top: 20px;
+}
+
+
+.containerFrontDiv {
+    background: rgba(222, 223, 255, 0.50);
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+}
+
+.startDiv {
+    width: 500px;
+    height: 65px;
+    //box-shadow: 5px 5px 5px rgba(109, 116, 243, 0.25);
+}
+
+.subDiv {
+    width: 100px;
+    height: 200px;
+}
+
 .mainDiv {
     height: 100%;
     position: relative;
-    width: 60%;
+    width: 50%;
     border-left-style: solid;
     border-width: 1px;
     border-right-style: solid;
@@ -21,10 +112,11 @@ html, body {
 }
 
 .bannerDiv {
-    width: 100%;
     border-bottom-style: solid;
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.35);
+    height: 124px;
+    background: white;
 }
 
 .bottomDiv {
@@ -32,5 +124,72 @@ html, body {
     position: absolute;
     width: 100%;
     border-top: solid 1px rgba(0, 0, 0, 0.35);
+    background: white;
 
 }
+
+/*----- Tabs -----*/
+.tabs {
+    width:80%;
+    display:inline-block;
+    margin: 0 auto;
+    margin-top: 15px;
+    position: relative;
+    left: 10%;
+}
+ 
+    /*----- Tab Links -----*/
+    /* Clearfix */
+    .tab-links:after {
+        display:block;
+        clear:both;
+        content:'';
+    }
+ 
+    .tab-links li {
+        margin:0px 40px;
+        float:left;
+        list-style:none;
+        margin-left: -35px;
+    }
+ 
+        .tab-links a {
+            padding:9px 15px;
+            display:inline-block;
+            border-radius:1px 1px 0px 0px;
+            background:rgba(109, 116, 243, 0.25);
+            font-size:16px;
+            font-weight:600;
+            color:#4c4c4c;
+            border: 1px solid black;
+            border-bottom: white;
+            transition:all linear 0.15s;
+        }
+ 
+        .tab-links a:hover {
+            background:rgba(109, 116, 243, 0.50);
+            text-decoration:none;
+        }
+ 
+    li.active a, li.active a:hover {
+        background:#fff;
+        color:#4c4c4c;
+    }
+ 
+    /*----- Content of Tabs -----*/
+    .tab-content {
+        padding: 15px;
+        padding-top: 0;
+        border-radius:1px;
+        background:#fff;
+        margin: -10px;
+    }
+ 
+        .tab {
+            display:none;
+            border: solid 1px black;
+        }
+ 
+        .tab.active {
+            display:block;
+        }
