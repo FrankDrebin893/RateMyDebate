@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201408212039017_fkTest11.Designer.cs">
       <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201408221311168_13.cs" />
+    <Compile Include="Migrations\201408221311168_13.Designer.cs">
+      <DependentUpon>201408221311168_13.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DebateModel.cs" />
@@ -349,6 +353,9 @@
     <EmbeddedResource Include="Migrations\201408212039017_fkTest11.resx">
       <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408221311168_13.resx">
+      <DependentUpon>201408221311168_13.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -364,7 +371,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>6994</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
