@@ -7,14 +7,14 @@ using System.Web;
 
 namespace RateMyDebate.Models
 {
-    public class UserModel
+    public class Inbox
     {
         [Key]
-        public int accountId { get; set; }
-        public String userName { get; set; }
-        public String Password { get; set; }
-
-        public ICollection<UserInformation> UserInformation { get; set; }
+        public int inboxId { get; set; }
+        
+        public virtual UserInformation userInformationId { get; set; }
+        public virtual Message messageId { get; set; }
+        
 
     }
 }
