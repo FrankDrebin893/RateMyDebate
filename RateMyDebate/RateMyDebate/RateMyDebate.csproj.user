@@ -6,12 +6,10 @@
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <WebStackScaffolding_LayoutPageFile />
     <ProjectView>ShowAllFiles</ProjectView>
-<<<<<<< HEAD
+
     <WebStackScaffolding_DbContextTypeFullName>RateMyDebate.Models.RateMyDebateContext</WebStackScaffolding_DbContextTypeFullName>
     <WebStackScaffolding_IsViewGenerationSelected>True</WebStackScaffolding_IsViewGenerationSelected>
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
-=======
->>>>>>> origin/master
   </PropertyGroup>
   <ProjectExtensions />
 </Project>
