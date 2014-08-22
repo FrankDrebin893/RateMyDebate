@@ -12,9 +12,7 @@ namespace RateMyDebate.Models
         public int messageId { get; set; }
 
         public UserInformation userInformationId { get; set; }
-
         
-
         public String  subject  { get; set; }
 
         public String messageText { get; set; }

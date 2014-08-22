@@ -14,6 +14,7 @@ namespace RateMyDebate.Models
         public DbSet<Inbox> Inbox { get; set; }
 
         public DbSet<Message> Message { get; set; }
+        public DbSet<Debate> Debate { get; set; }
         
     }
 }
