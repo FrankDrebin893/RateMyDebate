@@ -17,6 +17,7 @@ namespace RateMyDebate.Controllers
         // GET: /User/
         public ActionResult Index()
         {
+            
             return View(db.UserModel.ToList());
         }
 
