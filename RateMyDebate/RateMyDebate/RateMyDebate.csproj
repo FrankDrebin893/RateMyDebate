@@ -365,6 +365,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408221330553_fk12.resx">
       <DependentUpon>201408221330553_fk12.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201408221311168_13.resx">
       <DependentUpon>201408221311168_13.cs</DependentUpon>
     </EmbeddedResource>
