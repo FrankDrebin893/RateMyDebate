@@ -159,72 +159,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DebateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserInformationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201408211827016_userTest.cs" />
-    <Compile Include="Migrations\201408211827016_userTest.Designer.cs">
-      <DependentUpon>201408211827016_userTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408211850339_UserInformation.cs" />
-    <Compile Include="Migrations\201408211850339_UserInformation.Designer.cs">
-      <DependentUpon>201408211850339_UserInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408211852171_UserInformation2.cs" />
-    <Compile Include="Migrations\201408211852171_UserInformation2.Designer.cs">
-      <DependentUpon>201408211852171_UserInformation2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408211901466_fkTest.cs" />
-    <Compile Include="Migrations\201408211901466_fkTest.Designer.cs">
-      <DependentUpon>201408211901466_fkTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408211904250_fkTest2.cs" />
-    <Compile Include="Migrations\201408211904250_fkTest2.Designer.cs">
-      <DependentUpon>201408211904250_fkTest2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408211926158_fkTest4.cs" />
-    <Compile Include="Migrations\201408211926158_fkTest4.Designer.cs">
-      <DependentUpon>201408211926158_fkTest4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408211935539_fkTest5.cs" />
-    <Compile Include="Migrations\201408211935539_fkTest5.Designer.cs">
-      <DependentUpon>201408211935539_fkTest5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408212000520_fkTest6.cs" />
-    <Compile Include="Migrations\201408212000520_fkTest6.Designer.cs">
-      <DependentUpon>201408212000520_fkTest6.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408212014185_fkTest7.cs" />
-    <Compile Include="Migrations\201408212014185_fkTest7.Designer.cs">
-      <DependentUpon>201408212014185_fkTest7.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408212015503_fkTest8.cs" />
-    <Compile Include="Migrations\201408212015503_fkTest8.Designer.cs">
-      <DependentUpon>201408212015503_fkTest8.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408212025268_fkTest9.cs" />
-    <Compile Include="Migrations\201408212025268_fkTest9.Designer.cs">
-      <DependentUpon>201408212025268_fkTest9.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408212036001_fkTest10.cs" />
-    <Compile Include="Migrations\201408212036001_fkTest10.Designer.cs">
-      <DependentUpon>201408212036001_fkTest10.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408212039017_fkTest11.cs" />
-    <Compile Include="Migrations\201408212039017_fkTest11.Designer.cs">
-      <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408221330553_fk12.cs" />
-    <Compile Include="Migrations\201408221330553_fk12.Designer.cs">
-      <DependentUpon>201408221330553_fk12.cs</DependentUpon>
-	</Compile>
-    <Compile Include="Migrations\201408221311168_13.cs" />
-    <Compile Include="Migrations\201408221311168_13.Designer.cs">
-      <DependentUpon>201408221311168_13.cs</DependentUpon>
+    <Compile Include="Migrations\201408231501584_DebateLive.cs" />
+    <Compile Include="Migrations\201408231501584_DebateLive.Designer.cs">
+      <DependentUpon>201408231501584_DebateLive.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -307,11 +250,6 @@
     <Content Include="Views\UserInformation\Details.cshtml" />
     <Content Include="Views\UserInformation\Edit.cshtml" />
     <Content Include="Views\UserInformation\Index.cshtml" />
-    <Content Include="Views\Debate\Create.cshtml" />
-    <Content Include="Views\Debate\Delete.cshtml" />
-    <Content Include="Views\Debate\Details.cshtml" />
-    <Content Include="Views\Debate\Edit.cshtml" />
-    <Content Include="Views\Debate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -324,50 +262,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201408211827016_userTest.resx">
-      <DependentUpon>201408211827016_userTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408211850339_UserInformation.resx">
-      <DependentUpon>201408211850339_UserInformation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408211852171_UserInformation2.resx">
-      <DependentUpon>201408211852171_UserInformation2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408211901466_fkTest.resx">
-      <DependentUpon>201408211901466_fkTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408211904250_fkTest2.resx">
-      <DependentUpon>201408211904250_fkTest2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408211926158_fkTest4.resx">
-      <DependentUpon>201408211926158_fkTest4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408211935539_fkTest5.resx">
-      <DependentUpon>201408211935539_fkTest5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408212000520_fkTest6.resx">
-      <DependentUpon>201408212000520_fkTest6.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408212014185_fkTest7.resx">
-      <DependentUpon>201408212014185_fkTest7.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408212015503_fkTest8.resx">
-      <DependentUpon>201408212015503_fkTest8.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408212025268_fkTest9.resx">
-      <DependentUpon>201408212025268_fkTest9.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408212036001_fkTest10.resx">
-      <DependentUpon>201408212036001_fkTest10.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408212039017_fkTest11.resx">
-      <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408221330553_fk12.resx">
-      <DependentUpon>201408221330553_fk12.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408221311168_13.resx">
-      <DependentUpon>201408221311168_13.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201408231501584_DebateLive.resx">
+      <DependentUpon>201408231501584_DebateLive.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
