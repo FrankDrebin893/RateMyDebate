@@ -46,7 +46,7 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="DebateId")] Debate debate)
+        public ActionResult Create([Bind(Include="DebateId,Subject,Description,ChatText,CreatorId,ChallengerId,DateTime")] Debate debate)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="DebateId")] Debate debate)
+        public ActionResult Edit([Bind(Include="DebateId,Subject,Description,ChatText,CreatorId,ChallengerId,DateTime")] Debate debate)
         {
             if (ModelState.IsValid)
             {
