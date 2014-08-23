@@ -159,6 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DebateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserInformationController.cs" />
@@ -217,13 +218,19 @@
     <Compile Include="Migrations\201408212039017_fkTest11.Designer.cs">
       <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
+    <Compile Include="Migrations\201408221330553_fk12.cs" />
+    <Compile Include="Migrations\201408221330553_fk12.Designer.cs">
+      <DependentUpon>201408221330553_fk12.cs</DependentUpon>
+=======
     <Compile Include="Migrations\201408221311168_13.cs" />
     <Compile Include="Migrations\201408221311168_13.Designer.cs">
       <DependentUpon>201408221311168_13.cs</DependentUpon>
+>>>>>>> 78f4102d8cbf2acd24044589fa55063ef1913629
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DebateModel.cs" />
+    <Compile Include="Models\Debate.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inbox.cs" />
     <Compile Include="Models\Message.cs" />
@@ -302,6 +309,11 @@
     <Content Include="Views\UserInformation\Details.cshtml" />
     <Content Include="Views\UserInformation\Edit.cshtml" />
     <Content Include="Views\UserInformation\Index.cshtml" />
+    <Content Include="Views\Debate\Create.cshtml" />
+    <Content Include="Views\Debate\Delete.cshtml" />
+    <Content Include="Views\Debate\Details.cshtml" />
+    <Content Include="Views\Debate\Edit.cshtml" />
+    <Content Include="Views\Debate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,8 +365,13 @@
     <EmbeddedResource Include="Migrations\201408212039017_fkTest11.resx">
       <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
+    <EmbeddedResource Include="Migrations\201408221330553_fk12.resx">
+      <DependentUpon>201408221330553_fk12.cs</DependentUpon>
+=======
     <EmbeddedResource Include="Migrations\201408221311168_13.resx">
       <DependentUpon>201408221311168_13.cs</DependentUpon>
+>>>>>>> 78f4102d8cbf2acd24044589fa55063ef1913629
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
