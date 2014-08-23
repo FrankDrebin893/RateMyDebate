@@ -20,6 +20,7 @@ namespace RateMyDebate.Models
         public List<UserInformation> CreatorSpectatorsIdList { get; set; }
         public List<UserInformation> ChallengerSpectatorsIdList { get; set; }
 
+        public Boolean Live { get; set; }
         public DateTime DateTime { get; set; }
     }
 }
