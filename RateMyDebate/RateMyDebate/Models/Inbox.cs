@@ -13,7 +13,7 @@ namespace RateMyDebate.Models
         public int inboxId { get; set; }
         
         public virtual UserInformation userInformationId { get; set; }
-        public virtual Message messageId { get; set; }
+        
         
 
     }

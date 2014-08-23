@@ -46,7 +46,7 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="userInformationId,fName,lName,userName,age,autobiography,Email")] UserInformation userinformation)
+        public ActionResult Create([Bind(Include="userInformationId,fName,lName,nickName,age,autobiography,Email")] UserInformation userinformation)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="userInformationId,fName,lName,userName,age,autobiography,Email")] UserInformation userinformation)
+        public ActionResult Edit([Bind(Include="userInformationId,fName,lName,nickName,age,autobiography,Email")] UserInformation userinformation)
         {
             if (ModelState.IsValid)
             {
