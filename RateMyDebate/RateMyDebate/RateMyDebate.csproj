@@ -165,9 +165,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Migrations\201408231501584_DebateLive.cs" />
     <Compile Include="Migrations\201408231501584_DebateLive.Designer.cs">
       <DependentUpon>201408231501584_DebateLive.cs</DependentUpon>
+=======
+    <Compile Include="Migrations\201408231500217_init.cs" />
+    <Compile Include="Migrations\201408231500217_init.Designer.cs">
+      <DependentUpon>201408231500217_init.cs</DependentUpon>
+>>>>>>> 850efd0aff8c4bc1f117f64daea06ed876ffb039
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -262,8 +268,13 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201408231501584_DebateLive.resx">
       <DependentUpon>201408231501584_DebateLive.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Migrations\201408231500217_init.resx">
+      <DependentUpon>201408231500217_init.cs</DependentUpon>
+>>>>>>> 850efd0aff8c4bc1f117f64daea06ed876ffb039
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
