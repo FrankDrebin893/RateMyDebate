@@ -218,15 +218,13 @@
     <Compile Include="Migrations\201408212039017_fkTest11.Designer.cs">
       <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
     <Compile Include="Migrations\201408221330553_fk12.cs" />
     <Compile Include="Migrations\201408221330553_fk12.Designer.cs">
       <DependentUpon>201408221330553_fk12.cs</DependentUpon>
-=======
+	</Compile>
     <Compile Include="Migrations\201408221311168_13.cs" />
     <Compile Include="Migrations\201408221311168_13.Designer.cs">
       <DependentUpon>201408221311168_13.cs</DependentUpon>
->>>>>>> 78f4102d8cbf2acd24044589fa55063ef1913629
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -365,13 +363,10 @@
     <EmbeddedResource Include="Migrations\201408212039017_fkTest11.resx">
       <DependentUpon>201408212039017_fkTest11.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Migrations\201408221330553_fk12.resx">
       <DependentUpon>201408221330553_fk12.cs</DependentUpon>
-=======
     <EmbeddedResource Include="Migrations\201408221311168_13.resx">
       <DependentUpon>201408221311168_13.cs</DependentUpon>
->>>>>>> 78f4102d8cbf2acd24044589fa55063ef1913629
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
