@@ -1,0 +1,75 @@
+﻿@model IEnumerable<RateMyDebate.Models.Debate>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChatText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatorId.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatorVotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChallengerVotes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Live)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChatText)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatorId.fName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatorVotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChallengerVotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Live)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DebateId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DebateId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DebateId })
+        </td>
+    </tr>
+}
+
+</table>

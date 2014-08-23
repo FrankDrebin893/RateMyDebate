@@ -13,12 +13,17 @@ namespace RateMyDebate.Models
         public String Subject { get; set; }
         public String Description { get; set; }
         public String ChatText { get; set; }
-        public int CreatorId { get; set; }
-        public int ChallengerId { get; set; }
+        public UserInformation CreatorId { get; set; }
+        public UserInformation ChallengerId { get; set; }
 
-        public List<UserInformation> PassiveSpectatorsIdList { get; set; }
-        public List<UserInformation> CreatorSpectatorsIdList { get; set; }
-        public List<UserInformation> ChallengerSpectatorsIdList { get; set; }
+        public Category CategoryId { get; set; }
+
+        public int CreatorVotes { get; set; }
+        public int ChallengerVotes { get; set; }
+
+       // public List<UserInformation> PassiveSpectatorsIdList { get; set; }
+        //public List<UserInformation> CreatorSpectatorsIdList { get; set; }
+        //public List<UserInformation> ChallengerSpectatorsIdList { get; set; }
 
         public Boolean Live { get; set; }
         public DateTime DateTime { get; set; }
