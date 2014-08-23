@@ -3,12 +3,13 @@ namespace RateMyDebate.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _13 : DbMigration
+    public partial class DebateLive : DbMigration
     {
         public override void Up()
         {
             DropForeignKey("dbo.Inboxes", "messageId_messageId", "dbo.Messages");
             DropIndex("dbo.Inboxes", new[] { "messageId_messageId" });
+            AddColumn("dbo.Debates", "Live", c => c.Boolean(nullable: false));
             AddColumn("dbo.Messages", "inboxId_inboxId", c => c.Int());
             CreateIndex("dbo.Messages", "inboxId_inboxId");
             AddForeignKey("dbo.Messages", "inboxId_inboxId", "dbo.Inboxes", "inboxId");
@@ -21,6 +22,7 @@ namespace RateMyDebate.Migrations
             DropForeignKey("dbo.Messages", "inboxId_inboxId", "dbo.Inboxes");
             DropIndex("dbo.Messages", new[] { "inboxId_inboxId" });
             DropColumn("dbo.Messages", "inboxId_inboxId");
+            DropColumn("dbo.Debates", "Live");
             CreateIndex("dbo.Inboxes", "messageId_messageId");
             AddForeignKey("dbo.Inboxes", "messageId_messageId", "dbo.Messages", "messageId");
         }
