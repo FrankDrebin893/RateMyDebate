@@ -203,7 +203,7 @@ html, body {
             display:block;
         }
 
-/*Overrides bootstraps justify method*/
+ /*Overrides bootstraps justify method*/
 .nav-justified>li {
     display: table-cell;
     float:left;
