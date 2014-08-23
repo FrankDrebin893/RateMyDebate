@@ -21,7 +21,7 @@
                     Username: <input type="text" name="username" /><br/>
                     Password:&nbsp; <input type="text" name="password" />
                     <br /><input class="loginButton" type="submit" value="Login!" />
-                    <div class="loginText"><a>Register</a> | <a>Forgot password?</a></div>
+                    <div class="loginText"><a> @Html.ActionLink("Register", "Create", "User")</a> | <a>Forgot password?</a></div>
                 </form>
 
                 @* @Html.Partial("_LoginPartial"); *@

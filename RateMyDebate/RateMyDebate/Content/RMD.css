@@ -202,3 +202,9 @@ html, body {
         .tab.active {
             display:block;
         }
+
+/*Overrides bootstraps justify method*/
+.nav-justified>li {
+    display: table-cell;
+    float:left;
+}
