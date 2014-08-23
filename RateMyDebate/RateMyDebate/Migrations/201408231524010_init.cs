@@ -17,6 +17,7 @@ namespace RateMyDebate.Migrations
                         ChatText = c.String(),
                         CreatorId = c.Int(nullable: false),
                         ChallengerId = c.Int(nullable: false),
+                        Live = c.Boolean(nullable: false),
                         DateTime = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.DebateId);
