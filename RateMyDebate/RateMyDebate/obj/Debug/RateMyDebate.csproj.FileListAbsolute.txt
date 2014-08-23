@@ -142,3 +142,4 @@ C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\Ra
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations._13.resources
 >>>>>>> 78f4102d8cbf2acd24044589fa55063ef1913629
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations._13.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.fk12.resources
