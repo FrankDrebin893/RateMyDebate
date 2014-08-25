@@ -96,6 +96,15 @@ html, body {
     //box-shadow: 5px 5px 5px rgba(109, 116, 243, 0.25);
 }
 
+.listingTable {
+    border: 1px solid rgba(167, 167, 167, 0.47);
+    width: 100%;
+    padding-left: 5px;
+}
+
+.listingTable td {
+    
+}
 .subDiv {
     width: 100px;
     height: 200px;

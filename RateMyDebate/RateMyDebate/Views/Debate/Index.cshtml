@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RateMyDebate.Models.Debate>
+﻿@model RateMyDebate.ViewModels.DebateUser
 
 @{
     ViewBag.Title = "Index";
@@ -9,36 +9,40 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
+    <table class="listingTable">
+        <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Subject)
+            @Html.DisplayNameFor(model => model.Debate.First().Subject)
+
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChatText)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatorId.fName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatorVotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChallengerVotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Live)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DateTime)
-        </th>
-        <th></th>
+            <th>
+                @Html.DisplayNameFor(model =>  model.Debate.First().Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Debate.First().CategoryId.CategoryName)
+            </th>
+
+    <th>
+        Creator
+    </th>
+    <th>
+        @Html.DisplayNameFor(model =>  model.Debate.First().CreatorVotes)
+    </th>
+    <th>
+        Challenger
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Debate.First().ChallengerVotes)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Debate.First().Live)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Debate.First().DateTime)
+    </th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Debate) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Subject)
@@ -47,13 +51,16 @@
             @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ChatText)
+            @Html.DisplayFor(modelItem => item.CategoryId.CategoryName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatorId.fName)
+            @Html.DisplayFor(modelItem => item.CreatorId.nickName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CreatorVotes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChallengerId.nickName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ChallengerVotes)
@@ -64,12 +71,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.DateTime)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DebateId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DebateId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DebateId })
-        </td>
     </tr>
 }
 
 </table>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("tr:even").css("background-color", "rgba(167, 166, 255, 0.25)");
+        $("tr:odd").css("background-color", "rgba(167, 166, 255, 0.15)")
+    });
+</script>

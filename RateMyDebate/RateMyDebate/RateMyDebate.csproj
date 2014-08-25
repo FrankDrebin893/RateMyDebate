@@ -266,6 +266,7 @@
     <Content Include="Views\Debate\Details.cshtml" />
     <Content Include="Views\Debate\Edit.cshtml" />
     <Content Include="Views\Debate\Index.cshtml" />
+    <Content Include="Views\Debate\IndexNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
