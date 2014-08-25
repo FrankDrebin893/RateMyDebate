@@ -208,3 +208,39 @@ html, body {
     display: table-cell;
     float:left;
 }
+/*FAQ Li CSS*/
+.li-header-size{
+    font-size: 15px;
+    list-style: none;
+    list-style-image: url(/imgs/QuestionMark.png);
+    background-repeat: no-repeat;
+    
+}
+
+.tableFAQ{
+   
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.10);
+    width: 800px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+.tableDataFAQ{
+    width: 450px;
+    padding-left: 10px;
+    
+    vertical-align: top;
+
+}
+.FAQHeadline{
+    margin-top: 5px;
+    font-size: 30px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.60);
+    font-family: "Times New Roman", Times, serif;
+    
+}

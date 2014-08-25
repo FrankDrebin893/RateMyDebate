@@ -50,7 +50,6 @@ C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.Owin.Security.
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csprojResolveAssemblyReference.cache
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.dll
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.pdb
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\RateMyDebate.dll.config
@@ -108,9 +107,11 @@ C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsof
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csprojResolveAssemblyReference.cache
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.dll
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.pdb
-C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.init.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csproj.GenerateResource.Cache
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.Database.resources
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csproj.GenerateResource.Cache
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.testuserlistremove.resources
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.extra.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.Database.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.testuserlistremove.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.extra.resources

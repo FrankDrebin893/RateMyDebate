@@ -160,7 +160,10 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DebateController.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RulesController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\UserInformationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -203,6 +206,7 @@
     <Content Include="imgs\goarrow.png" />
     <Content Include="imgs\logo.png" />
     <Content Include="imgs\logotitle.png" />
+    <Content Include="imgs\QuestionMark.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="imgs\logo.pdn" />
@@ -266,6 +270,10 @@
     <Content Include="Views\Debate\Details.cshtml" />
     <Content Include="Views\Debate\Edit.cshtml" />
     <Content Include="Views\Debate\Index.cshtml" />
+    <Content Include="Views\FAQ\Index.cshtml" />
+    <Content Include="Views\Rules\Index.cshtml" />
+    <Content Include="Views\Statistics\Index.cshtml" />
+    <Content Include="Views\FAQ\WhatIsRateMyDebate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
