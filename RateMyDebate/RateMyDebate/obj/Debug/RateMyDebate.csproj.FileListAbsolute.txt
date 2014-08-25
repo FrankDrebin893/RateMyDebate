@@ -115,3 +115,4 @@ C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\Ra
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.Database.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.testuserlistremove.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.extra.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csprojResolveAssemblyReference.cache
