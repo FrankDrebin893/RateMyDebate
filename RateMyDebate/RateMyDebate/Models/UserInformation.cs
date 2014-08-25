@@ -10,8 +10,11 @@ namespace RateMyDebate.Models
     {
         [Key]
         public int userInformationId { get; set; }
+        
+        [Display(Name = "First name")]
         public String fName { get; set; }
         public String lName { get; set; }
+        [Display(Name = "Username")]
         public String nickName { get; set; }
         public int age { get; set; }
         public String autobiography { get; set; }

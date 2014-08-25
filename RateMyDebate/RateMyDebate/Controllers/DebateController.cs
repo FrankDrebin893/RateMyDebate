@@ -7,17 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RateMyDebate.Models;
+using RateMyDebate.ViewModels;
 
 namespace RateMyDebate.Controllers
 {
     public class DebateController : Controller
     {
         private RateMyDebateContext db = new RateMyDebateContext();
+        private DebateUser VM = new DebateUser();
 
         // GET: /Debate/
         public ActionResult Index()
         {
-            return View(db.Debate.ToList());
+            //return View(db.Debate.ToList());
+            VM.User = db.UserInformation.ToList();
+            VM.Debate = db.Debate.ToList();
+            VM.Categories = db.Categories.ToList();
+            return View(VM);
         }
 
         // GET: /Debate/Details/5

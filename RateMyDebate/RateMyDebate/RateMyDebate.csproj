@@ -270,10 +270,14 @@
     <Content Include="Views\Debate\Details.cshtml" />
     <Content Include="Views\Debate\Edit.cshtml" />
     <Content Include="Views\Debate\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\FAQ\Index.cshtml" />
     <Content Include="Views\Rules\Index.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\FAQ\WhatIsRateMyDebate.cshtml" />
+=======
+    <Content Include="Views\Debate\IndexNew.cshtml" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

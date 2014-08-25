@@ -11,6 +11,7 @@ namespace RateMyDebate.Models
         [Key]
         public int CategoryId { get; set; }
 
+        [Display(Name = "Category")]
         public String CategoryName { get; set; }
     }
 }
