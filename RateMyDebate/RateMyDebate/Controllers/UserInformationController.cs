@@ -50,6 +50,12 @@ namespace RateMyDebate.Controllers
         {
             if (ModelState.IsValid)
             {
+                UserModel usermodel = TempData["Id"] as UserModel;
+               // int e = usermodel.accountId;
+                var id = TempData["Id"];
+
+
+                //userinformation.accountId = Convert.ToInt32(id);
                 db.UserInformation.Add(userinformation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
