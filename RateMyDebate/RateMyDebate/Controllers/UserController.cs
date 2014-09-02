@@ -55,11 +55,14 @@ namespace RateMyDebate.Controllers
             
             if (ModelState.IsValid)
             {
-                
-                db.UserModel.Add(usermodel);
-                db.SaveChanges();
-                TempData["Id"] = usermodel.accountId;
-                return RedirectToAction("Create","UserInformation");
+                //var id = usermodel;
+
+               // db.UserModel.Add(usermodel);
+               //db.SaveChanges();
+
+                TempData["Id"] = usermodel;
+
+                return RedirectToAction("Create", "UserInformation");
             }
 
             return View(usermodel);
