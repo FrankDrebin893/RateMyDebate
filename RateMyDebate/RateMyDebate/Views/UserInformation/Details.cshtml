@@ -4,64 +4,85 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.userInformationId)</h2>
-@Html.Raw(Model.userInformation.accountId.accountId)
 
-<div>
-    <h4>UserInformation</h4>
-	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.fName)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.fName)
-        </dd>
+<br />
+<div class="tableFAQ">
+    <div class="Headline">
+        <h3>Profile: @Model.nickName</h3>
+    </div>
+        <p style="text-align: right; padding-right: 10px; margin-top: -30px;">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.userInformationId })
+        </p>
+   
+    <hr />
+    
+    <div class="detailFormat">
+        
+        <table style="width:150px">
+            <tr>
+                <td>
+                    <b>
+                        @Html.DisplayNameFor(model => model.fName)
+                    </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.fName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        @Html.DisplayNameFor(model => model.lName)
+                    </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.lName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        @Html.DisplayNameFor(model => model.nickName)
+                    </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.nickName)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        @Html.DisplayNameFor(model => model.age)
+                    </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.age)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </b>
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+            </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.nickName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nickName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.age)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.age)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.autobiography)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.autobiography)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-    </dl>
+        </table> 
+       
+    </div>
+    <hr />
+    <div class="autobiographyFormat">
+        <div>
+            <b>
+                @Html.DisplayNameFor(model => model.autobiography)
+            </b> 
+        </div>
+        @Html.DisplayFor(model => model.autobiography)
+    </div>
+       
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.userInformationId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
