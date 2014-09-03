@@ -20,7 +20,7 @@ namespace RateMyDebate.Models
         public String autobiography { get; set; }
         public String Email { get; set; }
         public UserModel accountId { get; set; }
-       
 
+        public int userId { get; set; }
     }
 }

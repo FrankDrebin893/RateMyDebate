@@ -4,7 +4,8 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Html.DisplayFor(model => model.userInformationId)</h2>
+@Html.Raw(Model.userInformation.accountId.accountId)
 
 <div>
     <h4>UserInformation</h4>

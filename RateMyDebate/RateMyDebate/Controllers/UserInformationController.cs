@@ -27,7 +27,15 @@ namespace RateMyDebate.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             UserInformation userinformation = db.UserInformation.Find(id);
+          //  int i = userinformation.accountId.accountId;
+          //  var user = from m in db.UserInformation where m.userInformationId == id select m;
+
+
+           // userinformation.accountId = db.UserModel.Find(36);
+            
+
             if (userinformation == null)
             {
                 return HttpNotFound();
@@ -51,14 +59,9 @@ namespace RateMyDebate.Controllers
             if (ModelState.IsValid)
             {
                 var id = TempData["Id"] as UserModel;
-             /*   UserModel user = new UserModel();
-                user = (UserModel)id;*/
+            
                 userinformation.accountId = id;
-                if(id != null){
-                  //  userinformation.accountId = id;
-                }
-
-                //userinformation.accountId = Convert.ToInt32(id);
+                
                 db.UserInformation.Add(userinformation);
                 db.SaveChanges();
                 return RedirectToAction("Index");

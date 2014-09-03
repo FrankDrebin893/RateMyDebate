@@ -59,7 +59,7 @@ namespace RateMyDebate.Controllers
 
                // db.UserModel.Add(usermodel);
                //db.SaveChanges();
-
+                
                 TempData["Id"] = usermodel;
 
                 return RedirectToAction("Create", "UserInformation");
