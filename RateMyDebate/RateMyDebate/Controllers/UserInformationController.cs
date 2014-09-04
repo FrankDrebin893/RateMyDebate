@@ -79,6 +79,7 @@ namespace RateMyDebate.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserInformation userinformation = db.UserInformation.Find(id);
+            userinformation.accountId = db.UserModel.Find(userinformation.userId);
             if (userinformation == null)
             {
                 return HttpNotFound();
@@ -91,8 +92,10 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="userInformationId,fName,lName,nickName,age,autobiography,Email")] UserInformation userinformation)
+        public ActionResult Edit( UserInformation userinformation)
         {
+
+            // GG  this SOAB [Bind(Include="userInformationId,fName,lName,nickName,age,autobiography,Email")] Delete dat shit son! Reminder.....
             if (ModelState.IsValid)
             {
                 db.Entry(userinformation).State = EntityState.Modified;
