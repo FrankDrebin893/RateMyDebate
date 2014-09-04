@@ -29,11 +29,12 @@ namespace RateMyDebate.Controllers
             }
             
             UserInformation userinformation = db.UserInformation.Find(id);
-          //  int i = userinformation.accountId.accountId;
+            int i = userinformation.userId;
           //  var user = from m in db.UserInformation where m.userInformationId == id select m;
 
-
-           // userinformation.accountId = db.UserModel.Find(36);
+           // var userTry = from m in db.UserModel where m.accountId.Equals(userinformation.accountId.accountId) select m;
+           
+            //userinformation.accountId = db.UserModel.Find(36);
             
 
             if (userinformation == null)

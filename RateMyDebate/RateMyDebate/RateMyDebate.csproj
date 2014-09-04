@@ -169,21 +169,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201408231635309_Database.cs" />
-    <Compile Include="Migrations\201408231635309_Database.Designer.cs">
-      <DependentUpon>201408231635309_Database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408231644187_testuserlistremove.cs" />
-    <Compile Include="Migrations\201408231644187_testuserlistremove.Designer.cs">
-      <DependentUpon>201408231644187_testuserlistremove.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201408231650157_extra.cs" />
-    <Compile Include="Migrations\201408231650157_extra.Designer.cs">
-      <DependentUpon>201408231650157_extra.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201409030837565_userID.cs" />
-    <Compile Include="Migrations\201409030837565_userID.Designer.cs">
-      <DependentUpon>201409030837565_userID.cs</DependentUpon>
+    <Compile Include="Migrations\201409041047379_test.cs" />
+    <Compile Include="Migrations\201409041047379_test.Designer.cs">
+      <DependentUpon>201409041047379_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -294,17 +282,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201408231635309_Database.resx">
-      <DependentUpon>201408231635309_Database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408231644187_testuserlistremove.resx">
-      <DependentUpon>201408231644187_testuserlistremove.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201408231650157_extra.resx">
-      <DependentUpon>201408231650157_extra.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201409030837565_userID.resx">
-      <DependentUpon>201409030837565_userID.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201409041047379_test.resx">
+      <DependentUpon>201409041047379_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
