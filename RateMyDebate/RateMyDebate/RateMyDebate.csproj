@@ -169,13 +169,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201409041047379_test.cs" />
-    <Compile Include="Migrations\201409041047379_test.Designer.cs">
-      <DependentUpon>201409041047379_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201409041334283_sync.cs" />
-    <Compile Include="Migrations\201409041334283_sync.Designer.cs">
-      <DependentUpon>201409041334283_sync.cs</DependentUpon>
+    <Compile Include="Migrations\201409080822230_init.cs" />
+    <Compile Include="Migrations\201409080822230_init.Designer.cs">
+      <DependentUpon>201409080822230_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -275,11 +271,8 @@
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\FAQ\WhatIsRateMyDebate.cshtml" />
     <Content Include="Views\Debate\IndexNew.cshtml" />
-
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
     <Content Include="Views\Debate\Display.cshtml" />
-
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -292,11 +285,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201409041047379_test.resx">
-      <DependentUpon>201409041047379_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201409041334283_sync.resx">
-      <DependentUpon>201409041334283_sync.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201409080822230_init.resx">
+      <DependentUpon>201409080822230_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
