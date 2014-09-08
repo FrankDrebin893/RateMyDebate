@@ -3,25 +3,22 @@
 @{
     ViewBag.Title = "Index";
 }
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
-<h2>Index</h2>
+@Html.Partial("_SearchPartial")
+ 
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
     <table class="listingTable">
-        <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Debate.First().Subject)
-
-        </th>
-            <th>
-                @Html.DisplayNameFor(model =>  model.Debate.First().Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Debate.First().CategoryId.CategoryName)
-            </th>
-
+    <tr>
+    <th>
+        @Html.DisplayNameFor(model => model.Debate.First().Subject)
+    </th>
+     <th>
+        @Html.DisplayNameFor(model => model.Debate.First().CategoryId.CategoryName)
+    </th>
     <th>
         Creator
     </th>
@@ -35,51 +32,55 @@
         @Html.DisplayNameFor(model => model.Debate.First().ChallengerVotes)
     </th>
     <th>
-        @Html.DisplayNameFor(model => model.Debate.First().Live)
-    </th>
-    <th>
         @Html.DisplayNameFor(model => model.Debate.First().DateTime)
     </th>
     </tr>
 
-@foreach (var item in Model.Debate) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryId.CategoryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatorId.nickName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatorVotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChallengerId.nickName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChallengerVotes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Live)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateTime)
-        </td>
-    </tr>
+@foreach (var item in Model.Debate)
+{
+        <tr data-id="@Html.Raw(item.DebateId)" class="DisplayPage">
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryId.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatorId.nickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatorVotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChallengerId.nickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChallengerVotes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+        </tr>
 }
 
 </table>
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $("tr:even").css("border-top", "1px solid rgba(167, 166, 255, 0.35)");
+        $("tr:even").css("border-bottom", "1px solid rgba(167, 166, 255, 0.35)");
         $("tr:even").css("background-color", "rgba(167, 166, 255, 0.25)");
-        $("tr:odd").css("background-color", "rgba(167, 166, 255, 0.15)")
+        $("tr:odd").css("background-color", "rgba(167, 166, 255, 0.15)");
+        $("tr:hover").css("background-color", "rgba(167, 166, 255, 0.75)");
+
+    });
+
+    $(document).ready(function () {
+        $('.DisplayPage').on("click", function () {
+            var id = $(this).attr('data-id');
+            window.location = "Display?id=" + id;
+        })
     });
 </script>

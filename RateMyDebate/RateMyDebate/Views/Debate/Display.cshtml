@@ -1,0 +1,44 @@
+﻿@model RateMyDebate.ViewModels.DebateDisplayViewModel
+
+@{
+    ViewBag.Title = "Display";
+}
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>Display archive page for debate #@Html.DisplayFor(m => m.Debate.CategoryId.CategoryId)</h2>
+
+<div>
+    <div class="displayDiv">
+        <p style="font-weight: bold; display: inline;">@Html.DisplayNameFor(m => m.Debate.CategoryId.CategoryName):</p> @Html.DisplayFor(m => m.Debate.CategoryId.CategoryName)<br />
+        <p style="font-weight: bold; display: inline;"> @Html.DisplayNameFor(m => m.Debate.Subject): </p> @Html.DisplayFor(m => m.Debate.Subject)
+
+        <br /><br />
+        <p style="font-weight: bold; display: inline;">Creator:</p> @Html.DisplayFor(m => m.Debate.CreatorId.nickName) (@Html.DisplayFor(m => m.Debate.CreatorVotes) votes) <br/>
+        <p style="font-weight: bold; display: inline;">Challenger:</p> @Html.DisplayFor(m => m.Debate.ChallengerId.nickName) (@Html.DisplayFor(m => m.Debate.ChallengerVotes) votes)
+
+    </div>
+    <div></div>
+    <table class="displayTable">
+        <tr>
+            <td>
+                @Html.DisplayNameFor(m => m.Debate.Description): @Html.DisplayFor(m => m.Debate.Description) 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(m => m.Debate.ChatText)
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+<br />
+Creator: @Html.DisplayFor(m => m.Debate.CreatorId.nickName)
+
+@Html.DisplayNameFor(m => m.Debate.Description)
+
+@Html.DisplayFor(m => m.Debate.Description)
+
+
+

@@ -193,6 +193,7 @@
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\DebateDisplayViewModel.cs" />
     <Compile Include="ViewModels\DebateUser.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -270,14 +271,13 @@
     <Content Include="Views\Debate\Details.cshtml" />
     <Content Include="Views\Debate\Edit.cshtml" />
     <Content Include="Views\Debate\Index.cshtml" />
-
     <Content Include="Views\FAQ\Index.cshtml" />
     <Content Include="Views\Rules\Index.cshtml" />
     <Content Include="Views\Statistics\Index.cshtml" />
     <Content Include="Views\FAQ\WhatIsRateMyDebate.cshtml" />
-
     <Content Include="Views\Debate\IndexNew.cshtml" />
-
+    <Content Include="Views\Shared\_SearchPartial.cshtml" />
+    <Content Include="Views\Debate\Display.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

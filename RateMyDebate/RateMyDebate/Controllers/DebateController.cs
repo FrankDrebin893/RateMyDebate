@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using RateMyDebate.Models;
@@ -15,30 +16,97 @@ namespace RateMyDebate.Controllers
     {
         private RateMyDebateContext db = new RateMyDebateContext();
         private DebateUser VM = new DebateUser();
-
+        
         // GET: /Debate/
+        /*
         public ActionResult Index()
         {
+
             //return View(db.Debate.ToList());
             VM.User = db.UserInformation.ToList();
             VM.Debate = db.Debate.ToList();
             VM.Categories = db.Categories.ToList();
+
+            return View(VM);
+        }*/
+
+        // GET: /Debate/
+        public ActionResult Index(String category, String creator, String challenger)
+        {
+            List<Debate> myList = db.Debate.ToList().Where(x => x.Live.Equals(true)).ToList();
+
+            var CategoryQry = from d in db.Categories
+                           orderby d.CategoryName
+                           select d.CategoryName;
+
+            VM.User = db.UserInformation.ToList();
+            VM.Debate = db.Debate.ToList();
+            VM.Categories = db.Categories.ToList();
+
+
+            if (!String.IsNullOrEmpty(category))
+            {
+                myList = myList.Where(x => x.CategoryId.CategoryName.Contains(category)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(creator))
+            {
+                myList = myList.Where(x => x.CreatorId.nickName.Contains(creator)).ToList();
+            }
+
+            if (!String.IsNullOrEmpty(challenger))
+            {
+                myList = myList.ToList().Where(x => x.ChallengerId.nickName.Contains(challenger)).ToList();
+            }
+
+            VM.Debate = myList;
+
+            ViewBag.category = new SelectList(CategoryQry);
+
+            
             return View(VM);
         }
 
         // GET: /Debate/Details/5
         public ActionResult Details(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Debate debate = db.Debate.Find(id);
+
             if (debate == null)
             {
                 return HttpNotFound();
             }
+
             return View(debate);
+        }
+
+        public ActionResult Display(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            DebateDisplayViewModel DDVM = new DebateDisplayViewModel();
+
+            DDVM.Debate = db.Debate.Find(id);
+
+            DDVM.CreatorInformation = db.UserInformation.ToList();
+            DDVM.ChallengerInformation = db.UserInformation.ToList();
+            DDVM.Category = db.Categories.ToList();
+
+            /*
+           if (DDVM.Debate == null || DDVM.Category == null || DDVM.CreatorInformation == null || DDVM.ChallengerInformation == null)
+            {
+                return HttpNotFound();
+            }*/
+            return View(DDVM);
         }
 
         // GET: /Debate/Create

@@ -97,14 +97,51 @@ html, body {
 }
 
 .listingTable {
-    border: 1px solid rgba(167, 167, 167, 0.47);
+    border: 1px solid rgba(167, 167, 167, 0.75);
     width: 100%;
-    padding-left: 5px;
+    padding-left: 10px;
+}
+
+.displayTable {
+    border-top: 1px solid rgba(167, 167, 167, 0.75);
+    border-bottom: 1px solid rgba(167, 167, 167, 0.75);
+    width: 100%;
+    padding-left: 10px;
+    font-size: 16px;
+}
+
+.displayTable td {
+    padding: 10px;
+    width: 50px;
+    
+}
+
+.displayDiv {
+    padding: 10px;
+    line-height: 200%;
+}
+
+.displayTable tr:not(:first-child) {
+    border-top: 1px solid rgba(167, 166, 255, 0.35);
+}
+
+.displayTable tr {
+    background: rgba(222, 223, 255, 0.30);
+    width: 100%;
 }
 
 .listingTable td {
-    
+    padding: 10px;
 }
+
+.listingTable tr:first-child {
+    font-size: 16px;
+}
+.listingTable tr:hover td {
+    background-color: white;
+    cursor: pointer;
+}
+
 .subDiv {
     width: 100px;
     height: 200px;

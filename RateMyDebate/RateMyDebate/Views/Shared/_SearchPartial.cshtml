@@ -1,0 +1,10 @@
+﻿
+@using (Html.BeginForm())
+{
+    <p>
+        Category: @Html.DropDownList("category", "All")
+        Creator: @Html.TextBox("creator")
+        Challenger: @Html.TextBox("challenger")
+        <input type="submit" value="Filter" />
+    </p>
+}
