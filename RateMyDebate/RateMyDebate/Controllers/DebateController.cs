@@ -97,9 +97,20 @@ namespace RateMyDebate.Controllers
 
             DDVM.Debate = db.Debate.Find(id);
 
+            /*
             DDVM.CreatorInformation = db.UserInformation.ToList();
             DDVM.ChallengerInformation = db.UserInformation.ToList();
             DDVM.Category = db.Categories.ToList();
+            */
+            UserInformation creator = db.UserInformation.Find(DDVM.Debate.CreatorId);
+            DDVM.CreatorInformation = creator;
+
+            UserInformation challenger = db.UserInformation.Find(DDVM.Debate.ChallengerId);
+            DDVM.ChallengerInformation = challenger;
+
+            Category category =  db.Categories.Find(DDVM.Debate.CategoryId);
+            DDVM.Category = category;
+            
 
             /*
            if (DDVM.Debate == null || DDVM.Category == null || DDVM.CreatorInformation == null || DDVM.ChallengerInformation == null)
