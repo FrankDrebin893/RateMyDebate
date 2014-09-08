@@ -7,13 +7,13 @@ namespace RateMyDebate.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class testuserlistremove : IMigrationMetadata
+    public sealed partial class sync : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(testuserlistremove));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(sync));
         
         string IMigrationMetadata.Id
         {
-            get { return "201408231644187_testuserlistremove"; }
+            get { return "201409041334283_sync"; }
         }
         
         string IMigrationMetadata.Source

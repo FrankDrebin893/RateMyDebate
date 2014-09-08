@@ -7,13 +7,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RateMyDebate.Models;
+using RateMyDebate.ViewModels;
 
 namespace RateMyDebate.Controllers
 {
     public class UserController : Controller
     {
         private RateMyDebateContext db = new RateMyDebateContext();
-
+        private UserCreateViewModel vm = new UserCreateViewModel();
+        private UserModel newUserModel = new UserModel();
         // GET: /User/
         public ActionResult Index()
         {
@@ -47,13 +49,20 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="accountId,userName,Password")] UserModel usermodel)
+        public ActionResult Create(UserModel usermodel)
         {
+
+            
             if (ModelState.IsValid)
             {
-                db.UserModel.Add(usermodel);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                //var id = usermodel;
+
+               // db.UserModel.Add(usermodel);
+               //db.SaveChanges();
+                
+                TempData["Id"] = usermodel;
+
+                return RedirectToAction("Create", "UserInformation");
             }
 
             return View(usermodel);

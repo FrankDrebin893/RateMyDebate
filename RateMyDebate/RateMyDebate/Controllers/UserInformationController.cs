@@ -27,7 +27,16 @@ namespace RateMyDebate.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             UserInformation userinformation = db.UserInformation.Find(id);
+            int i = userinformation.userId;
+          //  var user = from m in db.UserInformation where m.userInformationId == id select m;
+
+           // var userTry = from m in db.UserModel where m.accountId.Equals(userinformation.accountId.accountId) select m;
+           
+            //userinformation.accountId = db.UserModel.Find(36);
+            
+
             if (userinformation == null)
             {
                 return HttpNotFound();
@@ -50,6 +59,10 @@ namespace RateMyDebate.Controllers
         {
             if (ModelState.IsValid)
             {
+                var id = TempData["Id"] as UserModel;
+            
+                userinformation.accountId = id;
+                
                 db.UserInformation.Add(userinformation);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -66,6 +79,7 @@ namespace RateMyDebate.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserInformation userinformation = db.UserInformation.Find(id);
+            userinformation.accountId = db.UserModel.Find(userinformation.userId);
             if (userinformation == null)
             {
                 return HttpNotFound();
@@ -78,8 +92,10 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="userInformationId,fName,lName,nickName,age,autobiography,Email")] UserInformation userinformation)
+        public ActionResult Edit( UserInformation userinformation)
         {
+
+            // GG  this SOAB [Bind(Include="userInformationId,fName,lName,nickName,age,autobiography,Email")] Delete dat shit son! Reminder.....
             if (ModelState.IsValid)
             {
                 db.Entry(userinformation).State = EntityState.Modified;
