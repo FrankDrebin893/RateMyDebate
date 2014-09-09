@@ -22,11 +22,15 @@
                 {
                     <strong>@Html.Encode(User.Identity.Name)</strong>
                     @Html.ActionLink("Log out", "LogOut", "Home")
+                    @Html.ActionLink("Profile", "Profile", "UserInformation")
+                    
+                   // UserModel userSession = Session["userSession"] as UserModel;
                 }
                 else
                 {
                     
-                    @Html.ActionLink("Login","Login","Home")
+                    @Html.ActionLink("Login","Login","Home") <br />
+                    @Html.ActionLink("Register", "Create", "User")
                 }
             @*
                 <form>

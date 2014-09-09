@@ -31,6 +31,8 @@ namespace RateMyDebate.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             UserModel usermodel = db.UserModel.Find(id);
+
+            UserModel userSession = Session["userSession"] as UserModel;
             if (usermodel == null)
             {
                 return HttpNotFound();
