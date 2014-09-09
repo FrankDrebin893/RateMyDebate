@@ -43,7 +43,7 @@ namespace RateMyDebate.Controllers
             VM.Debate = db.Debate.ToList();
             VM.Categories = db.Categories.ToList();
 
-
+            
             if (!String.IsNullOrEmpty(category))
             {
                 myList = myList.Where(x => x.CategoryId.CategoryName.Contains(category)).ToList();
@@ -102,13 +102,13 @@ namespace RateMyDebate.Controllers
             DDVM.ChallengerInformation = db.UserInformation.ToList();
             DDVM.Category = db.Categories.ToList();
             */
-            UserInformation creator = db.UserInformation.Find(DDVM.Debate.CreatorId);
+            UserInformation creator = db.UserInformation.Find(DDVM.Debate.CreatorIdId);
             DDVM.CreatorInformation = creator;
 
-            UserInformation challenger = db.UserInformation.Find(DDVM.Debate.ChallengerId);
+            UserInformation challenger = db.UserInformation.Find(DDVM.Debate.ChallengerIdId);
             DDVM.ChallengerInformation = challenger;
 
-            Category category =  db.Categories.Find(DDVM.Debate.CategoryId);
+            Category category =  db.Categories.Find(DDVM.Debate.CategoryIdId);
             DDVM.Category = category;
             
 
