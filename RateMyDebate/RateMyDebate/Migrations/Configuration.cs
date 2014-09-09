@@ -1,3 +1,5 @@
+using RateMyDebate.Models;
+
 namespace RateMyDebate.Migrations
 {
     using System;
@@ -11,6 +13,8 @@ namespace RateMyDebate.Migrations
         {
             AutomaticMigrationsEnabled = false;
         }
+
+
 
         protected override void Seed(RateMyDebate.Models.RateMyDebateContext context)
         {

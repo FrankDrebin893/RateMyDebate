@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -9,6 +10,10 @@ namespace RateMyDebate.Models
 {
     public class Debate
     {
+        public int CreatorIdId { get; set; }
+        public int ChallengerIdId { get; set; }
+        public int CategoryIdId { get; set; }
+
         [Key]
         public int DebateId { get; set; }
         [Display(Name = "Topic")]
@@ -16,10 +21,14 @@ namespace RateMyDebate.Models
         [Display (Name = "Case")]
         public String Description { get; set; }
         public String ChatText { get; set; }
+
+        [ForeignKey("CreatorIdId")]
         public UserInformation CreatorId { get; set; }
+
+        [ForeignKey("ChallengerIdId")]
         public UserInformation ChallengerId { get; set; }
 
-
+        [ForeignKey("CategoryIdId")]
         public Category CategoryId { get; set; }
 
         [Display (Name = "Creator votes")]

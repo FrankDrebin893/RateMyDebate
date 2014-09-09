@@ -3,7 +3,7 @@ namespace RateMyDebate.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ny : DbMigration
+    public partial class FK : DbMigration
     {
         public override void Up()
         {
@@ -21,6 +21,9 @@ namespace RateMyDebate.Migrations
                 c => new
                     {
                         DebateId = c.Int(nullable: false, identity: true),
+                        CreatorIdId = c.Int(nullable: false),
+                        ChallengerIdId = c.Int(nullable: false),
+                        CategoryIdId = c.Int(nullable: false),
                         Subject = c.String(),
                         Description = c.String(),
                         ChatText = c.String(),
@@ -28,17 +31,14 @@ namespace RateMyDebate.Migrations
                         ChallengerVotes = c.Int(nullable: false),
                         Live = c.Boolean(nullable: false),
                         DateTime = c.DateTime(nullable: false),
-                        CategoryId_CategoryId = c.Int(),
-                        ChallengerId_userInformationId = c.Int(),
-                        CreatorId_userInformationId = c.Int(),
                     })
                 .PrimaryKey(t => t.DebateId)
-                .ForeignKey("dbo.Categories", t => t.CategoryId_CategoryId)
-                .ForeignKey("dbo.UserInformations", t => t.ChallengerId_userInformationId)
-                .ForeignKey("dbo.UserInformations", t => t.CreatorId_userInformationId)
-                .Index(t => t.CategoryId_CategoryId)
-                .Index(t => t.ChallengerId_userInformationId)
-                .Index(t => t.CreatorId_userInformationId);
+                .ForeignKey("dbo.Categories", t => t.CategoryIdId)
+                .ForeignKey("dbo.UserInformations", t => t.ChallengerIdId)
+                .ForeignKey("dbo.UserInformations", t => t.CreatorIdId)
+                .Index(t => t.CategoryIdId)
+                .Index(t => t.ChallengerIdId)
+                .Index(t => t.CreatorIdId);
             
             CreateTable(
                 "dbo.UserInformations",
@@ -52,9 +52,12 @@ namespace RateMyDebate.Migrations
                         autobiography = c.String(),
                         Email = c.String(),
                         userId = c.Int(nullable: false),
+                        UserModel_accountId = c.Int(),
                     })
                 .PrimaryKey(t => t.userInformationId)
-                .ForeignKey("dbo.UserModels", t => t.userId, cascadeDelete: true)
+                .ForeignKey("dbo.UserModels", t => t.UserModel_accountId)
+                .ForeignKey("dbo.UserModels", t => t.userId)
+                .Index(t => t.UserModel_accountId)
                 .Index(t => t.userId);
             
             CreateTable(
@@ -101,17 +104,19 @@ namespace RateMyDebate.Migrations
             DropForeignKey("dbo.Messages", "userInformationId_userInformationId", "dbo.UserInformations");
             DropForeignKey("dbo.Messages", "inboxId_inboxId", "dbo.Inboxes");
             DropForeignKey("dbo.Inboxes", "userInformationId_userInformationId", "dbo.UserInformations");
-            DropForeignKey("dbo.Debates", "CreatorId_userInformationId", "dbo.UserInformations");
-            DropForeignKey("dbo.Debates", "ChallengerId_userInformationId", "dbo.UserInformations");
+            DropForeignKey("dbo.Debates", "CreatorIdId", "dbo.UserInformations");
+            DropForeignKey("dbo.Debates", "ChallengerIdId", "dbo.UserInformations");
             DropForeignKey("dbo.UserInformations", "userId", "dbo.UserModels");
-            DropForeignKey("dbo.Debates", "CategoryId_CategoryId", "dbo.Categories");
+            DropForeignKey("dbo.UserInformations", "UserModel_accountId", "dbo.UserModels");
+            DropForeignKey("dbo.Debates", "CategoryIdId", "dbo.Categories");
             DropIndex("dbo.Messages", new[] { "userInformationId_userInformationId" });
             DropIndex("dbo.Messages", new[] { "inboxId_inboxId" });
             DropIndex("dbo.Inboxes", new[] { "userInformationId_userInformationId" });
-            DropIndex("dbo.Debates", new[] { "CreatorId_userInformationId" });
-            DropIndex("dbo.Debates", new[] { "ChallengerId_userInformationId" });
+            DropIndex("dbo.Debates", new[] { "CreatorIdId" });
+            DropIndex("dbo.Debates", new[] { "ChallengerIdId" });
             DropIndex("dbo.UserInformations", new[] { "userId" });
-            DropIndex("dbo.Debates", new[] { "CategoryId_CategoryId" });
+            DropIndex("dbo.UserInformations", new[] { "UserModel_accountId" });
+            DropIndex("dbo.Debates", new[] { "CategoryIdId" });
             DropTable("dbo.Messages");
             DropTable("dbo.Inboxes");
             DropTable("dbo.UserModels");
