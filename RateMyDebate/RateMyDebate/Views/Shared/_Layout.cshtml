@@ -17,14 +17,26 @@
             <img src="~/imgs/logo.png" />
             <img src="~/imgs/logotitle.png" />
             <div class="loginDiv">
+
+                @if (Request.IsAuthenticated)
+                {
+                    <strong>@Html.Encode(User.Identity.Name)</strong>
+                    @Html.ActionLink("Log out", "LogOut", "Home")
+                }
+                else
+                {
+                    
+                    @Html.ActionLink("Login","Login","Home")
+                }
+            @*
                 <form>
                     Username: <input type="text" name="username" /><br/>
                     Password:&nbsp; <input type="text" name="password" />
                     <br /><input class="loginButton" type="submit" value="Login!" />
                     <div class="loginText"><a> @Html.ActionLink("Register", "Create", "User")</a> | <a>Forgot password?</a></div>
                 </form>
-
-                @* @Html.Partial("_LoginPartial"); *@
+            *@
+    @* @Html.Partial("_LoginPartial"); *@
             </div>
             <ul class="nav nav-tabs nav-justified" role="tablist">
                 <li> @Html.ActionLink("Home", "RasmusIndex", "Home")</li>

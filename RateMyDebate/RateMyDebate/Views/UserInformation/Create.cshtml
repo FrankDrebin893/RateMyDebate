@@ -50,7 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.autobiography, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.autobiography)
+                @Html.TextAreaFor(model => model.autobiography, new { style = "width:500px; height: 300px;" }) 
                 @Html.ValidationMessageFor(model => model.autobiography)
             </div>
         </div>

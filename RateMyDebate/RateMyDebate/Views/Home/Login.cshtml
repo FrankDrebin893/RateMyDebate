@@ -1,0 +1,28 @@
+﻿@model RateMyDebate.Models.UserModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.LabelFor(model => model.userName)
+        <div>
+            @Html.TextBoxFor(model => model.userName)
+
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Password)
+        <div>
+            @Html.TextBoxFor(model => model.Password)
+        </div>
+    </div>
+
+
+    <input type="submit" value="Log in" class="btn btn-default" />
+}
