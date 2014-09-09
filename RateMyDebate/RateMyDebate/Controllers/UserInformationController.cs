@@ -32,7 +32,7 @@ namespace RateMyDebate.Controllers
             int i = userinformation.userId;
           //  var user = from m in db.UserInformation where m.userInformationId == id select m;
 
-           // var userTry = from m in db.UserModel where m.accountId.Equals(userinformation.accountId.accountId) select m;
+           //var userTry = from m in db.UserModel where m.accountId.Equals(userinformation.accountId.accountId) select m;
            
             //userinformation.accountId = db.UserModel.Find(36);
             
@@ -138,6 +138,18 @@ namespace RateMyDebate.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult profile()
+        {
+            UserInformation user = new UserInformation();
+            UserModel sessionUser = Session["userSession"] as UserModel;
+            int id = sessionUser.accountId;
+
+            var user1 = db.UserInformation.FirstOrDefault(u => u.userId == id);
+
+            user = user1;
+           
+            return View(user);
         }
     }
 }
