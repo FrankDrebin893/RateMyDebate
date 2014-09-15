@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RateMyDebate.Models;
+using System.Web.UI;
 
 namespace RateMyDebate.Controllers
 {
+    
     public class UserInformationController : Controller
     {
         private RateMyDebateContext db = new RateMyDebateContext();
@@ -151,5 +153,6 @@ namespace RateMyDebate.Controllers
            
             return View(user);
         }
+       
     }
 }

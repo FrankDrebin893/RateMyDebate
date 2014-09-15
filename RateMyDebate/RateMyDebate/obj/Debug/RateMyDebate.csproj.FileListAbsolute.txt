@@ -122,3 +122,4 @@ C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migra
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csproj.GenerateResource.Cache
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.password.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.password2.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations._try.resources

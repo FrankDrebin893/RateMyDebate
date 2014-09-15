@@ -8,9 +8,11 @@ using System.Web;
 using System.Web.Mvc;
 using RateMyDebate.Models;
 using RateMyDebate.ViewModels;
+using System.Web.UI;
 
 namespace RateMyDebate.Controllers
 {
+    [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
     public class UserController : Controller
     {
         private RateMyDebateContext db = new RateMyDebateContext();
@@ -135,5 +137,20 @@ namespace RateMyDebate.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        public JsonResult ValidateUserName(string userName)
+        {
+           // !db.UserModel.Any(user => user.userName == userName
+
+            //!db.UserModel.Any(user => user.userName.Equals(userName)
+            UserModel userModel = new UserModel();
+            var usercheck = db.UserModel.FirstOrDefault(user => user.userName.Equals(userName));
+            userModel = usercheck;
+            return Json(usercheck == null);
+            
+        }
+
+        
     }
 }
