@@ -144,9 +144,9 @@ namespace RateMyDebate.Controllers
            // !db.UserModel.Any(user => user.userName == userName
 
             //!db.UserModel.Any(user => user.userName.Equals(userName)
-            UserModel userModel = new UserModel();
+            
             var usercheck = db.UserModel.FirstOrDefault(user => user.userName.Equals(userName));
-            userModel = usercheck;
+            
             return Json(usercheck == null);
             
         }
