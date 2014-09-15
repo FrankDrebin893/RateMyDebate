@@ -20,7 +20,7 @@ namespace RateMyDebate.Models
         [Required]
         public String Password { get; set; }
 
-        [Compare("Password")]
+        [Compare("Password", ErrorMessage = "Password did not match.")]
         public String ConfirmPassword { get; set; }
 
         public ICollection<UserInformation> UserInformation { get; set; }
