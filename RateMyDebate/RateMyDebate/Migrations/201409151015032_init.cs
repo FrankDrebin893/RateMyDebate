@@ -3,7 +3,7 @@ namespace RateMyDebate.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class newnewnwen : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -45,12 +45,12 @@ namespace RateMyDebate.Migrations
                 c => new
                     {
                         userInformationId = c.Int(nullable: false, identity: true),
-                        fName = c.String(),
-                        lName = c.String(),
-                        nickName = c.String(),
+                        fName = c.String(nullable: false),
+                        lName = c.String(nullable: false),
+                        nickName = c.String(nullable: false),
                         age = c.Int(nullable: false),
-                        autobiography = c.String(),
-                        Email = c.String(),
+                        autobiography = c.String(nullable: false),
+                        Email = c.String(nullable: false),
                         userId = c.Int(nullable: false),
                         UserModel_accountId = c.Int(),
                     })
@@ -65,8 +65,8 @@ namespace RateMyDebate.Migrations
                 c => new
                     {
                         accountId = c.Int(nullable: false, identity: true),
-                        userName = c.String(),
-                        Password = c.String(),
+                        userName = c.String(nullable: false),
+                        Password = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.accountId);
             
