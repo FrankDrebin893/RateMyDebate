@@ -119,8 +119,9 @@ C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsof
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 =======
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.validation.resources
-<<<<<<< HEAD
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.validation2.resources
-=======
 >>>>>>> origin/master
->>>>>>> origin/master
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
