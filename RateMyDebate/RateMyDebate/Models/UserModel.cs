@@ -11,7 +11,11 @@ namespace RateMyDebate.Models
     {
         [Key]
         public int accountId { get; set; }
+
+        [Required]
         public String userName { get; set; }
+
+        [Required]
         public String Password { get; set; }
 
         public ICollection<UserInformation> UserInformation { get; set; }
