@@ -184,9 +184,13 @@
     <Compile Include="Migrations\201409151015032_init.Designer.cs">
       <DependentUpon>201409151015032_init.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201409151018465_init2.cs" />
-    <Compile Include="Migrations\201409151018465_init2.Designer.cs">
-      <DependentUpon>201409151018465_init2.cs</DependentUpon>
+    <Compile Include="Migrations\201409151032343_password.cs" />
+    <Compile Include="Migrations\201409151032343_password.Designer.cs">
+      <DependentUpon>201409151032343_password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409151039375_password2.cs" />
+    <Compile Include="Migrations\201409151039375_password2.Designer.cs">
+      <DependentUpon>201409151039375_password2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -313,8 +317,11 @@
     <EmbeddedResource Include="Migrations\201409151015032_init.resx">
       <DependentUpon>201409151015032_init.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201409151018465_init2.resx">
-      <DependentUpon>201409151018465_init2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201409151032343_password.resx">
+      <DependentUpon>201409151032343_password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409151039375_password2.resx">
+      <DependentUpon>201409151039375_password2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,7 +18,9 @@ namespace RateMyDebate.Models
 
         [Display(Name = "Password")]
         [Required]
+        
         public String Password { get; set; }
+
         /*
         [NotMapped]
         [Compare("Password")]
