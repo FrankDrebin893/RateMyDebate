@@ -12,11 +12,16 @@ namespace RateMyDebate.Models
         [Key]
         public int accountId { get; set; }
 
+        [Display(Name = "User name")]
         [Required]
         public String userName { get; set; }
 
+        [Display(Name = "Password")]
         [Required]
         public String Password { get; set; }
+
+        [Compare("Password")]
+        public String ConfirmPassword { get; set; }
 
         public ICollection<UserInformation> UserInformation { get; set; }
 

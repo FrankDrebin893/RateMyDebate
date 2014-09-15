@@ -15,6 +15,7 @@ namespace RateMyDebate.Models
         [Display(Name = "First name")]
         public String fName { get; set; }
 
+        [Display(Name = "Last name")]
         [Required]
         public String lName { get; set; }
 
@@ -22,12 +23,15 @@ namespace RateMyDebate.Models
         [Display(Name = "Username")]
         public String nickName { get; set; }
 
+        [Display(Name = "Age")]
         [Required]
         public int age { get; set; }
 
+        [Display(Name = "Autobiography")]
         [Required]
         public String autobiography { get; set; }
 
+        [Display(Name = "Email")]
         [Required]
         public String Email { get; set; }
         

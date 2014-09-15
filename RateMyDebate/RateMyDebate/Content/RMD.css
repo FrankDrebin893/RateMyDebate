@@ -303,3 +303,11 @@ html, body {
     padding-left: 20px;
     padding-right: 20px;
 }
+.loginCreate{
+    border: 2px solid rgba(0, 0, 0, 0.20);
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.10);
+    padding: 15px;
+    display: inline-block;
+    margin-left: 20px;
+}

@@ -188,6 +188,10 @@
     <Compile Include="Migrations\201409150918334_validation.Designer.cs">
       <DependentUpon>201409150918334_validation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409150950376_validation2.cs" />
+    <Compile Include="Migrations\201409150950376_validation2.Designer.cs">
+      <DependentUpon>201409150950376_validation2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -315,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409150918334_validation.resx">
       <DependentUpon>201409150918334_validation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409150950376_validation2.resx">
+      <DependentUpon>201409150950376_validation2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
