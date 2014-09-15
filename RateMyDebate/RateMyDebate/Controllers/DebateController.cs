@@ -200,6 +200,11 @@ namespace RateMyDebate.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult LiveChat()
+        {
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

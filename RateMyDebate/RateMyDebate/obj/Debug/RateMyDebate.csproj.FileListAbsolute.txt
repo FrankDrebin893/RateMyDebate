@@ -112,3 +112,7 @@ C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.cspro
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.newnewnwen.resources
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csproj.GenerateResource.Cache
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.newnewnwen.resources
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
