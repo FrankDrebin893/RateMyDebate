@@ -13,6 +13,7 @@
         @Html.LabelFor(model => model.userName)
         <div>
             @Html.TextBoxFor(model => model.userName)
+            @Html.ValidationMessageFor(model => model.userName)
 
         </div>
     </div>
@@ -20,6 +21,7 @@
         @Html.LabelFor(model => model.Password)
         <div>
             @Html.TextBoxFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
         </div>
     </div>
 

@@ -70,10 +70,11 @@ namespace RateMyDebate.Controllers
             using (var db = new RateMyDebateContext())
             {
                 var user = db.UserModel.FirstOrDefault(u => u.userName == userName);
-                Session["UserSession"] = user;
+                
                 if(user != null){
                     if (user.Password == password)
                     {
+                        Session["UserSession"] = user;
                         isValid = true;
                     }
                 }

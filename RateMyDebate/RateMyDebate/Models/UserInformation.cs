@@ -11,14 +11,24 @@ namespace RateMyDebate.Models
     {
         [Key]
         public int userInformationId { get; set; }
-        
+        [Required]
         [Display(Name = "First name")]
         public String fName { get; set; }
+
+        [Required]
         public String lName { get; set; }
+
+        [Required]
         [Display(Name = "Username")]
         public String nickName { get; set; }
+
+        [Required]
         public int age { get; set; }
+
+        [Required]
         public String autobiography { get; set; }
+
+        [Required]
         public String Email { get; set; }
         
         [ForeignKey("accountId")]

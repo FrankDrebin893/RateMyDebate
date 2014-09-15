@@ -200,7 +200,7 @@ namespace RateMyDebate.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult LiveChat()
+        public ActionResult LiveChat(int? id)
         {
             return View();
         }
