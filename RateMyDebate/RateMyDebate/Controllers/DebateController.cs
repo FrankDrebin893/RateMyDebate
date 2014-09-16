@@ -202,9 +202,48 @@ namespace RateMyDebate.Controllers
 
         public ActionResult LiveChat(int? id)
         {
-            return View();
+            Debate debate = db.Debate.Find(id);
+
+            //int CreatorId = DDVM.Debate.CreatorIdId;
+            //int ChallengerId = DDVM.Debate.ChallengerIdId;
+
+            //UserInformation Creator = db.UserInformation.Find(CreatorId);
+            //UserInformation Challenger = db.UserInformation.Find(ChallengerId);
+
+           // UserModel sessionUser = Session["userSession"] as UserModel;
+            //int UserId = sessionUser.accountId;
+
+            return View(debate);
         }
 
+        public DebateDisplayViewModel FindDebate(int? id)
+        {
+            /*
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }*/
+
+            DebateDisplayViewModel DDVM = new DebateDisplayViewModel();
+
+            DDVM.Debate = db.Debate.Find(id);
+
+            /*
+            DDVM.CreatorInformation = db.UserInformation.ToList();
+            DDVM.ChallengerInformation = db.UserInformation.ToList();
+            DDVM.Category = db.Categories.ToList();
+            */
+            UserInformation creator = db.UserInformation.Find(DDVM.Debate.CreatorIdId);
+            DDVM.CreatorInformation = creator;
+
+            UserInformation challenger = db.UserInformation.Find(DDVM.Debate.ChallengerIdId);
+            DDVM.ChallengerInformation = challenger;
+
+            Category category = db.Categories.Find(DDVM.Debate.CategoryIdId);
+            DDVM.Category = category;
+
+            return DDVM;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
