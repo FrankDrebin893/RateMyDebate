@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using RateMyDebate.Models;
+using System.Web.UI;
 
 namespace RateMyDebate.Controllers
 {
+    
     public class UserInformationController : Controller
     {
         private RateMyDebateContext db = new RateMyDebateContext();
@@ -151,5 +153,31 @@ namespace RateMyDebate.Controllers
            
             return View(user);
         }
+        public ActionResult Edit2(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            UserModel usermodel = db.UserModel.Find(id);
+            if (usermodel == null)
+            {
+                return HttpNotFound();
+            }
+            return View(usermodel);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit2([Bind(Include = "accountId,userName,Password")] UserModel usermodel)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(usermodel).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("profile");
+            }
+            return View(usermodel);
+        }
+       
     }
 }

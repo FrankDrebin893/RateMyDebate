@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace RateMyDebate.Models
 {
@@ -11,8 +12,11 @@ namespace RateMyDebate.Models
     {
         [Key]
         public int userInformationId { get; set; }
+
         [Required]
+        [Remote("ValidateUserName", "UserInformation", ErrorMessage = "User name already exists. Please enter a different user name.")]
         [Display(Name = "First name")]
+        
         public String fName { get; set; }
 
         [Display(Name = "Last name")]

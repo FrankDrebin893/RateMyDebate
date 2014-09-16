@@ -3,7 +3,7 @@ namespace RateMyDebate.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class init2 : DbMigration
+    public partial class _try : DbMigration
     {
         public override void Up()
         {
