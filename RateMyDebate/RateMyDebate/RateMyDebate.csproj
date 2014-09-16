@@ -306,6 +306,7 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\UserInformation\profile.cshtml" />
     <Content Include="Views\Debate\LiveChat.cshtml" />
+    <Content Include="Views\UserInformation\Edit2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

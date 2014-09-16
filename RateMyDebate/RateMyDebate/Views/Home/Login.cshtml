@@ -4,7 +4,7 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+
 
 @using (Html.BeginForm())
 {
@@ -21,7 +21,7 @@
         <div>
             @Html.LabelFor(model => model.Password)
             <div>
-                @Html.TextBoxFor(model => model.Password)
+                @Html.PasswordFor(model => model.Password)
                 @Html.ValidationMessageFor(model => model.Password)
             </div>
         </div>
