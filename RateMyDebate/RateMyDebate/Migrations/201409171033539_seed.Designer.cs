@@ -7,13 +7,13 @@ namespace RateMyDebate.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
-    public sealed partial class _try : IMigrationMetadata
+    public sealed partial class seed : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_try));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(seed));
         
         string IMigrationMetadata.Id
         {
-            get { return "201409151249274_try"; }
+            get { return "201409171033539_seed"; }
         }
         
         string IMigrationMetadata.Source
