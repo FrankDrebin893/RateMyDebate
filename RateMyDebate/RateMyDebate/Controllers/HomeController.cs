@@ -66,13 +66,14 @@ namespace RateMyDebate.Controllers
 
         private bool IsValid(string userName, string password)
         {
+            var crypto = new SimpleCrypto.PBKDF2();
             bool isValid = false;
             using (var db = new RateMyDebateContext())
             {
                 var user = db.UserModel.FirstOrDefault(u => u.userName == userName);
                 
                 if(user != null){
-                    if (user.Password == password)
+                    if (user.Password == crypto.Compute(password, user.Salt))
                     {
                         Session["UserSession"] = user;
                         isValid = true;

@@ -58,6 +58,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.2.0.2\lib\net45\Microsoft.Owin.Security.dll</HintPath>
     </Reference>
+    <Reference Include="SimpleCrypto">
+      <HintPath>..\packages\SimpleCrypto.0.3.30.26\lib\SimpleCrypto.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -188,6 +191,10 @@
     <Compile Include="Migrations\201409171033539_seed.Designer.cs">
       <DependentUpon>201409171033539_seed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201409171133123_salt.cs" />
+    <Compile Include="Migrations\201409171133123_salt.Designer.cs">
+      <DependentUpon>201409171133123_salt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -316,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409171033539_seed.resx">
       <DependentUpon>201409171033539_seed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409171133123_salt.resx">
+      <DependentUpon>201409171133123_salt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

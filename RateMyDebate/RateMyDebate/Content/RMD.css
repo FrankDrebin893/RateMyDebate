@@ -310,7 +310,8 @@ html, body {
     padding: 15px;
     display: inline-block;
     margin-left: 20px;
-<<<<<<< HEAD
+    margin-top: 20px;
+
 }
 
 
@@ -349,7 +350,7 @@ html, body {
 
 .chatDivTable td {
     border-bottom: 1px solid rgba(0, 0, 0, 0.20);
-=======
+
     margin-top: 20px;
->>>>>>> origin/master
+
 }

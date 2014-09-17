@@ -62,7 +62,11 @@ namespace RateMyDebate.Controllers
             if (ModelState.IsValid)
             {
                 var id = TempData["Id"] as UserModel;
-            
+                var crypto = new SimpleCrypto.PBKDF2();
+
+                var encryptPass = crypto.Compute(id.Password);
+                id.Password = encryptPass;
+                id.Salt = crypto.Salt;
                 userinformation.accountId = id;
                 
                 db.UserInformation.Add(userinformation);
@@ -172,6 +176,9 @@ namespace RateMyDebate.Controllers
         {
             if (ModelState.IsValid)
             {
+                var crypto = new SimpleCrypto.PBKDF2();
+                usermodel.Password = crypto.Compute(usermodel.Password);
+                usermodel.Salt = crypto.Salt;
                 db.Entry(usermodel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("profile");

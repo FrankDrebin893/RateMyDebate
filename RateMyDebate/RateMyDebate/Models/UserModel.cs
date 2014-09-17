@@ -24,6 +24,8 @@ namespace RateMyDebate.Models
         
         public String Password { get; set; }
 
+        public String Salt { get; set; }
+
         /*
         [NotMapped]
         [Compare("Password")]
