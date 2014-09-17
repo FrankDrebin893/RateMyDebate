@@ -119,12 +119,9 @@ C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.init.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csproj.GenerateResource.Cache
-<<<<<<< HEAD
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.init2.resources
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.init.resources
-C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.init2.resources
-=======
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.password.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.password2.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations._try.resources
->>>>>>> origin/master
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.seed.resources
