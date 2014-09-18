@@ -66,6 +66,7 @@ namespace RateMyDebate.Controllers
 
                 var encryptPass = crypto.Compute(id.Password);
                 id.Password = encryptPass;
+                id.ConfirmPassword = crypto.Compute(id.ConfirmPassword);
                 id.Salt = crypto.Salt;
                 userinformation.accountId = id;
                 
@@ -172,12 +173,13 @@ namespace RateMyDebate.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit2([Bind(Include = "accountId,userName,Password")] UserModel usermodel)
+        public ActionResult Edit2(UserModel usermodel)
         {
             if (ModelState.IsValid)
             {
                 var crypto = new SimpleCrypto.PBKDF2();
                 usermodel.Password = crypto.Compute(usermodel.Password);
+                usermodel.ConfirmPassword = crypto.Compute(usermodel.ConfirmPassword);
                 usermodel.Salt = crypto.Salt;
                 db.Entry(usermodel).State = EntityState.Modified;
                 db.SaveChanges();

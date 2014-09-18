@@ -204,6 +204,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\RateMyDebateContext.cs" />
     <Compile Include="Models\UserInformation.cs" />
+    <Compile Include="Models\userLogonModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

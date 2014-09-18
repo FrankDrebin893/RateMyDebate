@@ -107,7 +107,6 @@ C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.Owin.Security.
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.dll
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.pdb
-C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csprojResolveAssemblyReference.cache
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csproj.GenerateResource.Cache
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.Core.dll
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
