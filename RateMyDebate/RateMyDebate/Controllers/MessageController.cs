@@ -24,7 +24,7 @@ namespace RateMyDebate.Controllers
                 UserModel userr = user as UserModel;
                 var usermodel = db.UserInformation.FirstOrDefault(u => u.userId == userr.accountId);
                 infoUser = usermodel;
-                var message = db.Message.Include(m => m.inboxId).Include(m => m.userInformation).Where(m => m.userId == infoUser.userId);
+                var message = db.Message.Include(m => m.inboxId).Include(m => m.userInformation).Where(m => m.userId == infoUser.userId).OrderByDescending(m => m.messageId);
                 return View(message.ToList());
             }
             

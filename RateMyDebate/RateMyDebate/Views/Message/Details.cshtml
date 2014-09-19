@@ -4,22 +4,16 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+
 
 <div>
-    <h4>Message</h4>
+    <h4 style="text-align: center;">Message</h4>
 	<hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.inboxId.inboxId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.inboxId.inboxId)
-        </dd>
+    <dl class="loginCreate">
+        
 
         <dt>
-            @Html.DisplayNameFor(model => model.userInformation.fName)
+            @Html.DisplayNameFor(model => model.userInformation.fName):
         </dt>
 
         <dd>
@@ -27,15 +21,15 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.subject)
+            @Html.DisplayNameFor(model => model.subject):
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.subject)
         </dd>
-
+        <hr />
         <dt>
-            @Html.DisplayNameFor(model => model.messageText)
+            @Html.DisplayNameFor(model => model.messageText):
         </dt>
 
         <dd>
@@ -45,6 +39,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.messageId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @* @Html.ActionLink("Edit", "Edit", new { id = Model.messageId }) |*@
+    @Html.ActionLink("Back to inbox", "Index")
 </p>

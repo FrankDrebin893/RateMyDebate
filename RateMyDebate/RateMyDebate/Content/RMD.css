@@ -309,9 +309,7 @@ html, body {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.10);
     padding: 15px;
     display: inline-block;
-    margin-left: 20px;
-    margin-top: 20px;
-
+    margin: 20px;
 }
 
 
