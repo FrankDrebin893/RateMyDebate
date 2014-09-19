@@ -93,6 +93,7 @@ namespace RateMyDebate.Controllers
         }
         public ActionResult LogOut(){
 
+            Session["UserSession"] = null;
             FormsAuthentication.SignOut();
             return RedirectToAction("RasmusIndex", "Home");
         }

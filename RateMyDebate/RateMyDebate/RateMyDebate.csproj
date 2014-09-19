@@ -175,6 +175,8 @@
     <Compile Include="Controllers\DebateController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InboxController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\RulesController.cs" />
     <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -194,6 +196,22 @@
     <Compile Include="Migrations\201409171133123_salt.cs" />
     <Compile Include="Migrations\201409171133123_salt.Designer.cs">
       <DependentUpon>201409171133123_salt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409181253592_inboxUnit.cs" />
+    <Compile Include="Migrations\201409181253592_inboxUnit.Designer.cs">
+      <DependentUpon>201409181253592_inboxUnit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409191103017_sender.cs" />
+    <Compile Include="Migrations\201409191103017_sender.Designer.cs">
+      <DependentUpon>201409191103017_sender.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409191122165_receiver.cs" />
+    <Compile Include="Migrations\201409191122165_receiver.Designer.cs">
+      <DependentUpon>201409191122165_receiver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409191142502_MessageRequired.cs" />
+    <Compile Include="Migrations\201409191142502_MessageRequired.Designer.cs">
+      <DependentUpon>201409191142502_MessageRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -307,6 +325,17 @@
     <Content Include="Views\UserInformation\profile.cshtml" />
     <Content Include="Views\Debate\LiveChat.cshtml" />
     <Content Include="Views\UserInformation\Edit2.cshtml" />
+    <Content Include="Views\Message\Create.cshtml" />
+    <Content Include="Views\Message\Delete.cshtml" />
+    <Content Include="Views\Message\Details.cshtml" />
+    <Content Include="Views\Message\Edit.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Inbox\Create.cshtml" />
+    <Content Include="Views\Inbox\Delete.cshtml" />
+    <Content Include="Views\Inbox\Details.cshtml" />
+    <Content Include="Views\Inbox\Edit.cshtml" />
+    <Content Include="Views\Inbox\Index.cshtml" />
+    <Content Include="Views\Message\NotLoggedIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -327,6 +356,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201409171133123_salt.resx">
       <DependentUpon>201409171133123_salt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409181253592_inboxUnit.resx">
+      <DependentUpon>201409181253592_inboxUnit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409191103017_sender.resx">
+      <DependentUpon>201409191103017_sender.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409191122165_receiver.resx">
+      <DependentUpon>201409191122165_receiver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409191142502_MessageRequired.resx">
+      <DependentUpon>201409191142502_MessageRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

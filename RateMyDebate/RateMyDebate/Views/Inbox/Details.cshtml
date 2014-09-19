@@ -1,0 +1,26 @@
+﻿@model RateMyDebate.Models.Inbox
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Inbox</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userInformation.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userInformation.fName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.inboxId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

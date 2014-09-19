@@ -1,0 +1,50 @@
+﻿@model RateMyDebate.Models.Message
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Message</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.inboxId.inboxId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.inboxId.inboxId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userInformation.fName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userInformation.fName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.messageText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.messageText)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.messageId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

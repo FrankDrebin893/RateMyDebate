@@ -123,3 +123,8 @@ C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\Ra
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.seed.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.salt.resources
 C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\bin\SimpleCrypto.dll
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.csprojResolveAssemblyReference.cache
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.inboxUnit.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.sender.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.receiver.resources
+C:\Users\Nichlas\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.MessageRequired.resources
