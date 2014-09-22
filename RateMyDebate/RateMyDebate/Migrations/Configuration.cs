@@ -121,7 +121,7 @@ namespace RateMyDebate.Migrations
                     Email = "hehjejehej@hjehje.com",
                     fName = "Jen",
                     lName = "Jehnny",
-                    nickName = "JehnJen",
+                    nickName = "JehnJen1",
                     userInformationId = 2,
                     userId = 2
                 });

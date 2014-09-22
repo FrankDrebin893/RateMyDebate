@@ -336,6 +336,9 @@
     <Content Include="Views\Inbox\Edit.cshtml" />
     <Content Include="Views\Inbox\Index.cshtml" />
     <Content Include="Views\Message\NotLoggedIn.cshtml" />
+    <Content Include="Views\UserInformation\Profiles.cshtml" />
+    <Content Include="Views\UserInformation\SearchView.cshtml" />
+    <Content Include="Views\UserInformation\UserEditError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

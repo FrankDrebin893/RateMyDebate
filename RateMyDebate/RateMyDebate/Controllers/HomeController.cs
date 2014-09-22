@@ -76,11 +76,12 @@ namespace RateMyDebate.Controllers
             using (var db = new RateMyDebateContext())
             {
                 var user = db.UserModel.FirstOrDefault(u => u.userName == userName);
-                
+                var userinfo = db.UserInformation.FirstOrDefault(u => u.userId == user.accountId);
                 if(user != null){
                     if (user.Password == crypto.Compute(password, user.Salt))
                     {
                         Session["UserSession"] = user;
+                        Session["UserInfoSession"] = userinfo;
                         isValid = true;
                     }
                 }

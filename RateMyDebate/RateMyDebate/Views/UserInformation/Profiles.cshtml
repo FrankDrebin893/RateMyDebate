@@ -1,0 +1,159 @@
+﻿@model IEnumerable<RateMyDebate.Models.UserInformation>
+
+@{
+    ViewBag.Title = "Profiles";
+}
+
+
+@*
+    <br />
+    <div class="tableFAQ">
+        <div class="Headline">
+            <h3>Profile: @Model.nickName User foreignKey @Model.userId</h3>
+        </div>
+
+
+        <hr />
+
+        <div class="detailFormat">
+
+            <table style="width:250px">
+                <tr>
+                    <td>
+                        <b>
+                            @Html.DisplayNameFor(model => model.fName)
+                        </b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.fName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>
+                            @Html.DisplayNameFor(model => model.lName)
+                        </b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.lName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>
+                            @Html.DisplayNameFor(model => model.nickName)
+                        </b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.nickName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>
+                            @Html.DisplayNameFor(model => model.age)
+                        </b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.age)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </b>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Email)
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+        <hr />
+        <div class="autobiographyFormat">
+            <div>
+                <b>
+                    @Html.DisplayNameFor(model => model.autobiography)
+                </b>
+            </div>
+            @Html.DisplayFor(model => model.autobiography)
+        </div>
+
+    </div>
+
+*@
+@using (Html.BeginForm()) 
+{ 
+    <div class="loginCreate">
+        <p>
+            Nickname: @Html.TextBox("SearchName") <br />
+
+            <input type="submit" value="Search" />
+        </p>
+        <div style="color: red;">
+            @ViewBag.NotFound
+        </div>
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.fName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nickName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.autobiography)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.userId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.fName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nickName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.autobiography)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userId)
+            </td>
+            <td>
+                
+                @Html.ActionLink("Profile", "Details", new { id = item.userInformationId }) 
+                
+            </td>
+        </tr>
+        
+    }
+</table>
