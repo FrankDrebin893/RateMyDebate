@@ -129,12 +129,21 @@ namespace RateMyDebate.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserInformation userinformation = db.UserInformation.Find(id);
-            if (userinformation == null)
+            if (Session["UserInfoSession"] != null)
             {
-                return HttpNotFound();
+                var session = Session["UserinfoSession"] as UserInformation;
+                if (session.userInformationId == id)
+                {
+                    UserInformation userinformation = db.UserInformation.Find(id);
+                    userinformation.accountId = db.UserModel.Find(userinformation.userId);
+                    if (userinformation == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(userinformation);
+                }
             }
-            return View(userinformation);
+            return View("UserEditError");
         }
 
         // POST: /UserInformation/Delete/5
@@ -186,18 +195,28 @@ namespace RateMyDebate.Controllers
             return View(user);
         }
 
+
         public ActionResult Edit2(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserModel usermodel = db.UserModel.Find(id);
-            if (usermodel == null)
+            if (Session["UserSession"] != null)
             {
-                return HttpNotFound();
+                var session = Session["UserSession"] as UserModel;
+                if (session.accountId == id)
+                {
+                    UserModel usermodel = db.UserModel.Find(id);
+                   // usermodel.accountId = db.UserModel.Find(userinformation.userId);
+                    if (usermodel == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(usermodel);
+                }
             }
-            return View(usermodel);
+            return View("UserEditError");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

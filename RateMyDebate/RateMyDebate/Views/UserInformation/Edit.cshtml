@@ -16,6 +16,7 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.userId)
+    @Html.HiddenFor(model => model.nickName)
     
     <div class="form-horizontal">
         <h4>UserInformation</h4>
@@ -39,14 +40,14 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.nickName, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.nickName)
-                @Html.ValidationMessageFor(model => model.nickName)
-            </div>
+     @*   <div class="form-group">
+        @Html.LabelFor(model => model.nickName, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.nickName)
+            @Html.ValidationMessageFor(model => model.nickName)
         </div>
-
+    </div>
+*@
         <div class="form-group">
             @Html.LabelFor(model => model.age, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
