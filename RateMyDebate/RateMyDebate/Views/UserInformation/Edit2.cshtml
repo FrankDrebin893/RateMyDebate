@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    <div class="loginCreate" style="width: 600px;">
+    <div class="loginCreate" >
         <div class="form-horizontal">
             <h4>Change Password!</h4>
             <hr />
@@ -19,7 +19,7 @@
             
             
 
-            <div class="form-group">
+            <div class="form-group" style="width: 600px;">
                 @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.PasswordFor(model => model.Password)
@@ -28,7 +28,7 @@
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.ConfirmPassword, new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
+                <div class="col-md-10" >
                     @Html.PasswordFor(model => model.ConfirmPassword)
                     @Html.ValidationMessageFor(model => model.ConfirmPassword)
                 </div>
