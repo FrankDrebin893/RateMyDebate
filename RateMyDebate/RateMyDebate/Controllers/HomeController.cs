@@ -10,7 +10,7 @@ namespace RateMyDebate.Controllers
 {
     public class HomeController : Controller
     {
-        //private RateMyDebateContext db = new RateMyDebateContext();
+        private RateMyDebateContext db = new RateMyDebateContext();
         public ActionResult Index()
         {
             //YO
@@ -47,10 +47,14 @@ namespace RateMyDebate.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Models.UserModel user)
+        public ActionResult Login(Models.userLogonModel user)
         {
+
+
+            var usermodel = db.UserModel.FirstOrDefault(u => u.userName == user.userName);
             if (ModelState.IsValid)
             {
+                
                 if(IsValid(user.userName, user.Password)){
 
                 FormsAuthentication.SetAuthCookie(user.userName, false);
@@ -61,20 +65,23 @@ namespace RateMyDebate.Controllers
                 ModelState.AddModelError("", "Logins is wrong");
                 }
             }
-            return View(user);
+
+            return View(usermodel);
         }
 
         private bool IsValid(string userName, string password)
         {
+            var crypto = new SimpleCrypto.PBKDF2();
             bool isValid = false;
             using (var db = new RateMyDebateContext())
             {
                 var user = db.UserModel.FirstOrDefault(u => u.userName == userName);
-                
+                var userinfo = db.UserInformation.FirstOrDefault(u => u.userId == user.accountId);
                 if(user != null){
-                    if (user.Password == password)
+                    if (user.Password == crypto.Compute(password, user.Salt))
                     {
                         Session["UserSession"] = user;
+                        Session["UserInfoSession"] = userinfo;
                         isValid = true;
                     }
                 }
@@ -87,6 +94,8 @@ namespace RateMyDebate.Controllers
         }
         public ActionResult LogOut(){
 
+            Session["UserSession"] = null;
+            Session["UserInfoSession"] = null;
             FormsAuthentication.SignOut();
             return RedirectToAction("RasmusIndex", "Home");
         }

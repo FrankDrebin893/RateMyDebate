@@ -11,9 +11,14 @@ namespace RateMyDebate.Models
     {
         [Key]
         public int inboxId { get; set; }
-        
-        public virtual UserInformation userInformationId { get; set; }
-        
+
+        [ForeignKey("userInformation")]
+        public int userId { get; set; }
+        public virtual UserInformation userInformation { get; set; }
+
+
+        [ForeignKey("messageId")]
+        public ICollection<Message> messageId { get; set; }
         
 
     }

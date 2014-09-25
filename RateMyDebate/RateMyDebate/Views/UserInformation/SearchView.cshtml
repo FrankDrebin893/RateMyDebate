@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "SearchView";
+}
+
+<h2>SearchView</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="loginCreate">
+        <p>
+            Nickname: @Html.TextBox("SearchName") <br />
+
+            <input type="submit" value="Search" />
+        </p>
+        <div style="color: red;">
+            @ViewBag.NotFound
+        </div>
+    </div>
+} 

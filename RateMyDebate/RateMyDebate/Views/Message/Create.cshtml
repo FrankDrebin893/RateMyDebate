@@ -1,0 +1,68 @@
+﻿@model RateMyDebate.Models.Message
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Message</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+@*        <div class="form-group">
+        @Html.LabelFor(model => model.userId, "userId", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("userId", String.Empty)
+            @Html.ValidationMessageFor(model => model.userId)
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.inboxKey, "inboxKey", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("inboxKey", String.Empty)
+                @Html.ValidationMessageFor(model => model.inboxKey)
+            </div>
+        </div>
+*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.Receiver, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Receiver)
+                @Html.ValidationMessageFor(model => model.Receiver)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.subject, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.subject)
+                @Html.ValidationMessageFor(model => model.subject)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.messageText, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.messageText)
+                @Html.ValidationMessageFor(model => model.messageText)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

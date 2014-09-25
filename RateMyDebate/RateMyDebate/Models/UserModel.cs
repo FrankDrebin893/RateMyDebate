@@ -20,17 +20,15 @@ namespace RateMyDebate.Models
         public String userName { get; set; }
 
         [Display(Name = "Password")]
-        [Required]
-        
+        [Required]       
         public String Password { get; set; }
 
-        /*
-        [NotMapped]
-        [Compare("Password")]
- 
+        public String Salt { get; set; }
 
+        [NotMapped]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "Password does not match!")]
         public String ConfirmPassword { get; set; }
-        */ 
+        
         public ICollection<UserInformation> UserInformation { get; set; }
 
     }

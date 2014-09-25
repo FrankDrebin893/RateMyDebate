@@ -14,9 +14,7 @@ namespace RateMyDebate.Models
         public int userInformationId { get; set; }
 
         [Required]
-        [Remote("ValidateUserName", "UserInformation", ErrorMessage = "User name already exists. Please enter a different user name.")]
         [Display(Name = "First name")]
-        
         public String fName { get; set; }
 
         [Display(Name = "Last name")]
@@ -25,6 +23,7 @@ namespace RateMyDebate.Models
 
         [Required]
         [Display(Name = "Username")]
+        [Remote("ValidateNickName", "UserInformation", HttpMethod = "POST", ErrorMessage = "User name already exists. Please enter a different user name.")]
         public String nickName { get; set; }
 
         [Display(Name = "Age")]

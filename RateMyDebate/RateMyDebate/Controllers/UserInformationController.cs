@@ -8,12 +8,14 @@ using System.Web;
 using System.Web.Mvc;
 using RateMyDebate.Models;
 using System.Web.UI;
+using System.Collections;
 
 namespace RateMyDebate.Controllers
 {
-    
+    [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
     public class UserInformationController : Controller
     {
+        
         private RateMyDebateContext db = new RateMyDebateContext();
 
         // GET: /UserInformation/
@@ -62,7 +64,12 @@ namespace RateMyDebate.Controllers
             if (ModelState.IsValid)
             {
                 var id = TempData["Id"] as UserModel;
-            
+                var crypto = new SimpleCrypto.PBKDF2();
+
+                var encryptPass = crypto.Compute(id.Password);
+                id.Password = encryptPass;
+                id.ConfirmPassword = crypto.Compute(id.ConfirmPassword);
+                id.Salt = crypto.Salt;
                 userinformation.accountId = id;
                 
                 db.UserInformation.Add(userinformation);
@@ -80,13 +87,21 @@ namespace RateMyDebate.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserInformation userinformation = db.UserInformation.Find(id);
-            userinformation.accountId = db.UserModel.Find(userinformation.userId);
-            if (userinformation == null)
+            if (Session["UserInfoSession"] != null)
             {
-                return HttpNotFound();
+                var session = Session["UserinfoSession"] as UserInformation;
+                if(session.userInformationId == id){
+                    UserInformation userinformation = db.UserInformation.Find(id);
+                    userinformation.accountId = db.UserModel.Find(userinformation.userId);
+                    if (userinformation == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(userinformation);
+                }
             }
-            return View(userinformation);
+            ViewBag.Error = "Error!";
+            return View("UserEditError");
         }
 
         // POST: /UserInformation/Edit/5
@@ -114,12 +129,21 @@ namespace RateMyDebate.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserInformation userinformation = db.UserInformation.Find(id);
-            if (userinformation == null)
+            if (Session["UserInfoSession"] != null)
             {
-                return HttpNotFound();
+                var session = Session["UserinfoSession"] as UserInformation;
+                if (session.userInformationId == id)
+                {
+                    UserInformation userinformation = db.UserInformation.Find(id);
+                    userinformation.accountId = db.UserModel.Find(userinformation.userId);
+                    if (userinformation == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(userinformation);
+                }
             }
-            return View(userinformation);
+            return View("UserEditError");
         }
 
         // POST: /UserInformation/Delete/5
@@ -153,30 +177,75 @@ namespace RateMyDebate.Controllers
            
             return View(user);
         }
+
+        public ActionResult Profiles(String SearchName)
+        {
+            List<UserInformation> user;
+            user = db.UserInformation.ToList();
+           // ViewBag.NotFound = "";
+            if(SearchName != null){
+           
+                user = db.UserInformation.Where(u => u.nickName == SearchName).ToList();
+                if (user.Count() == 0)
+                {
+                    ViewBag.NotFound = "User not found! Check your spelling!";
+                    return View(user);
+                }
+            }
+            return View(user);
+        }
+
+
         public ActionResult Edit2(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserModel usermodel = db.UserModel.Find(id);
-            if (usermodel == null)
+            if (Session["UserSession"] != null)
             {
-                return HttpNotFound();
+                var session = Session["UserSession"] as UserModel;
+                if (session.accountId == id)
+                {
+                    UserModel usermodel = db.UserModel.Find(id);
+                   // usermodel.accountId = db.UserModel.Find(userinformation.userId);
+                    if (usermodel == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    return View(usermodel);
+                }
             }
-            return View(usermodel);
+            return View("UserEditError");
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit2([Bind(Include = "accountId,userName,Password")] UserModel usermodel)
+        public ActionResult Edit2(UserModel usermodel)
         {
             if (ModelState.IsValid)
             {
+                var crypto = new SimpleCrypto.PBKDF2();
+                usermodel.Password = crypto.Compute(usermodel.Password);
+                usermodel.ConfirmPassword = crypto.Compute(usermodel.ConfirmPassword);
+                usermodel.Salt = crypto.Salt;
                 db.Entry(usermodel).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("profile");
             }
             return View(usermodel);
+        }
+
+        [HttpPost]
+        public JsonResult ValidateNickName(string nickName)
+        {
+            // !db.UserModel.Any(user => user.userName == userName
+
+            //!db.UserModel.Any(user => user.userName.Equals(userName)
+
+            var usercheck = db.UserInformation.FirstOrDefault(user => user.nickName.Equals(nickName));
+
+            return Json(usercheck == null);
+
         }
        
     }
