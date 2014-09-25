@@ -204,6 +204,8 @@ namespace RateMyDebate.Controllers
         {
             Debate debate = db.Debate.Find(id);
 
+            DebateDisplayViewModel DDVM = FindDebate(id);
+
             //int CreatorId = DDVM.Debate.CreatorIdId;
             //int ChallengerId = DDVM.Debate.ChallengerIdId;
 
@@ -213,7 +215,7 @@ namespace RateMyDebate.Controllers
            // UserModel sessionUser = Session["userSession"] as UserModel;
             //int UserId = sessionUser.accountId;
 
-            return View(debate);
+            return View(DDVM);
         }
 
         public DebateDisplayViewModel FindDebate(int? id)
@@ -224,6 +226,29 @@ namespace RateMyDebate.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }*/
 
+            DebateDisplayViewModel DDVM = new DebateDisplayViewModel();
+
+            DDVM.Debate = db.Debate.Find(id);
+
+            /*
+            DDVM.CreatorInformation = db.UserInformation.ToList();
+            DDVM.ChallengerInformation = db.UserInformation.ToList();
+            DDVM.Category = db.Categories.ToList();
+            */
+            UserInformation creator = db.UserInformation.Find(DDVM.Debate.CreatorIdId);
+            DDVM.CreatorInformation = creator;
+
+            UserInformation challenger = db.UserInformation.Find(DDVM.Debate.ChallengerIdId);
+            DDVM.ChallengerInformation = challenger;
+
+            Category category = db.Categories.Find(DDVM.Debate.CategoryIdId);
+            DDVM.Category = category;
+
+            return DDVM;
+        }
+
+        public DebateDisplayViewModel FillDDVM(int? id)
+        {
             DebateDisplayViewModel DDVM = new DebateDisplayViewModel();
 
             DDVM.Debate = db.Debate.Find(id);
