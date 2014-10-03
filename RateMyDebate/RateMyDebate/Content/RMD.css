@@ -165,7 +165,9 @@ html, body {
     border-width: 1px;
     border-color: rgba(0, 0, 0, 0.35);
     height: 124px;
-    background: white;
+    
+    background-image: url(/imgs/BannerBackground.png);
+    background-repeat: no-repeat;
 }
 
 .bottomDiv {
@@ -309,10 +311,16 @@ html, body {
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.10);
     padding: 15px;
     display: inline-block;
+<<<<<<< HEAD
 
     margin-left: 20px;
 
     margin: 20px;
+=======
+    margin-left: 20px;
+    margin: 20px;
+
+>>>>>>> origin/master
 }
 
 
@@ -359,7 +367,7 @@ html, body {
 
 .chatDivTable td {
     border-bottom: 1px solid rgba(0, 0, 0, 0.20);
-<<<<<<< HEAD
+
     margin-top: 20px;
 }
 
@@ -434,10 +442,6 @@ html, body {
     font-size: 14px;
     font-weight: bold;
     border-radius: 2px;
-    
-=======
-
     margin-top: 20px;
 
->>>>>>> origin/master
 }
