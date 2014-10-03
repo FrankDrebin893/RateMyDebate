@@ -77,7 +77,7 @@ namespace RateMyDebate.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(userinformation);
+            return RedirectToAction("Index");
         }
 
         // GET: /UserInformation/Edit/5

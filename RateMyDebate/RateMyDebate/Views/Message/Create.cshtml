@@ -4,14 +4,14 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Message</h4>
+        <h4 style="margin-left: 20px; margin-top: 20px;">Send Message</h4>
         <hr />
         @Html.ValidationSummary(true)
 @*        <div class="form-group">
@@ -50,7 +50,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.messageText, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.messageText)
+                @Html.TextAreaFor(model => model.messageText, new { style = "width:500px; height: 300px;" }) 
                 @Html.ValidationMessageFor(model => model.messageText)
             </div>
         </div>

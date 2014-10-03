@@ -4,14 +4,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 style="margin-left: 20px;">Messages</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<div class="loginCreate" style="width: 96%;">
 <table class="table">
     <tr>
-       
+        <button type="button" style="margin-bottom:20px; padding:3px;" onclick="redirect()">Send Message</button>
         <th>
             @Html.DisplayNameFor(model => model.Sender)
         </th>
@@ -41,3 +40,10 @@
 }
 
 </table>
+</div>
+
+<script type="text/javascript">
+    function redirect() {
+        location.href = '@Url.Content("~/Message/Create/")';
+    }
+</script>
