@@ -1,4 +1,8 @@
-﻿@using System.Web.UI.WebControls
+﻿@using System.Diagnostics
+@using System.Web.UI.WebControls
+@using Microsoft.Ajax.Utilities
+@using RateMyDebate.Models
+@using RateMyDebate.ViewModels
 @model RateMyDebate.ViewModels.DebateDisplayViewModel
 
 @{
@@ -7,53 +11,23 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/RMD.css")
     @Scripts.Render("~/bundles/modernizr")
+    var user = Session["UserInfoSession"] as UserInformation;
 }
 
 
 
-
-
-<style type="text/css">
-    .container {
-        background-color: #99CCFF;
-        border: thick solid #808080;
-        padding: 20px;
-        margin: 20px;
-    }
-</style>
-
-<div class="creatorVotesDiv">
-    <div class="voteDiv" id="voteDivStyle">@Html.DisplayFor(m => m.Debate.CreatorVotes) votes</div>
-    <div class="nickNameDiv">@Html.DisplayFor(model => model.CreatorInformation.nickName)</div>
-</div>
-
-<div class="challengerVotesDiv">
-    <div class="voteDiv" id="voteDivStyle">
-        @Html.DisplayFor(m => m.Debate.ChallengerVotes) votes
-    </div>
-    <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
-</div>
-
-<div class="timerDiv">00:00</div>
-
-<div class="descriptionDiv">
-    @Html.DisplayNameFor(m => m.Debate.Subject): @Html.DisplayFor(m => m.Debate.Subject)
-    <br />
-    @Html.DisplayNameFor(m => m.Debate.Description): @Html.DisplayFor(m => m.Debate.Description)
-</div>
-
-<div class="chatDiv">
-    @Html.DisplayFor(m => m.Debate.ChatText)
-    <ul id="discussion">
-        assdasdadads
-    </ul>
-</div>
-<div class="messageDiv">
-    <input type="button" id="sendmessage" value="Send" class="chatButton" />
-    <input type="text" id="message" class="chatTextBox" />
-</div>
-
-<div></div>
+@if (user == null)
+{
+    @Html.Partial("Spectator")
+}
+else if (user.accountId != Model.CreatorInformation.accountId)
+{
+    @Html.Partial("Creator")
+}
+else if (user.accountId == Model.ChallengerInformation.accountId)
+{
+    @Html.Partial("Challenger")
+}
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
@@ -69,10 +43,10 @@
         // Create a function that the hub can call to broadcast messages.
         chat.client.broadcastMessage = function (name, message) {
             // Html encode display name and message.
-            var encodedName = $('<div />').text('asdasd').html();
+            var encodedName = '<div /> @user.nickName';
             var encodedMsg = $('<div />').text(message).html();
 
-            $('#discussion').append('HEHEJEHJHJEHJEJHEHJEHJHEJ');
+            $('#discussion').append(encodedName + ' :' + encodedMsg);
         };
         // Set initial focus to message input box.
         $('#message').focus();

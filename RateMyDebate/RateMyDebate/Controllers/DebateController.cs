@@ -110,7 +110,14 @@ namespace RateMyDebate.Controllers
 
             Category category =  db.Categories.Find(DDVM.Debate.CategoryIdId);
             DDVM.Category = category;
-            
+
+            var user = Session["UserInfoSession"] as UserInformation;
+
+            if (user.userInformationId == creator.userInformationId)
+            {
+                
+            }
+
 
             /*
            if (DDVM.Debate == null || DDVM.Category == null || DDVM.CreatorInformation == null || DDVM.ChallengerInformation == null)
