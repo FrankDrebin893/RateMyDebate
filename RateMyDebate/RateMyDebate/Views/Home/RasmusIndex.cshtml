@@ -25,7 +25,7 @@
             </td>
             <td id="rightSideDiv">
                 <div id="subFrontDiv">
-                    Archive<div id="subFrontDescription">A searchable, sortable archive of all debates conducted on the site. Cockpenis </div>
+                    Archive<div id="subFrontDescription">A searchable, sortable archive of all debates conducted on the site. <br/> </div>
                 </div>
             </td>
         </tr>
@@ -185,10 +185,10 @@
         jQuery('.tabs .tab-links a').on('click', function (e) {
             var currentAttrValue = jQuery(this).attr('href');
 
-            // Show/Hide Tabs
+
             jQuery('.tabs ' + currentAttrValue).show().siblings().hide();
 
-            // Change/remove current tab to active
+
             jQuery(this).parent('li').addClass('active').siblings().removeClass('active');
 
             e.preventDefault();

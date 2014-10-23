@@ -5,6 +5,7 @@
 @using RateMyDebate.ViewModels
 @model RateMyDebate.ViewModels.DebateDisplayViewModel
 
+
 @{
     ViewBag.Title = "LiveChat";
     Layout = "";
@@ -14,11 +15,34 @@
     var user = Session["UserInfoSession"] as UserInformation;
 }
 
+<div class="creatorVotesDiv">
+    <div class="voteDiv" id="voteDivStyle">@Html.DisplayFor(m => m.Debate.CreatorVotes) votes</div>
+    <div class="nickNameDiv">@Html.DisplayFor(model => model.CreatorInformation.nickName)</div>
+</div>
 
+<div class="challengerVotesDiv">
+    <div class="voteDiv" id="voteDivStyle">
+        @Html.DisplayFor(m => m.Debate.ChallengerVotes) votes
+    </div>
+    <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
+</div>
+
+<div class="timerDiv"></div>
+
+<div class="descriptionDiv">
+    @Html.DisplayNameFor(m => m.Debate.Subject): @Html.DisplayFor(m => m.Debate.Subject)
+    <br />
+    @Html.DisplayNameFor(m => m.Debate.Description): @Html.DisplayFor(m => m.Debate.Description)
+</div>
+
+<div class="chatDiv">
+    @Html.DisplayFor(m => m.Debate.ChatText)
+    <ul id="discussion"></ul>
+</div>
 
 @if (user == null)
 {
-    @Html.Partial("Spectator")
+    @Html.Partial("NonUser")
 }
 else if (user.accountId != Model.CreatorInformation.accountId)
 {
@@ -28,6 +52,11 @@ else if (user.accountId == Model.ChallengerInformation.accountId)
 {
     @Html.Partial("Challenger")
 }
+else
+{
+    @Html.Partial("Spectator")
+}
+
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
@@ -36,24 +65,24 @@ else if (user.accountId == Model.ChallengerInformation.accountId)
 <script src="/signalr/hubs"></script>
 
 <script type="text/javascript">
-    $(function () {
-        // Declare a proxy to reference the hub.
+    $(function() {
         var chat = $.connection.chatHub;
 
-        // Create a function that the hub can call to broadcast messages.
-        chat.client.broadcastMessage = function (name, message) {
-            // Html encode display name and message.
-            var encodedName = '<div /> @user.nickName';
-            var encodedMsg = $('<div />').text(message).html();
+        chat.client.broadcastMessage = function(name, message) {
+            var formattedName;
+            var formattedMessage;
 
-            $('#discussion').append(encodedName + ' :' + encodedMsg);
+            formattedName = '<div /> User';
+            formattedMessage = $('<div />').text(message).html();
+
+            $('#discussion').append(formattedName + ' :' + formattedMessage);
         };
-        // Set initial focus to message input box.
+        
         $('#message').focus();
-        // Start the connection.
+        
         $.connection.hub.start().done(function () {
             $('#sendmessage').click(function () {
-                // Call the Send method on the hub.
+        
                 chat.server.send($('#message').val(), $('#message').val());
                 $('#message').val('').focus();
             });
@@ -64,4 +93,18 @@ else if (user.accountId == Model.ChallengerInformation.accountId)
         var chatText = $.connection.chatHub;
 
     });
+
+    function saveChat(message) {
+        $.ajax({
+            url: "/Debate/SaveChatData",
+            type: "POST",
+            data: message
+        });
+    }
+
+    var start = new Date;
+
+    setInterval(function () {
+        $('.timerDiv').text((new Date - start) / 1000 + " Seconds");
+    }, 1000);
 </script>

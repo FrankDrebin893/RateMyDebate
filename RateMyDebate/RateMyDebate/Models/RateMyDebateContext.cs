@@ -17,6 +17,7 @@ namespace RateMyDebate.Models
         public DbSet<Message> Message { get; set; }
         public DbSet<Debate> Debate { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Vote> Votes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
