@@ -201,6 +201,18 @@
     <Compile Include="Migrations\201410230925161_votenow21.Designer.cs">
       <DependentUpon>201410230925161_votenow21.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411111143175_MessageMap.cs" />
+    <Compile Include="Migrations\201411111143175_MessageMap.Designer.cs">
+      <DependentUpon>201411111143175_MessageMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411111203577_MessageMap1.cs" />
+    <Compile Include="Migrations\201411111203577_MessageMap1.Designer.cs">
+      <DependentUpon>201411111203577_MessageMap1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411111215316_MessageMap2.cs" />
+    <Compile Include="Migrations\201411111215316_MessageMap2.Designer.cs">
+      <DependentUpon>201411111215316_MessageMap2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -208,6 +220,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inbox.cs" />
     <Compile Include="Models\Message.cs" />
+    <Compile Include="Models\MessageMap.cs" />
     <Compile Include="Models\RateMyDebateContext.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\userLogonModel.cs" />
@@ -359,6 +372,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410230925161_votenow21.resx">
       <DependentUpon>201410230925161_votenow21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111143175_MessageMap.resx">
+      <DependentUpon>201411111143175_MessageMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111203577_MessageMap1.resx">
+      <DependentUpon>201411111203577_MessageMap1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411111215316_MessageMap2.resx">
+      <DependentUpon>201411111215316_MessageMap2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

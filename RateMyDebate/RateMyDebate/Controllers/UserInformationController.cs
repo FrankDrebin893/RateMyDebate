@@ -247,6 +247,7 @@ namespace RateMyDebate.Controllers
             return Json(usercheck == null);
 
         }
+
        
     }
 }
