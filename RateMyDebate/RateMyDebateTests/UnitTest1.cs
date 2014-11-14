@@ -28,17 +28,39 @@ namespace RateMyDebateTests
 
             var result = controller.LiveChat(1) as ViewResult;
 
-            Assert.AreEqual("Cake", "Cake");
+            Assert.AreEqual("Cake", result.ViewBag.Title);
         }
 
         [TestMethod]
-        public void HomeViewBagTest()
+        public void DebateDisplayTest()
         {
-            HomeController controller = new HomeController();
+            DebateController controller = new DebateController();
 
-            ViewResult result = controller.Index2() as ViewResult;
+            ViewResult result = controller.Display(1) as ViewResult;
 
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void DebateDisplayTest2()
+        {
+            DebateController controller = new DebateController();
+
+            var result = controller.Display(1) as ViewResult;
+            
+            var model = result.ViewData.Model as DebateDisplayViewModel;
+
+            Assert.AreEqual(1, model.Debate.DebateId);
+        }
+
+        [TestMethod]
+        public void DebateLiveChatTest()
+        {
+            DebateController controller = new DebateController();
+
+            var result = controller.Index(null, null, null);
+
+
         }
     }
 }
