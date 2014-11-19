@@ -62,6 +62,8 @@ namespace RateMyDebate.Models
         public Boolean Live { get; set; }
         [Display (Name = "Created")]
         public DateTime DateTime { get; set; }
+
+        public int TimeLimit { get; set; }
         public IEnumerator GetEnumerator()
         {
             throw new NotImplementedException();

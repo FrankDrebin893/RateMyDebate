@@ -20,6 +20,8 @@ namespace RateMyDebate.Models
         public DbSet<Vote> Votes { get; set; }
         public DbSet<MessageMap> MessageMaps { get; set; }
 
+        public DbSet<Result> Results { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();

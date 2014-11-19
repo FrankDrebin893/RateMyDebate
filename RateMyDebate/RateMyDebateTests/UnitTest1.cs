@@ -53,14 +53,52 @@ namespace RateMyDebateTests
             Assert.AreEqual(1, model.Debate.DebateId);
         }
 
+        // Checking to make sure that debate list is not empty, when no filter parameters are parsed and database is not empty.
         [TestMethod]
-        public void DebateLiveChatTest()
+        public void DebateIndexTest()
         {
             DebateController controller = new DebateController();
 
-            var result = controller.Index(null, null, null);
+            var result = controller.Index(null, null, null) as ViewResult;
+
+            var model = result.ViewData.Model as DebateUser;
+
+            var list = model.Debate;
+
+            Assert.AreNotEqual(0, list.Count); ;
+        }
+
+        // Testing to make sure the debate list is NOT empty,
+        // when parsing through a search keyword that we know to exist in the database.
+        [TestMethod]
+        public void DebateIndexTest2()
+        {
+            DebateController controller = new DebateController();
+
+            var result = controller.Index("Politics", null, null) as ViewResult;
+
+            var model = result.ViewData.Model as DebateUser;
+
+            var list = model.Debate;
+
+            Assert.AreNotEqual(0, list.Count);
+        }
 
 
+        // Testing to make sure the debate list contains 0 elements,
+        // when parsing through a search keyword that we know not to exist in the database.
+        [TestMethod]
+        public void DebateIndexTest3()
+        {
+            DebateController controller = new DebateController();
+
+            var result = controller.Index(null, "asdasdasdas", null) as ViewResult;
+
+            var model = result.ViewData.Model as DebateUser;
+
+            var list = model.Debate;
+
+            Assert.AreEqual(0, list.Count);
         }
     }
 }

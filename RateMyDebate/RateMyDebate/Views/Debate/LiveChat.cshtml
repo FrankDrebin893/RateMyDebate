@@ -27,7 +27,7 @@
     <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
 </div>
 
-<div class="timerDiv"></div>
+<div class="timerDiv">00:00:00</div>
 
 <div class="descriptionDiv">
     @Html.DisplayNameFor(m => m.Debate.Subject): @Html.DisplayFor(m => m.Debate.Subject)
@@ -61,6 +61,7 @@ else
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
 <script src="~/Scripts/jquery.signalR-2.1.1.min.js"></script>
+<script src="~/Scripts/Timer.js"></script>
 
 <script src="/signalr/hubs"></script>
 
@@ -102,9 +103,14 @@ else
         });
     }
 
+    $(document).ready(function () {
+        $('.timerDiv').stopwatch().stopwatch('start');
+    });
+
     var start = new Date;
 
-    setInterval(function () {
-        $('.timerDiv').text((new Date - start) / 1000 + " Seconds");
-    }, 1000);
+    /*setInterval(function () {
+        var seconds = (new Date - start) / 1000;
+        $('.timerDiv').text(seconds + " Seconds");
+    }, 1000);*/
 </script>
