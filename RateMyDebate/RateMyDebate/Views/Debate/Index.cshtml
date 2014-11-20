@@ -51,9 +51,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatorVotes)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ChallengerId.nickName)
-            </td>
+            @if (item.ChallengerId == null)
+            {
+                <td>
+                    <a href="http://www.google.com">No challenger yet. Join?</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.ChallengerId.nickName)
+                </td>
+            }
             <td>
                 @Html.DisplayFor(modelItem => item.ChallengerVotes)
             </td>

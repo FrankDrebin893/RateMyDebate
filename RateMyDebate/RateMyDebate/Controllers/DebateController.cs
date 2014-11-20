@@ -249,6 +249,11 @@ namespace RateMyDebate.Controllers
             return DDVM;
         }
 
+        public ActionResult TimerTest()
+        {
+            return View();
+        }
+
         public DebateDisplayViewModel FillDDVM(int? id)
         {
             DebateDisplayViewModel DDVM = new DebateDisplayViewModel();

@@ -11,7 +11,7 @@ namespace RateMyDebate.Models
     public class Debate
     {
         public int CreatorIdId { get; set; }
-        public int ChallengerIdId { get; set; }
+        public int? ChallengerIdId { get; set; }
         public int CategoryIdId { get; set; }
         /*
         public int ChallengerVotesId { get; set; }

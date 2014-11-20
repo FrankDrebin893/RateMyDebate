@@ -27,12 +27,16 @@
     <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
 </div>
 
-<div class="timerDiv">00:00:00</div>
+<div class="timerDiv" id="CountDownTimer" data-timer="900">00:00:00</div>
 
 <div class="descriptionDiv">
     @Html.DisplayNameFor(m => m.Debate.Subject): @Html.DisplayFor(m => m.Debate.Subject)
     <br />
     @Html.DisplayNameFor(m => m.Debate.Description): @Html.DisplayFor(m => m.Debate.Description)
+    <br />
+    @Model.Debate.TimeLimit
+    <br />
+    <input type="button" value="UpdateTimer" class="chatButton" />
 </div>
 
 <div class="chatDiv">
@@ -64,26 +68,38 @@ else
 <script src="~/Scripts/Timer.js"></script>
 
 <script src="/signalr/hubs"></script>
-
 <script type="text/javascript">
     $(function() {
         var chat = $.connection.chatHub;
+
+
+        $('.timerDiv').stopwatch().stopwatch('start');
+        
 
         chat.client.broadcastMessage = function(name, message) {
             var formattedName;
             var formattedMessage;
 
+            
             formattedName = '<div /> User';
             formattedMessage = $('<div />').text(message).html();
 
             $('#discussion').append(formattedName + ' :' + formattedMessage);
         };
+
+        chat.client.broadcastTime = function(time) {
+            $('.descriptionDiv').append(time);
+        };
+
+        setInterval(function() {
+            
+        });
         
         $('#message').focus();
         
         $.connection.hub.start().done(function () {
             $('#sendmessage').click(function () {
-        
+
                 chat.server.send($('#message').val(), $('#message').val());
                 $('#message').val('').focus();
             });
@@ -103,14 +119,5 @@ else
         });
     }
 
-    $(document).ready(function () {
-        $('.timerDiv').stopwatch().stopwatch('start');
-    });
-
-    var start = new Date;
-
-    /*setInterval(function () {
-        var seconds = (new Date - start) / 1000;
-        $('.timerDiv').text(seconds + " Seconds");
-    }, 1000);*/
+ 
 </script>

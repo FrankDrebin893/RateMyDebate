@@ -187,6 +187,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ChatHub.cs" />
+    <Compile Include="Hubs\ServerTimer.cs" />
     <Compile Include="Migrations\201410222211265_vote.cs" />
     <Compile Include="Migrations\201410222211265_vote.Designer.cs">
       <DependentUpon>201410222211265_vote.cs</DependentUpon>
@@ -227,10 +228,19 @@
     <Compile Include="Migrations\201411191514162_DebateTimeLimitProp.Designer.cs">
       <DependentUpon>201411191514162_DebateTimeLimitProp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411191622025_ChallengerNullable.cs" />
+    <Compile Include="Migrations\201411191622025_ChallengerNullable.Designer.cs">
+      <DependentUpon>201411191622025_ChallengerNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411201713556_Friendship.cs" />
+    <Compile Include="Migrations\201411201713556_Friendship.Designer.cs">
+      <DependentUpon>201411201713556_Friendship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Debate.cs" />
+    <Compile Include="Models\Friendship.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inbox.cs" />
     <Compile Include="Models\Message.cs" />
@@ -252,6 +262,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\RMD.css" />
+    <Content Include="Content\TimeCircles.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -278,6 +289,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\TimeCircles.js" />
     <Content Include="Scripts\Timer.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
@@ -365,6 +377,7 @@
     <Content Include="Views\Debate\Spectator.cshtml" />
     <Content Include="Views\Debate\Challenger.cshtml" />
     <Content Include="Views\Debate\NonUser.cshtml" />
+    <Content Include="Views\Debate\TimerTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -406,6 +419,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411191514162_DebateTimeLimitProp.resx">
       <DependentUpon>201411191514162_DebateTimeLimitProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411191622025_ChallengerNullable.resx">
+      <DependentUpon>201411191622025_ChallengerNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411201713556_Friendship.resx">
+      <DependentUpon>201411201713556_Friendship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
