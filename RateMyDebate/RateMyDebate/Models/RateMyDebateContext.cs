@@ -21,6 +21,7 @@ namespace RateMyDebate.Models
         public DbSet<MessageMap> MessageMaps { get; set; }
 
         public DbSet<Result> Results { get; set; }
+        public DbSet<Friendship> Friendships { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

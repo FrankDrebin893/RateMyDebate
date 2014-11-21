@@ -31,24 +31,18 @@ namespace RateMyDebate.Hubs
             Clients.All.broadcastMessage(name, message);
         }
 
-        
+        /*
         public void StartTimer()
         {
             _timer = new Timer(BroadcastTimer, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
         }
 
-
-        private void UpdateTimer(object state)
-        {
-            time += 1;
-            BroadcastTimer(null);
-        }
-
+        
         public void BroadcastTimer(object state)
         {
             time += 1;
             Clients.Caller.broadcastTime(time);
         }
-
+        */
     }
 }

@@ -378,6 +378,7 @@
     <Content Include="Views\Debate\Challenger.cshtml" />
     <Content Include="Views\Debate\NonUser.cshtml" />
     <Content Include="Views\Debate\TimerTest.cshtml" />
+    <Content Include="Views\Debate\View1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

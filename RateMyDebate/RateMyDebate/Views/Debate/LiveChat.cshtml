@@ -27,7 +27,7 @@
     <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
 </div>
 
-<div class="timerDiv" id="CountDownTimer" data-timer="900">00:00:00</div>
+<div class="timerDiv">Loading timer...</div>
 
 <div class="descriptionDiv">
     @Html.DisplayNameFor(m => m.Debate.Subject): @Html.DisplayFor(m => m.Debate.Subject)
@@ -35,8 +35,6 @@
     @Html.DisplayNameFor(m => m.Debate.Description): @Html.DisplayFor(m => m.Debate.Description)
     <br />
     @Model.Debate.TimeLimit
-    <br />
-    <input type="button" value="UpdateTimer" class="chatButton" />
 </div>
 
 <div class="chatDiv">
@@ -71,9 +69,9 @@ else
 <script type="text/javascript">
     $(function() {
         var chat = $.connection.chatHub;
+        var endingTimer;
 
-
-        $('.timerDiv').stopwatch().stopwatch('start');
+       // $('.timerDiv').stopwatch().stopwatch('start');
         
 
         chat.client.broadcastMessage = function(name, message) {
@@ -88,12 +86,18 @@ else
         };
 
         chat.client.broadcastTime = function(time) {
-            $('.descriptionDiv').append(time);
+            var formattedTime;
+            var timeLimit = '@Model.Debate.TimeLimit';
+
+            formattedTime = $('<div />').text(time).html() + '/' + timeLimit + ' seconds';
+
+            $('.timerDiv').text(formattedTime).html();
+
+            if (time == timeLimit) {
+                $('.descriptionDiv').append('DONEDONEDONEDONEDONDENOEONONDENODE');
+            }
         };
 
-        setInterval(function() {
-            
-        });
         
         $('#message').focus();
         
@@ -106,10 +110,6 @@ else
         });
     });
 
-    $(function () {
-        var chatText = $.connection.chatHub;
-
-    });
 
     function saveChat(message) {
         $.ajax({

@@ -34,6 +34,11 @@ namespace RateMyDebate.Hubs
         {
         }
 
+        public int GetTime()
+        {
+            return time;
+        }
+
         public void UpdateTimer(object state)
         {
             lock (_updateTimerLock)

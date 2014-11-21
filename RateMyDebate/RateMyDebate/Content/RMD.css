@@ -93,7 +93,7 @@ html, body {
 .startDiv {
     width: 500px;
     height: 65px;
-    //box-shadow: 5px 5px 5px rgba(109, 116, 243, 0.25);
+    
 }
 
 .listingTable {
@@ -403,9 +403,9 @@ html, body {
 .timerDiv {
     position: absolute;
     top: 0;
-    left: 42%;
+    left: 39%;
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
 }
 
 .descriptionDiv {
