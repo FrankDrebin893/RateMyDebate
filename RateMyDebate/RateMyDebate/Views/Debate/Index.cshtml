@@ -1,7 +1,9 @@
-﻿@model RateMyDebate.ViewModels.DebateUser
+﻿@using RateMyDebate.Models
+@model RateMyDebate.ViewModels.DebateUser
 
 @{
     ViewBag.Title = "Index";
+    var user = Session["UserInfoSession"] as UserInformation;
 }
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
@@ -23,13 +25,13 @@
         Creator
     </th>
     <th>
-        @Html.DisplayNameFor(model =>  model.Debate.First().CreatorVotes)
+        DISPLAY CREATOR VOTES
     </th>
     <th>
         Challenger
     </th>
     <th>
-        @Html.DisplayNameFor(model => model.Debate.First().ChallengerVotes)
+        DISPLAY CHALLENGER VOTES
     </th>
     <th>
         @Html.DisplayNameFor(model => model.Debate.First().DateTime)
@@ -38,24 +40,30 @@
 
 @foreach (var item in Model.Debate)
 {
-        <tr data-id="@Html.Raw(item.DebateId)" class="DisplayPage">
-            <td>
-                @Html.DisplayFor(modelItem => item.Subject)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryId.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatorId.nickName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatorVotes)
-            </td>
-            @if (item.ChallengerId == null)
+    <tr data-id="@Html.Raw(item.DebateId)" class="DisplayPage">
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId.CategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatorId.nickName)
+        </td>
+        <td>
+            DISPLAY CREATOR VOTES
+        </td>
+        @if (item.ChallengerId == null & user.userInformationId == item.CreatorIdId)
             {
-                <td>
-                    <a href="http://www.google.com">No challenger yet. Join?</a>
-                </td>
+            <td id="joinChallenger">
+                You still have no challenger
+            </td>
+            }
+            else if (item.ChallengerId == null & user.userInformationId != item.CreatorIdId)
+            {
+            <td>
+                <a href="http://www.google.com">No challenger yet. Join?</a>
+            </td>
             }
             else
             {
@@ -63,13 +71,13 @@
                     @Html.DisplayFor(modelItem => item.ChallengerId.nickName)
                 </td>
             }
-            <td>
-                @Html.DisplayFor(modelItem => item.ChallengerVotes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateTime)
-            </td>
-        </tr>
+        <td>
+            DISPLAY CHALLENGER VOTES
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateTime)
+        </td>
+    </tr>
 }
 
 </table>
@@ -86,10 +94,12 @@
 
     });
 
-    $(document).ready(function () {
+    $(document).ready(
+        function () {
         $('.DisplayPage').on("click", function () {
             var id = $(this).attr('data-id');
             window.location = "LiveChat?id=" + id;
-        })
+        });
+
     });
 </script>

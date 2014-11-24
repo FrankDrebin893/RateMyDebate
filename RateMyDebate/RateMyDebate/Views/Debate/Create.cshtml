@@ -1,4 +1,5 @@
-﻿@model RateMyDebate.Models.Debate
+﻿@using System.Web.Mvc.Html
+@model RateMyDebate.Models.Debate
 
 @{
     ViewBag.Title = "Create";
@@ -6,10 +7,10 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Debate</h4>
         <hr />
@@ -30,44 +31,20 @@
                 @Html.ValidationMessageFor(model => model.Description)
             </div>
         </div>
-
+        
         <div class="form-group">
-            @Html.LabelFor(model => model.ChatText, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ChatText)
-                @Html.ValidationMessageFor(model => model.ChatText)
-            </div>
+            @Html.LabelFor(model => model.CategoryId.CategoryName, new { @class = "control-label col-md-2" })
+            
+            @Html.DropDownListFor(m => m.CategoryIdId, (IEnumerable<SelectListItem>)ViewData["Categories"])
         </div>
+        
+
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CreatorVotes, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.TimeLimit, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatorVotes)
-                @Html.ValidationMessageFor(model => model.CreatorVotes)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ChallengerVotes, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ChallengerVotes)
-                @Html.ValidationMessageFor(model => model.ChallengerVotes)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Live, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Live)
-                @Html.ValidationMessageFor(model => model.Live)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DateTime, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DateTime)
-                @Html.ValidationMessageFor(model => model.DateTime)
+                @Html.EditorFor(model => model.TimeLimit)
+                @Html.ValidationMessageFor(model => model.TimeLimit)
             </div>
         </div>
 
@@ -77,8 +54,14 @@
             </div>
         </div>
     </div>
+
+
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+</script>

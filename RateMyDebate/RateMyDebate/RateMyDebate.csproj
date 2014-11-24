@@ -236,6 +236,10 @@
     <Compile Include="Migrations\201411201713556_Friendship.Designer.cs">
       <DependentUpon>201411201713556_Friendship.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411211707064_DebateCleanupVotes.cs" />
+    <Compile Include="Migrations\201411211707064_DebateCleanupVotes.Designer.cs">
+      <DependentUpon>201411211707064_DebateCleanupVotes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -378,7 +382,8 @@
     <Content Include="Views\Debate\Challenger.cshtml" />
     <Content Include="Views\Debate\NonUser.cshtml" />
     <Content Include="Views\Debate\TimerTest.cshtml" />
-    <Content Include="Views\Debate\View1.cshtml" />
+    <Content Include="Views\Debate\ShowEndResult.cshtml" />
+    <Content Include="Views\StartDebate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -426,6 +431,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411201713556_Friendship.resx">
       <DependentUpon>201411201713556_Friendship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411211707064_DebateCleanupVotes.resx">
+      <DependentUpon>201411211707064_DebateCleanupVotes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

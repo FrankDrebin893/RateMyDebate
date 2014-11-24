@@ -16,13 +16,13 @@
 }
 
 <div class="creatorVotesDiv">
-    <div class="voteDiv" id="voteDivStyle">@Html.DisplayFor(m => m.Debate.CreatorVotes) votes</div>
+    <div class="voteDiv" id="voteDivStyle">Display votes</div>
     <div class="nickNameDiv">@Html.DisplayFor(model => model.CreatorInformation.nickName)</div>
 </div>
 
 <div class="challengerVotesDiv">
     <div class="voteDiv" id="voteDivStyle">
-        @Html.DisplayFor(m => m.Debate.ChallengerVotes) votes
+        Display votes
     </div>
     <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
 </div>
@@ -95,6 +95,7 @@ else
 
             if (time == timeLimit) {
                 $('.descriptionDiv').append('DONEDONEDONEDONEDONDENOEONONDENODE');
+
             }
         };
 

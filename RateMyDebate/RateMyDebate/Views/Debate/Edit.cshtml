@@ -1,4 +1,4 @@
-﻿@model RateMyDebate.Models.Debate.
+﻿@model RateMyDebate.Models.Debate
 
 @{
     ViewBag.Title = "Edit";
@@ -37,22 +37,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ChatText)
                 @Html.ValidationMessageFor(model => model.ChatText)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatorVotes, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatorVotes)
-                @Html.ValidationMessageFor(model => model.CreatorVotes)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ChallengerVotes, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ChallengerVotes)
-                @Html.ValidationMessageFor(model => model.ChallengerVotes)
             </div>
         </div>
 

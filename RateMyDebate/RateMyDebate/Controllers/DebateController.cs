@@ -123,6 +123,14 @@ namespace RateMyDebate.Controllers
         // GET: /Debate/Create
         public ActionResult Create()
         {
+            var CategoryQry = from d in db.Categories
+                              orderby d.CategoryName
+                              select d.CategoryName;
+
+            var CategoryQryIds = from d in db.Categories
+                              orderby d.CategoryName
+                              select d.CategoryId;
+            ViewData["Categories"] = new SelectList(CategoryQryIds, CategoryQry);
             return View();
         }
 
@@ -131,13 +139,20 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="DebateId,Subject,Description,ChatText,CreatorVotes,ChallengerVotes,Live,DateTime")] Debate debate)
+        public ActionResult Create([Bind(Include="DebateId,Subject,Description,CategoryIdId,Timelimit")] Debate debate)
         {
+            var user = Session["UserInfoSession"] as UserInformation;
+            debate.CreatorIdId = user.userId;
+            debate.DateTime = DateTime.Now;
+            debate.Live = true;
+
             if (ModelState.IsValid)
             {
                 db.Debate.Add(debate);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                String url = "LiveChat?id=" + debate.DebateId;
+                return Redirect(url);
+                //return RedirectToAction("Index");
             }
 
             return View(debate);
@@ -220,6 +235,13 @@ namespace RateMyDebate.Controllers
             return View(DDVM);
         }
 
+        public ActionResult JoinLiveChatChallenger(int debateId)
+        {
+            var user = Session["UserInfoSession"] as UserInformation;
+            //Debate debate = FindDebate(debateId);
+
+        }
+
         public DebateDisplayViewModel FindDebate(int? id)
         {
             /*
@@ -275,6 +297,12 @@ namespace RateMyDebate.Controllers
             DDVM.Category = category;
 
             return DDVM;
+        }
+
+        public ActionResult ShowEndResult()
+        {
+            
+            return View();
         }
         protected override void Dispose(bool disposing)
         {
