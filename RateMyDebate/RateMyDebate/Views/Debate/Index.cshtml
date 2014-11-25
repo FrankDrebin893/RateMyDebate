@@ -1,4 +1,5 @@
-﻿@using RateMyDebate.Models
+﻿@using Microsoft.Ajax.Utilities
+@using RateMyDebate.Models
 @model RateMyDebate.ViewModels.DebateUser
 
 @{
@@ -40,8 +41,9 @@
 
 @foreach (var item in Model.Debate)
 {
-    <tr data-id="@Html.Raw(item.DebateId)" class="DisplayPage">
-        <td>
+    
+    <tr>
+        <td data-id="@Html.Raw(item.DebateId)" class="DisplayPage">
             @Html.DisplayFor(modelItem => item.Subject)
         </td>
         <td>
@@ -53,23 +55,29 @@
         <td>
             DISPLAY CREATOR VOTES
         </td>
-        @if (item.ChallengerId == null & user.userInformationId == item.CreatorIdId)
-            {
-            <td id="joinChallenger">
-                You still have no challenger
-            </td>
-            }
-            else if (item.ChallengerId == null & user.userInformationId != item.CreatorIdId)
-            {
-            <td>
-                <a href="http://www.google.com">No challenger yet. Join?</a>
-            </td>
-            }
-            else
+        @if (user == null & item.ChallengerId==null)
             {
                 <td>
+                    No challenger yet
+                </td>
+            }
+            else if (item.ChallengerId != null)
+            {
+                 <td>
                     @Html.DisplayFor(modelItem => item.ChallengerId.nickName)
                 </td>
+            }
+        else if (item.ChallengerId == null & user.userInformationId != item.CreatorIdId)
+        {
+            <td id="joinChallenger" data-id="@Html.Raw(item.DebateId)">
+                No challenger yet. Join?
+            </td>
+        }
+        else if (item.ChallengerId == null & user.userInformationId == item.CreatorIdId)
+        {
+            <td>
+                You still have no challenger
+            </td>
             }
         <td>
             DISPLAY CHALLENGER VOTES
@@ -101,5 +109,22 @@
             window.location = "LiveChat?id=" + id;
         });
 
-    });
+
+        });
+
+    $(document).ready(
+        function() {
+            $('#joinChallenger').on("click", function() {
+                var id = $(this).attr('data-id');
+
+                        $.ajax({
+                          url: '/Debate/EnterChallenger',
+                          type: 'Post',
+                          data: { debateId: id }
+                        });
+                // Anvender redirect fra JavaScript, da der ikke kan performes et serverside redirect fra et AJAX response.
+                window.location = "LiveChat?id=" + id;
+            });
+        }
+    );
 </script>

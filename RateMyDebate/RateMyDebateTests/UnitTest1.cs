@@ -16,7 +16,7 @@ namespace RateMyDebateTests
         {
             DebateController controller = new DebateController();
 
-            DebateDisplayViewModel result = controller.FindDebate(1) as DebateDisplayViewModel;
+            DebateDisplayViewModel result = controller.FindDebateDisplayViewModel(1) as DebateDisplayViewModel;
 
             Assert.AreEqual(1, result.Debate.CreatorIdId);
         }

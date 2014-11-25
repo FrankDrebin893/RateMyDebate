@@ -39,6 +39,11 @@ html, body {
     background: white;
 }
 
+#frontDiv:hover {
+    border: 2px solid rgba(0, 0, 0, .40);
+    cursor: pointer;
+}
+
 #subFrontDiv {
     font-family: Geneva, Tahoma, Verdana, sans-serif;
     text-shadow: 2px 1px 1px rgba(109, 116, 243, 0.75);
@@ -93,9 +98,13 @@ html, body {
 .startDiv {
     width: 500px;
     height: 65px;
-    
 }
 
+.startDiv:hover {
+    border: 2px solid rgba(0, 0, 0, .80);
+    cursor: pointer;
+    text-decoration: underline;
+}
 .listingTable {
     border: 1px solid rgba(167, 167, 167, 0.75);
     width: 100%;

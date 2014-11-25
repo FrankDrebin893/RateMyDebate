@@ -7,6 +7,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
+using Antlr.Runtime;
 using RateMyDebate.Models;
 using RateMyDebate.ViewModels;
 
@@ -219,7 +220,7 @@ namespace RateMyDebate.Controllers
         {
             Debate debate = db.Debate.Find(id);
 
-            DebateDisplayViewModel DDVM = FindDebate(id);
+            DebateDisplayViewModel DDVM = FindDebateDisplayViewModel(id);
 
             //int CreatorId = DDVM.Debate.CreatorIdId;
             //int ChallengerId = DDVM.Debate.ChallengerIdId;
@@ -235,14 +236,42 @@ namespace RateMyDebate.Controllers
             return View(DDVM);
         }
 
-        public ActionResult JoinLiveChatChallenger(int debateId)
+        [HttpPost]
+        public void EnterChallenger(int debateId)
         {
             var user = Session["UserInfoSession"] as UserInformation;
-            //Debate debate = FindDebate(debateId);
+            Debate debate = FindDebate(debateId);
+
+            if (debate.ChallengerIdId == null)
+            {
+
+                debate.ChallengerIdId = user.userInformationId;
+                db.Entry(debate).State = EntityState.Modified;
+                db.SaveChanges();
+
+            }
 
         }
 
-        public DebateDisplayViewModel FindDebate(int? id)
+        [HttpPost]
+        public void SaveMessage(String sender, String message, int debateId)
+        {
+            String formattedMessage = "\n" + sender + " : " + message;
+            Debate debate = FindDebate(debateId);
+            debate.ChatText += formattedMessage;
+            db.Entry(debate).State = EntityState.Modified;
+            db.SaveChanges();
+
+
+        }
+
+        public Debate FindDebate(int id)
+        {
+            Debate debate = db.Debate.Find(id);
+            return debate;
+        }
+
+        public DebateDisplayViewModel FindDebateDisplayViewModel(int? id)
         {
             /*
             if (id == null)

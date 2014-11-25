@@ -1,4 +1,5 @@
 ﻿@using System.Diagnostics
+@using System.Text
 @using System.Web.UI.WebControls
 @using Microsoft.Ajax.Utilities
 @using RateMyDebate.Models
@@ -38,7 +39,7 @@
 </div>
 
 <div class="chatDiv">
-    @Html.DisplayFor(m => m.Debate.ChatText)
+    @Html.Raw(Html.Encode(Model.Debate.ChatText).Replace("\n", "<br />"))
     <ul id="discussion"></ul>
 </div>
 
@@ -105,20 +106,24 @@ else
         $.connection.hub.start().done(function () {
             $('#sendmessage').click(function () {
 
+                var sender = '@user.nickName';
+                var message = $('#message').val();
+                var debateId = '@Model.Debate.DebateId';
                 chat.server.send($('#message').val(), $('#message').val());
                 $('#message').val('').focus();
+
+
+                $.ajax({
+                    url: "/Debate/SaveMessage",
+                    type: "POST",
+                    data: {
+                        sender: sender,
+                        message: message,
+                        debateId: debateId
+            }
+                });
             });
         });
     });
-
-
-    function saveChat(message) {
-        $.ajax({
-            url: "/Debate/SaveChatData",
-            type: "POST",
-            data: message
-        });
-    }
-
  
 </script>
