@@ -244,6 +244,22 @@
     <Compile Include="Migrations\201411251335553_CompositeVoteKey.Designer.cs">
       <DependentUpon>201411251335553_CompositeVoteKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411260817095_NullableIdsResult.cs" />
+    <Compile Include="Migrations\201411260817095_NullableIdsResult.Designer.cs">
+      <DependentUpon>201411260817095_NullableIdsResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411260819102_AllowNullDraw.cs" />
+    <Compile Include="Migrations\201411260819102_AllowNullDraw.Designer.cs">
+      <DependentUpon>201411260819102_AllowNullDraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411260851197_VoteCount.cs" />
+    <Compile Include="Migrations\201411260851197_VoteCount.Designer.cs">
+      <DependentUpon>201411260851197_VoteCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201411260854041_VoteCount2.cs" />
+    <Compile Include="Migrations\201411260854041_VoteCount2.Designer.cs">
+      <DependentUpon>201411260854041_VoteCount2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -254,7 +270,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MessageMap.cs" />
     <Compile Include="Models\RateMyDebateContext.cs" />
-    <Compile Include="Models\Results.cs" />
+    <Compile Include="Models\Result.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Models\userLogonModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -444,6 +460,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411251335553_CompositeVoteKey.resx">
       <DependentUpon>201411251335553_CompositeVoteKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260817095_NullableIdsResult.resx">
+      <DependentUpon>201411260817095_NullableIdsResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260819102_AllowNullDraw.resx">
+      <DependentUpon>201411260819102_AllowNullDraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260851197_VoteCount.resx">
+      <DependentUpon>201411260851197_VoteCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411260854041_VoteCount2.resx">
+      <DependentUpon>201411260854041_VoteCount2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

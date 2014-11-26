@@ -357,32 +357,112 @@ namespace RateMyDebate.Controllers
             return View();
         }
 
-        public void ProcessDebateResult(DebateDisplayViewModel ddvm)
+        public String ProcessDebateResult(int debateId, int creatorId, int challengerId)
         {
-            var debateId = ddvm.Debate.DebateId;
+            ScoreScreenViewModel ssvm = new ScoreScreenViewModel();
+            Debate debate = FindDebate(debateId);
+            Result result = new Result();
+            result.DebateId = debateId;
+            String endingSentence = "Not assigned";
 
-            var creatorVotes = from d in db.Votes
-                              where d.DebateId == debateId & d.VotePos == 1
-                              select d.VotePos;
+            List<Vote> creatorVoteCount = db.Votes.ToList().Where(x => x.DebateId == debateId & x.VotePos == 1).ToList();
+            List<Vote> challengerVoteCount =
+                db.Votes.ToList().Where(x => x.DebateId == debateId & x.VotePos == 2).ToList();
 
-            var challengerVotes = from d in db.Votes
-                                  where d.DebateId == debateId & d.VotePos == 2
-                                  select d.VotePos;
-
-            int creatorVotesNum = creatorVotes.Count();
-            int challengerVotesNum = challengerVotes.Count();
-
-            UserInformation creator = ddvm.CreatorInformation;
-            UserInformation challenger = ddvm.ChallengerInformation;
-            UserInformation winner;
+            int creatorVotesNum = creatorVoteCount.Count();
+            int challengerVotesNum = challengerVoteCount.Count();
 
             if (creatorVotesNum > challengerVotesNum)
             {
-                winner = ddvm.CreatorInformation;
+                result.WinnerId = creatorId;
+                result.LoserId = challengerId;
             }
             else if (creatorVotesNum < challengerVotesNum)
             {
-                winner = ddvm.ChallengerInformation;
+                result.WinnerId = challengerId;
+                result.LoserId = creatorId;
+            }
+            else if (creatorVotesNum == challengerVotesNum)
+            {
+                result.Draw = true;
+            }
+
+            result.CreatorVotesCount = creatorVotesNum;
+            result.ChallengerVotesCount = challengerVotesNum;
+
+            SaveResult(result);
+            SetDebateInactive(debateId);
+
+            ssvm.result = result;
+            ssvm.debate = FindDebate(debateId);
+
+            UserInformation creator = db.UserInformation.Find(creatorId);
+            UserInformation challenger = db.UserInformation.Find(challengerId);
+
+            String creatorNick = creator.nickName;
+            String challengerNick = challenger.nickName;
+
+            if (result.Draw == true)
+            {
+                endingSentence = "Thank you for participating and spectating! Unfortunately a winner could not be found as both participants had a vote count of " + creatorVotesNum;
+            }
+            else if (result.WinnerId == creatorId)
+            {
+                endingSentence = "Thank you for participating and spectating! The winner is " +
+                                 creatorNick + " with a score of " + result.CreatorVotesCount + " to " +
+                                 challengerNick + "'s score of " + result.ChallengerVotesCount;
+            }
+            else if (result.WinnerId == challengerId)
+            {
+                endingSentence = "Thank you for participating and spectating! The winner is " +
+                                 challengerNick + " with a score of " + result.ChallengerVotesCount + " to " +
+                                 creatorNick + "'s score of " + result.CreatorVotesCount;
+            }
+
+            return endingSentence;
+
+        }
+
+        public void SaveResult(Result result)
+        {
+            Result check = FindResult(result.DebateId);
+            if (check == null)
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Results.Add(result);
+                    db.SaveChanges();
+                }
+            }
+            else if (check == result)
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(result).State = EntityState.Unchanged;
+                    db.SaveChanges();
+                }
+            }
+            else if (check != result)
+            {
+                db.Entry(check).CurrentValues.SetValues(result);
+                db.SaveChanges();
+            }
+        }
+
+        public Result FindResult(int debateId)
+        {
+            Result result = db.Results.Find(debateId);
+            return result;
+        }
+
+        public void SetDebateInactive(int debateId)
+        {
+            Debate debate = FindDebate(debateId);
+            debate.Live = false;
+            if (ModelState.IsValid)
+            {
+                db.Entry(debate).State = EntityState.Modified;
+                db.SaveChanges();
             }
         }
 

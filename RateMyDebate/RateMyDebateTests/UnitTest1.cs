@@ -100,5 +100,45 @@ namespace RateMyDebateTests
 
             Assert.AreEqual(0, list.Count);
         }
+
+        [TestMethod]
+        public void DebateProcessingTest()
+        {
+            DebateController controller = new DebateController();
+            DebateDisplayViewModel ddvm = controller.FindDebateDisplayViewModel(2);
+
+            Result result = controller.ProcessDebateResult(ddvm);
+
+            int? winnerId = result.WinnerId;
+
+            Assert.AreEqual(2, winnerId);
+        }
+
+        [TestMethod]
+        public void DebateProcessingTest2()
+        {
+            DebateController controller = new DebateController();
+            DebateDisplayViewModel ddvm = controller.FindDebateDisplayViewModel(1);
+
+            Result result = controller.ProcessDebateResult(ddvm);
+
+            int? winnerId = result.WinnerId;
+
+            Assert.AreEqual(1, winnerId);
+        }
+
+        [TestMethod]
+        public void DebateInactiveTest()
+        {
+            DebateController controller = new DebateController();
+
+            int debateId = 1;
+
+            controller.SetDebateInactive(1);
+
+            Debate debate = controller.FindDebate(1);
+
+            Assert.IsFalse(debate.Live);
+        }
     }
 }

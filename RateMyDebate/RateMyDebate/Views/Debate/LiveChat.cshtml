@@ -83,14 +83,24 @@ else
                 $('.timerDiv').text(formattedTime).html();
 
                 if (time == timeLimit) {
-                    $('.chatDiv').append('The debate has come to an end! Please wait while results are processed...');
+                    $('.chatDiv').append('<br /> The debate has come to an end! Please wait while results are processed...');
 
-                    var model = '@Model';
+                    var debateId = '@Model.Debate.DebateId';
+                    var creatorId = '@Model.CreatorInformation.userInformationId';
+                    var challengerId = '@Model.ChallengerInformation.userInformationId';
+
                     $.ajax({
                         url: "/Debate/ProcessDebateResult",
                         type: "POST",
+                        async: false,
+                        datatype: "json",
                         data: {
-                            ddvm: model
+                            debateId: debateId,
+                            creatorId: creatorId,
+                            challengerId: challengerId
+                        },
+                        success: function (data) {
+                            $('.chatDiv').append('<br />' + data);
                         }
 
                     });

@@ -11,8 +11,8 @@ namespace RateMyDebate.Models
     {
 
 
-        public int WinnerId { get; set; }
-        public int LoserId { get; set; }
+        public int? WinnerId { get; set; }
+        public int? LoserId { get; set; }
 
         
         public Debate Debate { get; set; }
@@ -26,5 +26,8 @@ namespace RateMyDebate.Models
         [ForeignKey("LoserId")]
         public UserInformation Loser { get; set; }
 
+        public Boolean? Draw { get; set; }
+        public int? CreatorVotesCount { get; set; }
+        public int? ChallengerVotesCount { get; set; }
     }
 }
