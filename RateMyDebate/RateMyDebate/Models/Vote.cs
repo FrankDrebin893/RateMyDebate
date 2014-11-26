@@ -9,11 +9,12 @@ namespace RateMyDebate.Models
 {
     public class Vote
     {
-        public int VoterId { get; set; }
-        public int DebateId { get; set; }
 
-        [Key]
-        public int VoteId { get; set; }
+        [Key, Column(Order = 0)]
+        public int VoterId { get; set; }
+
+        [Key, Column(Order = 1)]
+        public int DebateId { get; set; }
 
         [ForeignKey("VoterId")]
         public UserInformation Voter { get; set; }

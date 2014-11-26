@@ -15,6 +15,8 @@ namespace RateMyDebate.Models
         public int? ChallengerIdId { get; set; }
         public int CategoryIdId { get; set; }
 
+        public int? WinnerId { get; set; }
+
         [Key]
         public int DebateId { get; set; }
         [Display(Name = "Topic")]
@@ -31,6 +33,7 @@ namespace RateMyDebate.Models
 
         [ForeignKey("CategoryIdId")]
         public Category CategoryId { get; set; }
+        public Boolean Draw { get; set; }
 
         public Boolean Live { get; set; }
         [Display (Name = "Created")]

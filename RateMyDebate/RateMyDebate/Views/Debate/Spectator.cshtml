@@ -4,30 +4,78 @@
 @using RateMyDebate.ViewModels
 @model RateMyDebate.ViewModels.DebateDisplayViewModel
 
+@{
+    ViewBag.Title = "LiveChat";
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/RMD.css")
+    @Scripts.Render("~/bundles/modernizr")
+    var user = Session["UserInfoSession"] as UserInformation;
+}
 
-<div class="creatorVotesDiv">
-    <div class="voteDiv" id="voteDivStyle">@Html.DisplayFor(m => m.Debate.CreatorVotes) votes</div>
-    <div class="nickNameDiv">@Html.DisplayFor(model => model.CreatorInformation.nickName)</div>
-</div>
+<div id="spectatorInformation">Welcome! You are a spectator. Click the creator or challenger button to vote for your favorite debator!</div>
+<div id="spectatorChat">This is the spectator chat. It is visible only to logged in spectators. Share your thoughts with fellow spectators!</div>
 
-<div class="challengerVotesDiv">
-    <div class="voteDiv" id="voteDivStyle">
-        @Html.DisplayFor(m => m.Debate.ChallengerVotes) votes
-    </div>
-    <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
-</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
-<div class="timerDiv">00:00</div>
+<script src="~/Scripts/jquery.signalR-2.1.1.min.js"></script>
+<script src="~/Scripts/Timer.js"></script>
 
-<div class="descriptionDiv">
-    @Html.DisplayNameFor(m => m.Debate.Subject): @Html.DisplayFor(m => m.Debate.Subject)
-    <br />
-    @Html.DisplayNameFor(m => m.Debate.Description): @Html.DisplayFor(m => m.Debate.Description)
-</div>
+<script src="/signalr/hubs"></script>
+<script type="text/javascript">
 
-<div class="chatDiv">
-    @Html.DisplayFor(m => m.Debate.ChatText)
-    <ul id="discussion">
-        
-    </ul>
-</div>
+        $(function() {
+            var chat = $.connection.chatHub;
+            $.connection.hub.start();
+
+            chat.client.broadcastTime = function (time) {
+                var formattedTime;
+                var timeLimit = '@Model.Debate.TimeLimit';
+
+                formattedTime = $('<div />').text(time).html() + '/' + timeLimit + ' seconds';
+
+                $('.timerDiv').text(formattedTime).html();
+
+                if (time == timeLimit) {
+                    $('.descriptionDiv').append('DONEDONEDONEDONEDONDENOEONONDENODE');
+
+                }
+            };
+        });
+
+    $(document).ready(
+        function () {
+            $('#voteCreator').on("click", function () {
+                $('#creatorName').css("background", "green");
+                $('#challengerName').css("background", "red");
+            $.ajax({
+                url: "/Debate/PlaceVote",
+                type: "POST",
+                data: {
+                    debateId: '@Model.Debate.DebateId',
+                    votePosition: 1
+                }
+
+            });
+            $('#spectatorInformation').append('<br />' + "You have placed your vote on the instigator!");
+        });
+        });
+
+    $(document).ready(
+    function () {
+        $('#voteChallenger').on("click", function () {
+            $('#challengerName').css("background", "green");
+            $('#creatorName').css("background", "red");
+            $.ajax({
+                url: "/Debate/PlaceVote",
+                type: "POST",
+                data: {
+                    debateId: '@Model.Debate.DebateId',
+                    votePosition: 2
+                }
+
+            });
+            $('#spectatorInformation').append('<br />' + "You have placed your vote on the challenger!");
+        });
+    });
+
+</script>

@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using Antlr.Runtime;
+using RateMyDebate.Migrations;
 using RateMyDebate.Models;
 using RateMyDebate.ViewModels;
 
@@ -256,7 +257,7 @@ namespace RateMyDebate.Controllers
         [HttpPost]
         public void SaveMessage(String sender, String message, int debateId)
         {
-            String formattedMessage = "\n" + sender + " : " + message;
+            String formattedMessage = "\n" + "[" + DateTime.Now + "] " + sender + " : " + message;
             Debate debate = FindDebate(debateId);
             debate.ChatText += formattedMessage;
             db.Entry(debate).State = EntityState.Modified;
@@ -328,11 +329,63 @@ namespace RateMyDebate.Controllers
             return DDVM;
         }
 
-        public ActionResult ShowEndResult()
+        public void PlaceVote(int debateId, int votePosition)
+        {
+            var user = Session["UserInfoSession"] as UserInformation;
+            int voterId = user.userInformationId;
+
+            Vote vote = FindVote(voterId, debateId);
+            vote.VotePos = votePosition;
+
+            if (ModelState.IsValid)
+            {
+                db.Entry(vote).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+
+        }
+        
+        public Vote FindVote(int voterId, int debateId)
+        {
+            Vote vote = db.Votes.Find(voterId, debateId);
+            return vote;
+        }
+
+        public ActionResult ShowEndScreen(DebateDisplayViewModel ddvm)
         {
             
             return View();
         }
+
+        public void ProcessDebateResult(DebateDisplayViewModel ddvm)
+        {
+            var debateId = ddvm.Debate.DebateId;
+
+            var creatorVotes = from d in db.Votes
+                              where d.DebateId == debateId & d.VotePos == 1
+                              select d.VotePos;
+
+            var challengerVotes = from d in db.Votes
+                                  where d.DebateId == debateId & d.VotePos == 2
+                                  select d.VotePos;
+
+            int creatorVotesNum = creatorVotes.Count();
+            int challengerVotesNum = challengerVotes.Count();
+
+            UserInformation creator = ddvm.CreatorInformation;
+            UserInformation challenger = ddvm.ChallengerInformation;
+            UserInformation winner;
+
+            if (creatorVotesNum > challengerVotesNum)
+            {
+                winner = ddvm.CreatorInformation;
+            }
+            else if (creatorVotesNum < challengerVotesNum)
+            {
+                winner = ddvm.ChallengerInformation;
+            }
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

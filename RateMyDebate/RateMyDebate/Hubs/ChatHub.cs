@@ -30,19 +30,5 @@ namespace RateMyDebate.Hubs
             // Call the addNewMessageToPage method to update clients
             Clients.All.broadcastMessage(name, message);
         }
-
-        /*
-        public void StartTimer()
-        {
-            _timer = new Timer(BroadcastTimer, null, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
-        }
-
-        
-        public void BroadcastTimer(object state)
-        {
-            time += 1;
-            Clients.Caller.broadcastTime(time);
-        }
-        */
     }
 }

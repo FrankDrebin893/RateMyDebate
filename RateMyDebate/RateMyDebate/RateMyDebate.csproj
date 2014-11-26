@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201411211707064_DebateCleanupVotes.Designer.cs">
       <DependentUpon>201411211707064_DebateCleanupVotes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201411251335553_CompositeVoteKey.cs" />
+    <Compile Include="Migrations\201411251335553_CompositeVoteKey.Designer.cs">
+      <DependentUpon>201411251335553_CompositeVoteKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -260,6 +264,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\DebateDisplayViewModel.cs" />
     <Compile Include="ViewModels\DebateUser.cs" />
+    <Compile Include="ViewModels\ScoreScreenViewModel.cs" />
     <Compile Include="ViewModels\UserCreateViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -384,6 +389,8 @@
     <Content Include="Views\Debate\TimerTest.cshtml" />
     <Content Include="Views\Debate\ShowEndResult.cshtml" />
     <Content Include="Views\StartDebate.cshtml" />
+    <Content Include="Views\Debate\_Participant.cshtml" />
+    <Content Include="Views\Debate\ShowEndScreen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -434,6 +441,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411211707064_DebateCleanupVotes.resx">
       <DependentUpon>201411211707064_DebateCleanupVotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201411251335553_CompositeVoteKey.resx">
+      <DependentUpon>201411251335553_CompositeVoteKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

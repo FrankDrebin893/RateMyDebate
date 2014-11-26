@@ -14,18 +14,19 @@
     @Styles.Render("~/Content/RMD.css")
     @Scripts.Render("~/bundles/modernizr")
     var user = Session["UserInfoSession"] as UserInformation;
+    
 }
 
 <div class="creatorVotesDiv">
-    <div class="voteDiv" id="voteDivStyle">Display votes</div>
-    <div class="nickNameDiv">@Html.DisplayFor(model => model.CreatorInformation.nickName)</div>
+    <div class="voteDiv" id="voteCreator">Creator</div>
+    <div class="nickNameDiv" id="creatorName">@Html.DisplayFor(model => model.CreatorInformation.nickName)</div>
 </div>
 
 <div class="challengerVotesDiv">
-    <div class="voteDiv" id="voteDivStyle">
-        Display votes
+    <div class="voteDiv" id="voteChallenger">
+        Challenger
     </div>
-    <div class="nickNameDiv">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
+    <div class="nickNameDiv" id="challengerName">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
 </div>
 
 <div class="timerDiv">Loading timer...</div>
@@ -47,13 +48,13 @@
 {
     @Html.Partial("NonUser")
 }
-else if (user.accountId != Model.CreatorInformation.accountId)
+else if (user.userInformationId == Model.CreatorInformation.userInformationId)
 {
-    @Html.Partial("Creator")
+    @Html.Partial("_Participant")
 }
 else if (user.accountId == Model.ChallengerInformation.accountId)
 {
-    @Html.Partial("Challenger")
+    @Html.Partial("_Participant")
 }
 else
 {
@@ -68,62 +69,34 @@ else
 
 <script src="/signalr/hubs"></script>
 <script type="text/javascript">
-    $(function() {
-        var chat = $.connection.chatHub;
-        var endingTimer;
 
-       // $('.timerDiv').stopwatch().stopwatch('start');
-        
+        $(function() {
+            var chat = $.connection.chatHub;
+            $.connection.hub.start();
 
-        chat.client.broadcastMessage = function(name, message) {
-            var formattedName;
-            var formattedMessage;
+            chat.client.broadcastTime = function (time) {
+                var formattedTime;
+                var timeLimit = '@Model.Debate.TimeLimit';
 
-            
-            formattedName = '<div /> User';
-            formattedMessage = $('<div />').text(message).html();
+                formattedTime = $('<div />').text(time).html() + '/' + timeLimit + ' seconds';
 
-            $('#discussion').append(formattedName + ' :' + formattedMessage);
-        };
+                $('.timerDiv').text(formattedTime).html();
 
-        chat.client.broadcastTime = function(time) {
-            var formattedTime;
-            var timeLimit = '@Model.Debate.TimeLimit';
+                if (time == timeLimit) {
+                    $('.chatDiv').append('The debate has come to an end! Please wait while results are processed...');
 
-            formattedTime = $('<div />').text(time).html() + '/' + timeLimit + ' seconds';
+                    var model = '@Model';
+                    $.ajax({
+                        url: "/Debate/ProcessDebateResult",
+                        type: "POST",
+                        data: {
+                            ddvm: model
+                        }
 
-            $('.timerDiv').text(formattedTime).html();
+                    });
 
-            if (time == timeLimit) {
-                $('.descriptionDiv').append('DONEDONEDONEDONEDONDENOEONONDENODE');
-
-            }
-        };
-
-        
-        $('#message').focus();
-        
-        $.connection.hub.start().done(function () {
-            $('#sendmessage').click(function () {
-
-                var sender = '@user.nickName';
-                var message = $('#message').val();
-                var debateId = '@Model.Debate.DebateId';
-                chat.server.send($('#message').val(), $('#message').val());
-                $('#message').val('').focus();
-
-
-                $.ajax({
-                    url: "/Debate/SaveMessage",
-                    type: "POST",
-                    data: {
-                        sender: sender,
-                        message: message,
-                        debateId: debateId
-            }
-                });
-            });
+                }
+            };
         });
-    });
- 
+
 </script>

@@ -414,7 +414,7 @@ html, body {
     top: 0;
     left: 39%;
     text-align: center;
-    font-size: 40px;
+    font-size: 35px;
 }
 
 .descriptionDiv {
@@ -453,4 +453,37 @@ html, body {
     border-radius: 2px;
     margin-top: 20px;
 
+}
+
+#spectatorInformation {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    border: 1px solid black;
+    border-top: none;
+    border-bottom: none;
+    height: 100%;
+    background:rgba(232, 233, 248, 0.50);
+    box-shadow: 5px 5px 5px #000000;
+    box-shadow: 5px 5px 5px rgba(5, 15, 2, 0.30);
+    padding: 2px;
+    font-size: 12px;
+}
+
+#spectatorChat {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 200px;
+    border: 1px solid black;
+    border-top: none;
+    border-bottom: none;
+    height: 100%;
+    background:rgba(232, 233, 248, 0.50);
+    box-shadow: 5px 5px 5px #000000;
+    box-shadow: 5px 5px 5px rgba(5, 15, 2, 0.30);
+    padding: 2px;
+    font-size: 12px;
+    overflow: auto;
 }
