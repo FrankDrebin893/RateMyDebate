@@ -112,7 +112,6 @@ namespace RateMyDebate.Controllers
         public ActionResult Edit( UserInformation userinformation)
         {
 
-            // GG  this SOAB [Bind(Include="userInformationId,fName,lName,nickName,age,autobiography,Email")] Delete dat shit son! Reminder.....
             if (ModelState.IsValid)
             {
                 db.Entry(userinformation).State = EntityState.Modified;

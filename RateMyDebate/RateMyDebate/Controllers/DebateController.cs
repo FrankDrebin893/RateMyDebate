@@ -34,6 +34,7 @@ namespace RateMyDebate.Controllers
 
         // GET: /Debate/
         public ActionResult Index(String category, String creator, String challenger)
+
         {
             List<Debate> myList = db.Debate.ToList().Where(x => x.Live.Equals(true)).ToList();
 

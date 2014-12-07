@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201411260854041_VoteCount2.Designer.cs">
       <DependentUpon>201411260854041_VoteCount2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412061344307_StringFixedLengthCategory.cs" />
+    <Compile Include="Migrations\201412061344307_StringFixedLengthCategory.Designer.cs">
+      <DependentUpon>201412061344307_StringFixedLengthCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
@@ -472,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201411260854041_VoteCount2.resx">
       <DependentUpon>201411260854041_VoteCount2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412061344307_StringFixedLengthCategory.resx">
+      <DependentUpon>201412061344307_StringFixedLengthCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
