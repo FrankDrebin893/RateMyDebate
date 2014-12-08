@@ -17,7 +17,6 @@ namespace RateMyDebate.Controllers
     public class DebateController : Controller
     {
         private RateMyDebateContext db = new RateMyDebateContext();
-        private DebateUser VM = new DebateUser();
         
         // GET: /Debate/
         /*
@@ -37,6 +36,7 @@ namespace RateMyDebate.Controllers
 
         {
             List<Debate> myList = db.Debate.ToList().Where(x => x.Live.Equals(true)).ToList();
+            DebateUser VM = new DebateUser();
 
             var CategoryQry = from d in db.Categories
                            orderby d.CategoryName

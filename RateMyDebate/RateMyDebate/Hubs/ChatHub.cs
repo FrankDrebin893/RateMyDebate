@@ -14,7 +14,7 @@ namespace RateMyDebate.Hubs
         private volatile static int time = 0;
         private Timer _timer;
         private readonly ServerTimer _serverTimer;
-
+        
         public ChatHub() : this(ServerTimer.Instance)
         {
             
@@ -27,7 +27,6 @@ namespace RateMyDebate.Hubs
 
         public void Send(string name, string message)
         {
-            // Call the addNewMessageToPage method to update clients
             Clients.All.broadcastMessage(name, message);
         }
     }
