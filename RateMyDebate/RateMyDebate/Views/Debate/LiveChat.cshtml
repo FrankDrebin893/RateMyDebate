@@ -52,7 +52,7 @@ else if (user.userInformationId == Model.CreatorInformation.userInformationId)
 {
     @Html.Partial("_Participant")
 }
-else if (user.accountId == Model.ChallengerInformation.accountId)
+else if (user.userInformationId == Model.ChallengerInformation.userInformationId)
 {
     @Html.Partial("_Participant")
 }
@@ -86,8 +86,6 @@ else
                     $('.chatDiv').append('<br /> The debate has come to an end! Please wait while results are processed...');
 
                     var debateId = '@Model.Debate.DebateId';
-                    var creatorId = '@Model.CreatorInformation.userInformationId';
-                    var challengerId = '@Model.ChallengerInformation.userInformationId';
 
                     $.ajax({
                         url: "/Debate/ProcessDebateResult",
@@ -95,9 +93,7 @@ else
                         async: false,
                         datatype: "json",
                         data: {
-                            debateId: debateId,
-                            creatorId: creatorId,
-                            challengerId: challengerId
+                            debateId: debateId
                         },
                         success: function (data) {
                             $('.chatDiv').append('<br />' + data);

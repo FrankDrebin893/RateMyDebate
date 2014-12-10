@@ -8,10 +8,11 @@ namespace RateMyDebateTests
     [TestClass]
     public class UnitTest2
     {
+        private readonly IDebateRepository debateRepository;
         [TestMethod]
         public void VoteTest1()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             Vote vote = controller.FindVote(9, 1);
 
@@ -23,7 +24,7 @@ namespace RateMyDebateTests
         [TestMethod]
         public void VoteTest2()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             Vote vote = controller.FindVote(9, 2);
 
@@ -35,7 +36,7 @@ namespace RateMyDebateTests
         [TestMethod]
         public void VoteTest3()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             Vote vote = controller.FindVote(8, 2);
 

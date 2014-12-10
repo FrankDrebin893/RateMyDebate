@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using RateMyDebate.Controllers;
 using RateMyDebate.Models;
 using RateMyDebate.ViewModels;
@@ -11,10 +12,12 @@ namespace RateMyDebateTests
     [TestClass]
     public class UnitTest1
     {
+        private readonly IDebateRepository debateRepository;
+
         [TestMethod]
         public void DebateTest()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             DebateDisplayViewModel result = controller.FindDebateDisplayViewModel(1) as DebateDisplayViewModel;
 
@@ -24,7 +27,7 @@ namespace RateMyDebateTests
         [TestMethod]
         public void DebateTest2()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             var result = controller.LiveChat(1) as ViewResult;
 
@@ -34,7 +37,7 @@ namespace RateMyDebateTests
         [TestMethod]
         public void DebateDisplayTest()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             ViewResult result = controller.Display(1) as ViewResult;
 
@@ -44,7 +47,7 @@ namespace RateMyDebateTests
         [TestMethod]
         public void DebateDisplayTest2()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             var result = controller.Display(1) as ViewResult;
             
@@ -57,7 +60,7 @@ namespace RateMyDebateTests
         [TestMethod]
         public void DebateIndexTest()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             var result = controller.Index(null, null, null) as ViewResult;
 
@@ -73,9 +76,9 @@ namespace RateMyDebateTests
         [TestMethod]
         public void DebateIndexTest2()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
-            var result = controller.Index("Politics", null, null) as ViewResult;
+            var result = controller.Index("Atheism", null, null) as ViewResult;
 
             var model = result.ViewData.Model as DebateUser;
 
@@ -90,7 +93,7 @@ namespace RateMyDebateTests
         [TestMethod]
         public void DebateIndexTest3()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             var result = controller.Index(null, "asdasdasdas", null) as ViewResult;
 
@@ -104,10 +107,30 @@ namespace RateMyDebateTests
         [TestMethod]
         public void DebateProcessingTest()
         {
-            DebateController controller = new DebateController();
-            DebateDisplayViewModel ddvm = controller.FindDebateDisplayViewModel(2);
+            DebateController controller = new DebateController(debateRepository);
+            Debate debate = controller.FindDebate(1);
+            int debateId = debate.DebateId;
 
-            Result result = controller.ProcessDebateResult(ddvm);
+            controller.ProcessDebateResult(debateId);
+
+            Result result = controller.FindResult(debateId);
+
+            int? winnerId = result.WinnerId;
+
+            Assert.AreEqual(1, winnerId);
+        }
+        
+        [TestMethod]
+        public void DebateProcessingTest2()
+        {
+
+            DebateController controller = new DebateController(debateRepository);
+            Debate debate = controller.FindDebate(2);
+            int debateId = debate.DebateId;
+
+            controller.ProcessDebateResult(debateId);
+
+            Result result = controller.FindResult(debateId);
 
             int? winnerId = result.WinnerId;
 
@@ -115,22 +138,9 @@ namespace RateMyDebateTests
         }
 
         [TestMethod]
-        public void DebateProcessingTest2()
-        {
-            DebateController controller = new DebateController();
-            DebateDisplayViewModel ddvm = controller.FindDebateDisplayViewModel(1);
-
-            Result result = controller.ProcessDebateResult(ddvm);
-
-            int? winnerId = result.WinnerId;
-
-            Assert.AreEqual(1, winnerId);
-        }
-
-        [TestMethod]
         public void DebateInactiveTest()
         {
-            DebateController controller = new DebateController();
+            DebateController controller = new DebateController(debateRepository);
 
             int debateId = 1;
 

@@ -17,6 +17,13 @@ namespace RateMyDebate.Controllers
     public class DebateController : Controller
     {
         private RateMyDebateContext db = new RateMyDebateContext();
+        private readonly IDebateRepository _debateRepository;
+
+
+        public DebateController(IDebateRepository debateRepository)
+        {
+            _debateRepository = debateRepository;
+        }
         
         // GET: /Debate/
         /*
@@ -49,7 +56,7 @@ namespace RateMyDebate.Controllers
             
             if (!String.IsNullOrEmpty(category))
             {
-                myList = myList.Where(x => x.CategoryId.CategoryName.Contains(category)).ToList();
+                myList = myList.Where(x => x.CategoryId.CategoryName.Equals(category)).ToList();
             }
 
             if (!String.IsNullOrEmpty(creator))
@@ -151,8 +158,8 @@ namespace RateMyDebate.Controllers
 
             if (ModelState.IsValid)
             {
-                db.Debate.Add(debate);
-                db.SaveChanges();
+                _debateRepository.AddDebate(debate);
+                _debateRepository.Save();
                 String url = "LiveChat?id=" + debate.DebateId;
                 return Redirect(url);
                 //return RedirectToAction("Index");
@@ -358,10 +365,13 @@ namespace RateMyDebate.Controllers
             return View();
         }
 
-        public String ProcessDebateResult(int debateId, int creatorId, int challengerId)
+        public String ProcessDebateResult(int debateId)
         {
             ScoreScreenViewModel ssvm = new ScoreScreenViewModel();
             Debate debate = FindDebate(debateId);
+            int creatorId = debate.CreatorIdId;
+            int? challengerId = debate.ChallengerIdId;
+
             Result result = new Result();
             result.DebateId = debateId;
             String endingSentence = "Not assigned";

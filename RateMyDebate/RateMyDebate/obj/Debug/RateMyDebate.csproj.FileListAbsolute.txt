@@ -146,3 +146,7 @@ C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\Ra
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.VoteCount.resources
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.VoteCount2.resources
 C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\obj\Debug\RateMyDebate.Migrations.StringFixedLengthCategory.resources
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Moq.dll
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Moq.xml
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Ninject.dll
+C:\Users\Rasmus\Documents\GitHub\Project1\RateMyDebate\RateMyDebate\bin\Ninject.xml
