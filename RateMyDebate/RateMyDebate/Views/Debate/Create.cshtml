@@ -1,13 +1,21 @@
 ﻿@using System.Web.Mvc.Html
+@using RateMyDebate.Models
 @model RateMyDebate.Models.Debate
 
 @{
     ViewBag.Title = "Create";
+    var user = Session["UserInfoSession"] as UserInformation;
 }
 
+@if (user == null)
+{
+    <div>You must be logged in to create a debate.</div>
+}
+else
+{
 <h2>Create</h2>
 
-@using (Html.BeginForm())
+using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
@@ -47,6 +55,8 @@
                 @Html.ValidationMessageFor(model => model.TimeLimit)
             </div>
         </div>
+        
+        @Html.Hidden("creatorIdId", user.userInformationId);
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -61,6 +71,8 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+  
+}
 
 <script src="~/Scripts/jquery-1.10.2.js"></script>
 <script type="text/javascript">

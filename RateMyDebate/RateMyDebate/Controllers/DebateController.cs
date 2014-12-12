@@ -149,10 +149,10 @@ namespace RateMyDebate.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="DebateId,Subject,Description,CategoryIdId,Timelimit")] Debate debate)
+        public ActionResult Create([Bind(Include="creatorIdId,DebateId,Subject,Description,CategoryIdId,Timelimit")] Debate debate)
         {
-            var user = Session["UserInfoSession"] as UserInformation;
-            debate.CreatorIdId = user.userId;
+            //var user = Session["UserInfoSession"] as UserInformation;
+            //debate.CreatorIdId = user.userInformationId;
             debate.DateTime = DateTime.Now;
             debate.Live = true;
 
@@ -276,7 +276,7 @@ namespace RateMyDebate.Controllers
 
         public Debate FindDebate(int id)
         {
-            Debate debate = db.Debate.Find(id);
+            Debate debate = _debateRepository.FindDebate(id);
             return debate;
         }
 

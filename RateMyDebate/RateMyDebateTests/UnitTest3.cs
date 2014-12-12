@@ -1,8 +1,13 @@
 ﻿using System;
+using System.Web;
+using System.Web.ModelBinding;
+using System.Web.Mvc;
+using System.Web.SessionState;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using RateMyDebate.Controllers;
 using RateMyDebate.Models;
+using System.Web.Security;
 
 namespace RateMyDebateTests
 {
@@ -12,21 +17,23 @@ namespace RateMyDebateTests
         [TestMethod]
         public void TestMethod1()
         {
-            var controller = new Mock<IDebateRepository>();
+            var mockRepo = new Mock<IDebateRepository>();
+            
+            DebateController controller = new DebateController(mockRepo.Object);
 
-            controller.Object.DeleteDebate(1);
+            var debate = new Debate
+            {
+                DebateId = 0, CategoryIdId = 4, CreatorIdId = 3, Live = true, 
+                Subject = "Emne", Description = "Beskrivelse",
+                DateTime = DateTime.Now, TimeLimit = 50
+            };
 
-            Assert.IsNull(controller.Object.FindDebate(1));
-        }
+            var result = controller.Create(debate) as RedirectResult;
 
-        [TestMethod]
-        public void TestMethod2()
-        {
-            var controller = new Mock<IDebateRepository>();
+            mockRepo.Verify(d => d.AddDebate(debate), Times.Once);
+            mockRepo.Verify(d => d.Save(), Times.Once);
 
-            Debate debate = controller.Object.FindDebate(2);
-
-            Assert.IsNotNull(controller.Object.FindDebate(2));
+            Assert.IsNotNull(result);
         }
     }
 }
