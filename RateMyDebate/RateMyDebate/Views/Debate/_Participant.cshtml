@@ -30,7 +30,9 @@
     $(function() {
         var chat = $.connection.chatHub;
         var endingTimer;
-
+        var client = chat.client;
+        var server = chat.server;
+        var debateId = '@Model.Debate.DebateId';
         // $('.timerDiv').stopwatch().stopwatch('start');
 
 
@@ -39,7 +41,7 @@
             var formattedMessage;
 
 
-            formattedName = '<div /> @user.nickName';
+            formattedName = '<div /> ' + name;
             formattedMessage = $('<div />').text(message).html();
 
             $('#discussion').append(formattedName + ' :' + formattedMessage);
@@ -63,12 +65,14 @@
         $('#message').focus();
 
         $.connection.hub.start().done(function () {
+            server.joinDebateGroup(debateId);
+
             $('#sendmessage').click(function () {
 
                 var sender = '@user.nickName';
                 var message = $('#message').val();
-                var debateId = '@Model.Debate.DebateId';
-                chat.server.send($('#message').val(), $('#message').val());
+                
+                chat.server.send(sender, $('#message').val(), debateId);
                 $('#message').val('').focus();
 
 

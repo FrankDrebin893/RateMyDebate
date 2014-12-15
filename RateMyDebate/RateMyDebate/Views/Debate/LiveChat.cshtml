@@ -50,7 +50,7 @@
 }
 else if (user.userInformationId == Model.CreatorInformation.userInformationId)
 {
-    @Html.Partial("_Participant")
+    @Html.Partial("_Creator")
 }
 else if (user.userInformationId == Model.ChallengerInformation.userInformationId)
 {
@@ -72,7 +72,24 @@ else
 
         $(function() {
             var chat = $.connection.chatHub;
-            $.connection.hub.start();
+            var client = chat.client;
+            var server = chat.server;
+            var debateConnectionId = '@Model.Debate.DebateId';
+
+            $.connection.hub.start().done(function() {
+                server.joinDebateGroup(debateConnectionId);
+            });
+
+            chat.client.broadcastMessage = function (name, message) {
+                var formattedName;
+                var formattedMessage;
+
+
+                formattedName = '<div /> ' + name;
+                formattedMessage = $('<div />').text(message).html();
+
+                $('#discussion').append(formattedName + ' :' + formattedMessage);
+            };
 
             chat.client.broadcastTime = function (time) {
                 var formattedTime;
@@ -83,6 +100,7 @@ else
                 $('.timerDiv').text(formattedTime).html();
 
                 if (time == timeLimit) {
+                    $('.timerDiv').text('Time is up!');
                     $('.chatDiv').append('<br /> The debate has come to an end! Please wait while results are processed...');
 
                     var debateId = '@Model.Debate.DebateId';

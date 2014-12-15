@@ -410,7 +410,7 @@
     <Content Include="Views\UserInformation\SearchView.cshtml" />
     <Content Include="Views\UserInformation\UserEditError.cshtml" />
     <Content Include="Views\Debate\TEST.cshtml" />
-    <Content Include="Views\Debate\Creator.cshtml" />
+    <Content Include="Views\Debate\_Creator.cshtml" />
     <Content Include="Views\Debate\Spectator.cshtml" />
     <Content Include="Views\Debate\Challenger.cshtml" />
     <Content Include="Views\Debate\NonUser.cshtml" />

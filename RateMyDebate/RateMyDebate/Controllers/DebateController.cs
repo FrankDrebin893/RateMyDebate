@@ -372,6 +372,8 @@ namespace RateMyDebate.Controllers
             int creatorId = debate.CreatorIdId;
             int? challengerId = debate.ChallengerIdId;
 
+            if (challengerId == null) return "As no challenger was found, the debate will end without a conclusion. Sorry folks!";
+
             Result result = new Result();
             result.DebateId = debateId;
             String endingSentence = "Not assigned";

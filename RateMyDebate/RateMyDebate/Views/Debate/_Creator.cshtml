@@ -1,0 +1,92 @@
+﻿@using System.Web.UI.WebControls
+@using Microsoft.Ajax.Utilities
+@using RateMyDebate.Models
+@using RateMyDebate.ViewModels
+@model RateMyDebate.ViewModels.DebateDisplayViewModel
+
+@{
+    ViewBag.Title = "LiveChat";
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/RMD.css")
+    @Scripts.Render("~/bundles/modernizr")
+    var user = Session["UserInfoSession"] as UserInformation;
+}
+
+
+<div class="messageDiv">
+    <input type="button" id="sendmessage" value="Send" class="chatButton" />
+    <input type="text" id="message" class="chatTextBox" />
+</div>
+
+<div></div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script src="~/Scripts/jquery.signalR-2.1.1.min.js"></script>
+<script src="~/Scripts/Timer.js"></script>
+
+<script src="/signalr/hubs"></script>
+<script type="text/javascript">
+    $(function() {
+        var chat = $.connection.chatHub;
+        var endingTimer;
+        var client = chat.client;
+        var server = chat.server;
+        var debateId = '@Model.Debate.DebateId';
+        // $('.timerDiv').stopwatch().stopwatch('start');
+
+
+        chat.client.broadcastMessage = function(name, message) {
+            var formattedName;
+            var formattedMessage;
+
+
+            formattedName = '<div /> ' + name;
+            formattedMessage = $('<div />').text(message).html();
+
+            $('#discussion').append(formattedName + ' :' + formattedMessage);
+        };
+
+        chat.client.broadcastTime = function(time) {
+            var formattedTime;
+            var timeLimit = '@Model.Debate.TimeLimit';
+
+            formattedTime = $('<div />').text(time).html() + '/' + timeLimit + ' seconds';
+
+            $('.timerDiv').text(formattedTime).html();
+
+            if (time == timeLimit) {
+                $('.descriptionDiv').append('DONEDONEDONEDONEDONDENOEONONDENODE');
+
+            }
+        };
+
+
+        $('#message').focus();
+
+        $.connection.hub.start().done(function () {
+            server.joinDebateGroup(debateId);
+
+            $('#sendmessage').click(function () {
+
+                var sender = '@user.nickName';
+                var message = $('#message').val();
+
+                chat.server.send(sender, $('#message').val(), debateId);
+                $('#message').val('').focus();
+
+
+                $.ajax({
+                    url: "/Debate/SaveMessage",
+                    type: "POST",
+                    data: {
+                        sender: sender,
+                        message: message,
+                        debateId: debateId
+                    }
+                });
+            });
+        });
+    });
+
+</script>
