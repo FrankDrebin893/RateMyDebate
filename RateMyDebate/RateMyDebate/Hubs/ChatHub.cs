@@ -15,6 +15,7 @@ namespace RateMyDebate.Hubs
         private Timer _timer;
         private readonly ServerTimer _serverTimer;
         
+        
         public ChatHub() : this(ServerTimer.Instance)
         {
             

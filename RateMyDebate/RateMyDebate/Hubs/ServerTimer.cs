@@ -52,7 +52,7 @@ namespace RateMyDebate.Hubs
                 _updatingTimer = false;
             }
         }
-
+        
         public static ServerTimer Instance
         {
             get
