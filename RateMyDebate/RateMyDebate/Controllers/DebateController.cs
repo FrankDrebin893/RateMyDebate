@@ -231,15 +231,6 @@ namespace RateMyDebate.Controllers
 
             DebateDisplayViewModel DDVM = FindDebateDisplayViewModel(id);
 
-            //int CreatorId = DDVM.Debate.CreatorIdId;
-            //int ChallengerId = DDVM.Debate.ChallengerIdId;
-
-            //UserInformation Creator = db.UserInformation.Find(CreatorId);
-            //UserInformation Challenger = db.UserInformation.Find(ChallengerId);
-
-           // UserModel sessionUser = Session["userSession"] as UserModel;
-            //int UserId = sessionUser.accountId;
-
             ViewBag.Title = DDVM.Debate.Subject;
 
             return View(DDVM);
@@ -253,13 +244,10 @@ namespace RateMyDebate.Controllers
 
             if (debate.ChallengerIdId == null)
             {
-
                 debate.ChallengerIdId = user.userInformationId;
-                db.Entry(debate).State = EntityState.Modified;
-                db.SaveChanges();
-
+                _debateRepository.UpdateDebate(debate);
+                _debateRepository.Save();
             }
-
         }
 
         [HttpPost]
@@ -270,8 +258,6 @@ namespace RateMyDebate.Controllers
             debate.ChatText += formattedMessage;
             db.Entry(debate).State = EntityState.Modified;
             db.SaveChanges();
-
-
         }
 
         public Debate FindDebate(int id)
@@ -282,21 +268,9 @@ namespace RateMyDebate.Controllers
 
         public DebateDisplayViewModel FindDebateDisplayViewModel(int? id)
         {
-            /*
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }*/
-
             DebateDisplayViewModel DDVM = new DebateDisplayViewModel();
 
             DDVM.Debate = db.Debate.Find(id);
-
-            /*
-            DDVM.CreatorInformation = db.UserInformation.ToList();
-            DDVM.ChallengerInformation = db.UserInformation.ToList();
-            DDVM.Category = db.Categories.ToList();
-            */
             UserInformation creator = db.UserInformation.Find(DDVM.Debate.CreatorIdId);
             DDVM.CreatorInformation = creator;
 
@@ -320,11 +294,6 @@ namespace RateMyDebate.Controllers
 
             DDVM.Debate = db.Debate.Find(id);
 
-            /*
-            DDVM.CreatorInformation = db.UserInformation.ToList();
-            DDVM.ChallengerInformation = db.UserInformation.ToList();
-            DDVM.Category = db.Categories.ToList();
-            */
             UserInformation creator = db.UserInformation.Find(DDVM.Debate.CreatorIdId);
             DDVM.CreatorInformation = creator;
 

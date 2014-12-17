@@ -438,6 +438,10 @@ html, body {
     border-bottom: none;
 }
 
+.timerButton {
+    
+}
+
 .chatTextBox {
     width: 500px;
     font-size: 12px;

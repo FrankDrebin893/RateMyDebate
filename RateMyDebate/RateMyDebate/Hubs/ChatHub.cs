@@ -38,15 +38,13 @@ namespace RateMyDebate.Hubs
             if(DebateGroups.Contains(debateId)) return;
             DebateGroups.Add(debateId);
             JoinDebateGroup(debateId);
-            time = 0;
-            _timer = new Timer(UpdateTimer, debateId, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
             Clients.All.debateGroups(new[] {debateId});
         }
 
-
-        public void LeaveDebateGroup(int debateId)
+        public void StartTimer(int debateId)
         {
-            
+            time = 0;
+            _timer = new Timer(UpdateTimer, debateId, TimeSpan.FromSeconds(0), TimeSpan.FromSeconds(1));
         }
 
         private void UpdateTimer(Object state)
@@ -58,7 +56,7 @@ namespace RateMyDebate.Hubs
         private void BroadcastTimer(Object state)
         {
             String debateId = state.ToString();
-            //Clients.All.broadcastTime(time);
+
             Clients.Group(debateId).broadcastTime(time);
         }
 
@@ -66,7 +64,6 @@ namespace RateMyDebate.Hubs
         {
             String debate = debateId.ToString();
 
-            //Clients.All.broadcastMessage(name, message);
             Clients.Group(debate).broadcastMessage(name, message);
         }
     }

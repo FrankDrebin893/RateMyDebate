@@ -16,6 +16,7 @@
 <div class="messageDiv">
     <input type="button" id="sendmessage" value="Send" class="chatButton" />
     <input type="text" id="message" class="chatTextBox" />
+    <input type="button" id="startTimer" value="Start!" class="chatButton" />
 </div>
 
 <div></div>
@@ -35,31 +36,8 @@
         var debateId = '@Model.Debate.DebateId';
         // $('.timerDiv').stopwatch().stopwatch('start');
 
+        
 
-        chat.client.broadcastMessage = function(name, message) {
-            var formattedName;
-            var formattedMessage;
-
-
-            formattedName = '<div /> ' + name;
-            formattedMessage = $('<div />').text(message).html();
-
-            $('#discussion').append(formattedName + ' :' + formattedMessage);
-        };
-
-        chat.client.broadcastTime = function(time) {
-            var formattedTime;
-            var timeLimit = '@Model.Debate.TimeLimit';
-
-            formattedTime = $('<div />').text(time).html() + '/' + timeLimit + ' seconds';
-
-            $('.timerDiv').text(formattedTime).html();
-
-            if (time == timeLimit) {
-                $('.descriptionDiv').append('DONEDONEDONEDONEDONDENOEONONDENODE');
-
-            }
-        };
 
 
         $('#message').focus();
@@ -85,6 +63,11 @@
                         debateId: debateId
                     }
                 });
+            });
+
+
+            $('#startTimer').click(function() {
+                server.startTimer(debateId);
             });
         });
     });
