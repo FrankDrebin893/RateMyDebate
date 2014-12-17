@@ -151,8 +151,6 @@ namespace RateMyDebate.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include="creatorIdId,DebateId,Subject,Description,CategoryIdId,Timelimit")] Debate debate)
         {
-            //var user = Session["UserInfoSession"] as UserInformation;
-            //debate.CreatorIdId = user.userInformationId;
             debate.DateTime = DateTime.Now;
             debate.Live = true;
 
@@ -162,7 +160,6 @@ namespace RateMyDebate.Controllers
                 _debateRepository.Save();
                 String url = "LiveChat?id=" + debate.DebateId;
                 return Redirect(url);
-                //return RedirectToAction("Index");
             }
 
             return View(debate);
@@ -227,8 +224,6 @@ namespace RateMyDebate.Controllers
 
         public ActionResult LiveChat(int? id)
         {
-            Debate debate = db.Debate.Find(id);
-
             DebateDisplayViewModel DDVM = FindDebateDisplayViewModel(id);
 
             ViewBag.Title = DDVM.Debate.Subject;
@@ -240,7 +235,7 @@ namespace RateMyDebate.Controllers
         public void EnterChallenger(int debateId)
         {
             var user = Session["UserInfoSession"] as UserInformation;
-            Debate debate = FindDebate(debateId);
+            Debate debate = _debateRepository.FindDebate(debateId);
 
             if (debate.ChallengerIdId == null)
             {
@@ -253,11 +248,12 @@ namespace RateMyDebate.Controllers
         [HttpPost]
         public void SaveMessage(String sender, String message, int debateId)
         {
+            message = message.Replace("\n", "");
             String formattedMessage = "\n" + "[" + DateTime.Now + "] " + sender + " : " + message;
-            Debate debate = FindDebate(debateId);
+            Debate debate = _debateRepository.FindDebate(debateId);
             debate.ChatText += formattedMessage;
-            db.Entry(debate).State = EntityState.Modified;
-            db.SaveChanges();
+            _debateRepository.UpdateDebate(debate);
+            _debateRepository.Save();
         }
 
         public Debate FindDebate(int id)
@@ -336,10 +332,15 @@ namespace RateMyDebate.Controllers
 
         public String ProcessDebateResult(int debateId)
         {
-            ScoreScreenViewModel ssvm = new ScoreScreenViewModel();
-            Debate debate = FindDebate(debateId);
+            Debate debate = _debateRepository.FindDebate(debateId);
             int creatorId = debate.CreatorIdId;
             int? challengerId = debate.ChallengerIdId;
+
+            UserInformation creator = db.UserInformation.Find(creatorId);
+            UserInformation challenger = db.UserInformation.Find(challengerId);
+
+            String creatorNick = creator.nickName;
+            String challengerNick = challenger.nickName;
 
             if (challengerId == null) return "As no challenger was found, the debate will end without a conclusion. Sorry folks!";
 
@@ -358,15 +359,25 @@ namespace RateMyDebate.Controllers
             {
                 result.WinnerId = creatorId;
                 result.LoserId = challengerId;
+
+                endingSentence = "Thank you for participating and spectating! The winner is " +
+                 creatorNick + " with a score of " + result.CreatorVotesCount + " to " +
+                 challengerNick + "'s score of " + result.ChallengerVotesCount;
             }
             else if (creatorVotesNum < challengerVotesNum)
             {
                 result.WinnerId = challengerId;
                 result.LoserId = creatorId;
+
+                endingSentence = "Thank you for participating and spectating! The winner is " +
+                 challengerNick + " with a score of " + result.ChallengerVotesCount + " to " +
+                 creatorNick + "'s score of " + result.CreatorVotesCount;
             }
             else if (creatorVotesNum == challengerVotesNum)
             {
                 result.Draw = true;
+
+                endingSentence = "Thank you for participating and spectating! Unfortunately a winner could not be found as both participants had a vote count of " + creatorVotesNum;
             }
 
             result.CreatorVotesCount = creatorVotesNum;
@@ -375,35 +386,9 @@ namespace RateMyDebate.Controllers
             SaveResult(result);
             SetDebateInactive(debateId);
 
-            ssvm.result = result;
-            ssvm.debate = FindDebate(debateId);
-
-            UserInformation creator = db.UserInformation.Find(creatorId);
-            UserInformation challenger = db.UserInformation.Find(challengerId);
-
-            String creatorNick = creator.nickName;
-            String challengerNick = challenger.nickName;
-
-            if (result.Draw == true)
-            {
-                endingSentence = "Thank you for participating and spectating! Unfortunately a winner could not be found as both participants had a vote count of " + creatorVotesNum;
-            }
-            else if (result.WinnerId == creatorId)
-            {
-                endingSentence = "Thank you for participating and spectating! The winner is " +
-                                 creatorNick + " with a score of " + result.CreatorVotesCount + " to " +
-                                 challengerNick + "'s score of " + result.ChallengerVotesCount;
-            }
-            else if (result.WinnerId == challengerId)
-            {
-                endingSentence = "Thank you for participating and spectating! The winner is " +
-                                 challengerNick + " with a score of " + result.ChallengerVotesCount + " to " +
-                                 creatorNick + "'s score of " + result.CreatorVotesCount;
-            }
-
             return endingSentence;
-
         }
+
 
         public void SaveResult(Result result)
         {
@@ -439,12 +424,12 @@ namespace RateMyDebate.Controllers
 
         public void SetDebateInactive(int debateId)
         {
-            Debate debate = FindDebate(debateId);
+            Debate debate = _debateRepository.FindDebate(debateId);
             debate.Live = false;
             if (ModelState.IsValid)
             {
-                db.Entry(debate).State = EntityState.Modified;
-                db.SaveChanges();
+                _debateRepository.UpdateDebate(debate);
+                _debateRepository.Save();
             }
         }
 
