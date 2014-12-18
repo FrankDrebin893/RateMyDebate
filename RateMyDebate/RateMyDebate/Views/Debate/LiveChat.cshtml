@@ -29,7 +29,7 @@
     <div class="nickNameDiv" id="challengerName">@Html.DisplayFor(model => model.ChallengerInformation.nickName)</div>
 </div>
 
-<div class="timerDiv">Loading timer...</div>
+<div class="timerDiv">0/@Model.Debate.TimeLimit seconds</div>
 
 <div class="descriptionDiv">
     @Html.DisplayNameFor(m => m.Debate.Subject): @Html.DisplayFor(m => m.Debate.Subject)
