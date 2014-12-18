@@ -15,6 +15,7 @@ namespace RateMyDebate.Controllers
     [OutputCache(Location = OutputCacheLocation.None, NoStore = true)]
     public class UserInformationController : Controller
     {
+
         
         private RateMyDebateContext db = new RateMyDebateContext();
 
