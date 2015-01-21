@@ -308,6 +308,20 @@ namespace RateMyDebate.Controllers
             int voterId = user.userInformationId;
 
             Vote vote = FindVote(voterId, debateId);
+
+            
+
+            if (vote == null)
+            {
+                vote = new Vote();
+                vote.VoterId = user.userInformationId;
+                vote.DebateId = debateId;
+                vote.VotePos = votePosition;
+
+                db.Votes.Add(vote);
+                db.SaveChanges();
+            }
+
             vote.VotePos = votePosition;
 
             if (ModelState.IsValid)
@@ -315,6 +329,8 @@ namespace RateMyDebate.Controllers
                 db.Entry(vote).State = EntityState.Modified;
                 db.SaveChanges();
             }
+
+
 
         }
         
@@ -361,8 +377,8 @@ namespace RateMyDebate.Controllers
                 result.LoserId = challengerId;
 
                 endingSentence = "Thank you for participating and spectating! The winner is " +
-                 creatorNick + " with a score of " + result.CreatorVotesCount + " to " +
-                 challengerNick + "'s score of " + result.ChallengerVotesCount;
+                 creatorNick + " with a score of " + creatorVotesNum + " to " +
+                 challengerNick + "'s score of " + challengerVotesNum;
             }
             else if (creatorVotesNum < challengerVotesNum)
             {
@@ -370,8 +386,8 @@ namespace RateMyDebate.Controllers
                 result.LoserId = creatorId;
 
                 endingSentence = "Thank you for participating and spectating! The winner is " +
-                 challengerNick + " with a score of " + result.ChallengerVotesCount + " to " +
-                 creatorNick + "'s score of " + result.CreatorVotesCount;
+                 challengerNick + " with a score of " + challengerVotesNum + " to " +
+                 creatorNick + "'s score of " + creatorVotesNum;
             }
             else if (creatorVotesNum == challengerVotesNum)
             {
@@ -388,8 +404,7 @@ namespace RateMyDebate.Controllers
 
             return endingSentence;
         }
-
-
+        
         public void SaveResult(Result result)
         {
             Result check = FindResult(result.DebateId);
