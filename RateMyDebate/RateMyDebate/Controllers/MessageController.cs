@@ -78,7 +78,7 @@ namespace RateMyDebate.Controllers
                   else
                   {
                       message = null;
-                      ModelState.AddModelError("Receiver","Receiver Doesn't exist in user database! Make sure the name is spelled correct!");
+                      ModelState.AddModelError("Receiver","Receiver Doesn't exist in user database! Make sure the name is spelled correctly!");
                   }
                     
                 }

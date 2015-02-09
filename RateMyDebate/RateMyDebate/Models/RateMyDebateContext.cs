@@ -7,7 +7,7 @@ using System.Web;
 
 namespace RateMyDebate.Models
 {
-    public class RateMyDebateContext :DbContext
+    public class RateMyDebateContext : DbContext
     {
         public DbSet<UserModel> UserModel { get; set; }
         public DbSet<UserInformation> UserInformation { get; set; }
@@ -26,7 +26,6 @@ namespace RateMyDebate.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-
             modelBuilder.Entity<UserInformation>()
             .HasRequired(u => u.accountId)
             .WithMany()

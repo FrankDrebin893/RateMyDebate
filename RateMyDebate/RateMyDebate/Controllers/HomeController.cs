@@ -13,7 +13,6 @@ namespace RateMyDebate.Controllers
         private RateMyDebateContext db = new RateMyDebateContext();
         public ActionResult Index()
         {
-            //YO
             return View();
         }
 
